@@ -1,0 +1,28 @@
+name: sw
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "sw"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+        with:
+          repository: stremio/stremio-web
+      - run: |
+          npm install
+          npm run build
+      - uses: actions/upload-pages-artifact@main
+        with:
+          path: build
+      - uses: actions/deploy-pages@main
