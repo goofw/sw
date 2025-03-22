@@ -1,81 +1,274 @@
-function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(it, $keyword, $ruleType) {
-        var out = " ", $lvl = it.level, $dataLvl = it.dataLevel, $schema = it.schema[$keyword], $schemaPath = it.schemaPath + it.util.getProperty($keyword), $errSchemaPath = it.errSchemaPath + "/" + $keyword, $breakOnError = !it.opts.allErrors, $data = "data" + ($dataLvl || ""), $valid = "valid" + $lvl, $isData = it.opts.$data && $schema && $schema.$data;
-        $isData && (out += " var schema" + $lvl + " = " + it.util.getData($schema.$data, $dataLvl, it.dataPathArr) + "; ");
-        var $vSchema = "schema" + $lvl;
-        if (!$isData) if ($schema.length < it.opts.loopRequired && it.schema.properties && Object.keys(it.schema.properties).length) {
-            var $required = [], arr1 = $schema;
-            if (arr1) for (var $property, i1 = -1, l1 = arr1.length - 1; i1 < l1; ) {
-                $property = arr1[i1 += 1];
-                var $propertySch = it.schema.properties[$property];
-                $propertySch && it.util.schemaHasRules($propertySch, it.RULES.all) || ($required[$required.length] = $property);
-            }
-        } else $required = $schema;
-        if ($isData || $required.length) {
-            var $currentErrorPath = it.errorPath, $loopRequired = $isData || $required.length >= it.opts.loopRequired, $ownProperties = it.opts.ownProperties;
-            if ($breakOnError) if (out += " var missing" + $lvl + "; ", $loopRequired) {
-                $isData || (out += " var " + $vSchema + " = validate.schema" + $schemaPath + "; ");
-                var $missingProperty = "' + " + ($propertyPath = "schema" + $lvl + "[" + ($i = "i" + $lvl) + "]") + " + '";
-                it.opts._errorDataPathProperty && (it.errorPath = it.util.getPathExpr($currentErrorPath, $propertyPath, it.opts.jsonPointers)), 
-                out += " var " + $valid + " = true; ", $isData && (out += " if (schema" + $lvl + " === undefined) " + $valid + " = true; else if (!Array.isArray(schema" + $lvl + ")) " + $valid + " = false; else {"), 
-                out += " for (var " + $i + " = 0; " + $i + " < " + $vSchema + ".length; " + $i + "++) { " + $valid + " = " + $data + "[" + $vSchema + "[" + $i + "]] !== undefined ", 
-                $ownProperties && (out += " &&   Object.prototype.hasOwnProperty.call(" + $data + ", " + $vSchema + "[" + $i + "]) "), 
-                out += "; if (!" + $valid + ") break; } ", $isData && (out += "  }  "), out += "  if (!" + $valid + ") {   ", 
-                ($$outStack = $$outStack || []).push(out), out = "", !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                out += " } ") : out += " {} ";
-                var __err = out;
-                out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-                out += " } else { ";
-            } else {
-                out += " if ( ";
-                var $$outStack, arr2 = $required;
-                if (arr2) for (var $i = -1, l2 = arr2.length - 1; $i < l2; ) $propertyKey = arr2[$i += 1], 
-                $i && (out += " || "), out += " ( ( " + ($useData = $data + ($prop = it.util.getProperty($propertyKey))) + " === undefined ", 
-                $ownProperties && (out += " || ! Object.prototype.hasOwnProperty.call(" + $data + ", '" + it.util.escapeQuotes($propertyKey) + "') "), 
-                out += ") && (missing" + $lvl + " = " + it.util.toQuotedString(it.opts.jsonPointers ? $propertyKey : $prop) + ") ) ";
-                out += ") {  ", $missingProperty = "' + " + ($propertyPath = "missing" + $lvl) + " + '", 
-                it.opts._errorDataPathProperty && (it.errorPath = it.opts.jsonPointers ? it.util.getPathExpr($currentErrorPath, $propertyPath, !0) : $currentErrorPath + " + " + $propertyPath), 
-                ($$outStack = $$outStack || []).push(out), out = "", !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                out += " } ") : out += " {} ", __err = out, out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-                out += " } else { ";
-            } else if ($loopRequired) {
-                var $propertyPath;
-                $isData || (out += " var " + $vSchema + " = validate.schema" + $schemaPath + "; "), 
-                $missingProperty = "' + " + ($propertyPath = "schema" + $lvl + "[" + ($i = "i" + $lvl) + "]") + " + '", 
-                it.opts._errorDataPathProperty && (it.errorPath = it.util.getPathExpr($currentErrorPath, $propertyPath, it.opts.jsonPointers)), 
-                $isData && (out += " if (" + $vSchema + " && !Array.isArray(" + $vSchema + ")) {  var err =   ", 
-                !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                out += " } ") : out += " {} ", out += ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } else if (" + $vSchema + " !== undefined) { "), 
-                out += " for (var " + $i + " = 0; " + $i + " < " + $vSchema + ".length; " + $i + "++) { if (" + $data + "[" + $vSchema + "[" + $i + "]] === undefined ", 
-                $ownProperties && (out += " || ! Object.prototype.hasOwnProperty.call(" + $data + ", " + $vSchema + "[" + $i + "]) "), 
-                out += ") {  var err =   ", !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                out += " } ") : out += " {} ", out += ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } } ", 
-                $isData && (out += "  }  ");
-            } else {
-                var arr3 = $required;
-                if (arr3) for (var $propertyKey, i3 = -1, l3 = arr3.length - 1; i3 < l3; ) {
-                    $propertyKey = arr3[i3 += 1];
-                    var $prop = it.util.getProperty($propertyKey), $useData = ($missingProperty = it.util.escapeQuotes($propertyKey), 
-                    $data + $prop);
-                    it.opts._errorDataPathProperty && (it.errorPath = it.util.getPath($currentErrorPath, $propertyKey, it.opts.jsonPointers)), 
-                    out += " if ( " + $useData + " === undefined ", $ownProperties && (out += " || ! Object.prototype.hasOwnProperty.call(" + $data + ", '" + it.util.escapeQuotes($propertyKey) + "') "), 
-                    out += ") {  var err =   ", !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                    !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                    out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                    out += " } ") : out += " {} ", out += ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; } ";
-                }
-            }
-            it.errorPath = $currentErrorPath;
-        } else $breakOnError && (out += " if (true) {");
-        return out;
+function(module, exports) {
+    exports.toString = function(type) {
+        switch (type) {
+          case 1:
+            return "A";
+
+          case 10:
+            return "NULL";
+
+          case 28:
+            return "AAAA";
+
+          case 18:
+            return "AFSDB";
+
+          case 42:
+            return "APL";
+
+          case 257:
+            return "CAA";
+
+          case 60:
+            return "CDNSKEY";
+
+          case 59:
+            return "CDS";
+
+          case 37:
+            return "CERT";
+
+          case 5:
+            return "CNAME";
+
+          case 49:
+            return "DHCID";
+
+          case 32769:
+            return "DLV";
+
+          case 39:
+            return "DNAME";
+
+          case 48:
+            return "DNSKEY";
+
+          case 43:
+            return "DS";
+
+          case 55:
+            return "HIP";
+
+          case 13:
+            return "HINFO";
+
+          case 45:
+            return "IPSECKEY";
+
+          case 25:
+            return "KEY";
+
+          case 36:
+            return "KX";
+
+          case 29:
+            return "LOC";
+
+          case 15:
+            return "MX";
+
+          case 35:
+            return "NAPTR";
+
+          case 2:
+            return "NS";
+
+          case 47:
+            return "NSEC";
+
+          case 50:
+            return "NSEC3";
+
+          case 51:
+            return "NSEC3PARAM";
+
+          case 12:
+            return "PTR";
+
+          case 46:
+            return "RRSIG";
+
+          case 17:
+            return "RP";
+
+          case 24:
+            return "SIG";
+
+          case 6:
+            return "SOA";
+
+          case 99:
+            return "SPF";
+
+          case 33:
+            return "SRV";
+
+          case 44:
+            return "SSHFP";
+
+          case 32768:
+            return "TA";
+
+          case 249:
+            return "TKEY";
+
+          case 52:
+            return "TLSA";
+
+          case 250:
+            return "TSIG";
+
+          case 16:
+            return "TXT";
+
+          case 252:
+            return "AXFR";
+
+          case 251:
+            return "IXFR";
+
+          case 41:
+            return "OPT";
+
+          case 255:
+            return "ANY";
+        }
+        return "UNKNOWN_" + type;
+    }, exports.toType = function(name) {
+        switch (name.toUpperCase()) {
+          case "A":
+            return 1;
+
+          case "NULL":
+            return 10;
+
+          case "AAAA":
+            return 28;
+
+          case "AFSDB":
+            return 18;
+
+          case "APL":
+            return 42;
+
+          case "CAA":
+            return 257;
+
+          case "CDNSKEY":
+            return 60;
+
+          case "CDS":
+            return 59;
+
+          case "CERT":
+            return 37;
+
+          case "CNAME":
+            return 5;
+
+          case "DHCID":
+            return 49;
+
+          case "DLV":
+            return 32769;
+
+          case "DNAME":
+            return 39;
+
+          case "DNSKEY":
+            return 48;
+
+          case "DS":
+            return 43;
+
+          case "HIP":
+            return 55;
+
+          case "HINFO":
+            return 13;
+
+          case "IPSECKEY":
+            return 45;
+
+          case "KEY":
+            return 25;
+
+          case "KX":
+            return 36;
+
+          case "LOC":
+            return 29;
+
+          case "MX":
+            return 15;
+
+          case "NAPTR":
+            return 35;
+
+          case "NS":
+            return 2;
+
+          case "NSEC":
+            return 47;
+
+          case "NSEC3":
+            return 50;
+
+          case "NSEC3PARAM":
+            return 51;
+
+          case "PTR":
+            return 12;
+
+          case "RRSIG":
+            return 46;
+
+          case "RP":
+            return 17;
+
+          case "SIG":
+            return 24;
+
+          case "SOA":
+            return 6;
+
+          case "SPF":
+            return 99;
+
+          case "SRV":
+            return 33;
+
+          case "SSHFP":
+            return 44;
+
+          case "TA":
+            return 32768;
+
+          case "TKEY":
+            return 249;
+
+          case "TLSA":
+            return 52;
+
+          case "TSIG":
+            return 250;
+
+          case "TXT":
+            return 16;
+
+          case "AXFR":
+            return 252;
+
+          case "IXFR":
+            return 251;
+
+          case "OPT":
+            return 41;
+
+          case "ANY":
+          case "*":
+            return 255;
+        }
+        return 0;
     };
 }

@@ -1,63 +1,92 @@
 function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = function(Promise, PromiseArray, apiRejection) {
-        var util = __webpack_require__(17), RangeError = __webpack_require__(58).RangeError, AggregateError = __webpack_require__(58).AggregateError, isArray = util.isArray, CANCELLATION = {};
-        function SomePromiseArray(values) {
-            this.constructor$(values), this._howMany = 0, this._unwrap = !1, this._initialized = !1;
+    var accepts = __webpack_require__(982), deprecate = __webpack_require__(47)("express"), isIP = __webpack_require__(42).isIP, typeis = __webpack_require__(88), http = __webpack_require__(11), fresh = __webpack_require__(462), parseRange = __webpack_require__(159), parse = __webpack_require__(46), proxyaddr = __webpack_require__(463), req = Object.create(http.IncomingMessage.prototype);
+    function defineGetter(obj, name, getter) {
+        Object.defineProperty(obj, name, {
+            configurable: !0,
+            enumerable: !0,
+            get: getter
+        });
+    }
+    module.exports = req, req.get = req.header = function(name) {
+        if (!name) throw new TypeError("name argument is required to req.get");
+        if ("string" != typeof name) throw new TypeError("name must be a string to req.get");
+        var lc = name.toLowerCase();
+        switch (lc) {
+          case "referer":
+          case "referrer":
+            return this.headers.referrer || this.headers.referer;
+
+          default:
+            return this.headers[lc];
         }
-        function some(promises, howMany) {
-            if ((0 | howMany) !== howMany || howMany < 0) return apiRejection("expecting a positive integer\n\n    See http://goo.gl/MqrFmX\n");
-            var ret = new SomePromiseArray(promises), promise = ret.promise();
-            return ret.setHowMany(howMany), ret.init(), promise;
+    }, req.accepts = function() {
+        var accept = accepts(this);
+        return accept.types.apply(accept, arguments);
+    }, req.acceptsEncodings = function() {
+        var accept = accepts(this);
+        return accept.encodings.apply(accept, arguments);
+    }, req.acceptsEncoding = deprecate.function(req.acceptsEncodings, "req.acceptsEncoding: Use acceptsEncodings instead"), 
+    req.acceptsCharsets = function() {
+        var accept = accepts(this);
+        return accept.charsets.apply(accept, arguments);
+    }, req.acceptsCharset = deprecate.function(req.acceptsCharsets, "req.acceptsCharset: Use acceptsCharsets instead"), 
+    req.acceptsLanguages = function() {
+        var accept = accepts(this);
+        return accept.languages.apply(accept, arguments);
+    }, req.acceptsLanguage = deprecate.function(req.acceptsLanguages, "req.acceptsLanguage: Use acceptsLanguages instead"), 
+    req.range = function(size, options) {
+        var range = this.get("Range");
+        if (range) return parseRange(size, range, options);
+    }, req.param = function(name, defaultValue) {
+        var params = this.params || {}, body = this.body || {}, query = this.query || {}, args = 1 === arguments.length ? "name" : "name, default";
+        return deprecate("req.param(" + args + "): Use req.params, req.body, or req.query instead"), 
+        null != params[name] && params.hasOwnProperty(name) ? params[name] : null != body[name] ? body[name] : null != query[name] ? query[name] : defaultValue;
+    }, req.is = function(types) {
+        var arr = types;
+        if (!Array.isArray(types)) {
+            arr = new Array(arguments.length);
+            for (var i = 0; i < arr.length; i++) arr[i] = arguments[i];
         }
-        util.inherits(SomePromiseArray, PromiseArray), SomePromiseArray.prototype._init = function() {
-            if (this._initialized) if (0 !== this._howMany) {
-                this._init$(void 0, -5);
-                var isArrayResolved = isArray(this._values);
-                !this._isResolved() && isArrayResolved && this._howMany > this._canPossiblyFulfill() && this._reject(this._getRangeError(this.length()));
-            } else this._resolve([]);
-        }, SomePromiseArray.prototype.init = function() {
-            this._initialized = !0, this._init();
-        }, SomePromiseArray.prototype.setUnwrap = function() {
-            this._unwrap = !0;
-        }, SomePromiseArray.prototype.howMany = function() {
-            return this._howMany;
-        }, SomePromiseArray.prototype.setHowMany = function(count) {
-            this._howMany = count;
-        }, SomePromiseArray.prototype._promiseFulfilled = function(value) {
-            return this._addFulfilled(value), this._fulfilled() === this.howMany() && (this._values.length = this.howMany(), 
-            1 === this.howMany() && this._unwrap ? this._resolve(this._values[0]) : this._resolve(this._values), 
-            !0);
-        }, SomePromiseArray.prototype._promiseRejected = function(reason) {
-            return this._addRejected(reason), this._checkOutcome();
-        }, SomePromiseArray.prototype._promiseCancelled = function() {
-            return this._values instanceof Promise || null == this._values ? this._cancel() : (this._addRejected(CANCELLATION), 
-            this._checkOutcome());
-        }, SomePromiseArray.prototype._checkOutcome = function() {
-            if (this.howMany() > this._canPossiblyFulfill()) {
-                for (var e = new AggregateError, i = this.length(); i < this._values.length; ++i) this._values[i] !== CANCELLATION && e.push(this._values[i]);
-                return e.length > 0 ? this._reject(e) : this._cancel(), !0;
-            }
-            return !1;
-        }, SomePromiseArray.prototype._fulfilled = function() {
-            return this._totalResolved;
-        }, SomePromiseArray.prototype._rejected = function() {
-            return this._values.length - this.length();
-        }, SomePromiseArray.prototype._addRejected = function(reason) {
-            this._values.push(reason);
-        }, SomePromiseArray.prototype._addFulfilled = function(value) {
-            this._values[this._totalResolved++] = value;
-        }, SomePromiseArray.prototype._canPossiblyFulfill = function() {
-            return this.length() - this._rejected();
-        }, SomePromiseArray.prototype._getRangeError = function(count) {
-            var message = "Input array must contain at least " + this._howMany + " items but contains only " + count + " items";
-            return new RangeError(message);
-        }, SomePromiseArray.prototype._resolveEmptyArray = function() {
-            this._reject(this._getRangeError(0));
-        }, Promise.some = function(promises, howMany) {
-            return some(promises, howMany);
-        }, Promise.prototype.some = function(howMany) {
-            return some(this, howMany);
-        }, Promise._SomePromiseArray = SomePromiseArray;
-    };
+        return typeis(this, arr);
+    }, defineGetter(req, "protocol", (function() {
+        var proto = this.connection.encrypted ? "https" : "http";
+        if (!this.app.get("trust proxy fn")(this.connection.remoteAddress, 0)) return proto;
+        var header = this.get("X-Forwarded-Proto") || proto, index = header.indexOf(",");
+        return -1 !== index ? header.substring(0, index).trim() : header.trim();
+    })), defineGetter(req, "secure", (function() {
+        return "https" === this.protocol;
+    })), defineGetter(req, "ip", (function() {
+        var trust = this.app.get("trust proxy fn");
+        return proxyaddr(this, trust);
+    })), defineGetter(req, "ips", (function() {
+        var trust = this.app.get("trust proxy fn"), addrs = proxyaddr.all(this, trust);
+        return addrs.reverse().pop(), addrs;
+    })), defineGetter(req, "subdomains", (function() {
+        var hostname = this.hostname;
+        if (!hostname) return [];
+        var offset = this.app.get("subdomain offset");
+        return (isIP(hostname) ? [ hostname ] : hostname.split(".").reverse()).slice(offset);
+    })), defineGetter(req, "path", (function() {
+        return parse(this).pathname;
+    })), defineGetter(req, "hostname", (function() {
+        var trust = this.app.get("trust proxy fn"), host = this.get("X-Forwarded-Host");
+        if (host && trust(this.connection.remoteAddress, 0) ? -1 !== host.indexOf(",") && (host = host.substring(0, host.indexOf(",")).trimRight()) : host = this.get("Host"), 
+        host) {
+            var offset = "[" === host[0] ? host.indexOf("]") + 1 : 0, index = host.indexOf(":", offset);
+            return -1 !== index ? host.substring(0, index) : host;
+        }
+    })), defineGetter(req, "host", deprecate.function((function() {
+        return this.hostname;
+    }), "req.host: Use req.hostname instead")), defineGetter(req, "fresh", (function() {
+        var method = this.method, res = this.res, status = res.statusCode;
+        return ("GET" === method || "HEAD" === method) && (status >= 200 && status < 300 || 304 === status) && fresh(this.headers, {
+            etag: res.get("ETag"),
+            "last-modified": res.get("Last-Modified")
+        });
+    })), defineGetter(req, "stale", (function() {
+        return !this.fresh;
+    })), defineGetter(req, "xhr", (function() {
+        return "xmlhttprequest" === (this.get("X-Requested-With") || "").toLowerCase();
+    }));
 }

@@ -1,23 +1,22 @@
 function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = function(Promise, PromiseArray, debug) {
-        var PromiseInspection = Promise.PromiseInspection;
-        function SettledPromiseArray(values) {
-            this.constructor$(values);
-        }
-        __webpack_require__(17).inherits(SettledPromiseArray, PromiseArray), SettledPromiseArray.prototype._promiseResolved = function(index, inspection) {
-            return this._values[index] = inspection, ++this._totalResolved >= this._length && (this._resolve(this._values), 
-            !0);
-        }, SettledPromiseArray.prototype._promiseFulfilled = function(value, index) {
-            var ret = new PromiseInspection;
-            return ret._bitField = 33554432, ret._settledValueField = value, this._promiseResolved(index, ret);
-        }, SettledPromiseArray.prototype._promiseRejected = function(reason, index) {
-            var ret = new PromiseInspection;
-            return ret._bitField = 16777216, ret._settledValueField = reason, this._promiseResolved(index, ret);
-        }, Promise.settle = function(promises) {
-            return debug.deprecated(".settle()", ".reflect()"), new SettledPromiseArray(promises).promise();
-        }, Promise.prototype.settle = function() {
-            return Promise.settle(this);
-        };
+    module.exports = function(req) {
+        if (!req) throw new TypeError("argument req is required");
+        var proxyAddrs = (function(header) {
+            for (var end = header.length, list = [], start = header.length, i = header.length - 1; i >= 0; i--) switch (header.charCodeAt(i)) {
+              case 32:
+                start === end && (start = end = i);
+                break;
+
+              case 44:
+                start !== end && list.push(header.substring(start, end)), start = end = i;
+                break;
+
+              default:
+                start = i;
+            }
+            return start !== end && list.push(header.substring(start, end)), list;
+        })(req.headers["x-forwarded-for"] || "");
+        return [ req.connection.remoteAddress ].concat(proxyAddrs);
     };
 }

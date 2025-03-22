@@ -1,62 +1,34 @@
 function(module, exports, __webpack_require__) {
     "use strict";
-    var cr = Object.create;
-    if (cr) {
-        var callerCache = cr(null), getterCache = cr(null);
-        callerCache[" size"] = getterCache[" size"] = 0;
-    }
-    module.exports = function(Promise) {
-        var getMethodCaller, getGetter, util = __webpack_require__(17), canEvaluate = util.canEvaluate, isIdentifier = util.isIdentifier, makeMethodCaller = function(methodName) {
-            return new Function("ensureMethod", "                                    \n        return function(obj) {                                               \n            'use strict'                                                     \n            var len = this.length;                                           \n            ensureMethod(obj, 'methodName');                                 \n            switch(len) {                                                    \n                case 1: return obj.methodName(this[0]);                      \n                case 2: return obj.methodName(this[0], this[1]);             \n                case 3: return obj.methodName(this[0], this[1], this[2]);    \n                case 0: return obj.methodName();                             \n                default:                                                     \n                    return obj.methodName.apply(obj, this);                  \n            }                                                                \n        };                                                                   \n        ".replace(/methodName/g, methodName))(ensureMethod);
-        }, makeGetter = function(propertyName) {
-            return new Function("obj", "                                             \n        'use strict';                                                        \n        return obj.propertyName;                                             \n        ".replace("propertyName", propertyName));
-        }, getCompiled = function(name, compiler, cache) {
-            var ret = cache[name];
-            if ("function" != typeof ret) {
-                if (!isIdentifier(name)) return null;
-                if (ret = compiler(name), cache[name] = ret, cache[" size"]++, cache[" size"] > 512) {
-                    for (var keys = Object.keys(cache), i = 0; i < 256; ++i) delete cache[keys[i]];
-                    cache[" size"] = keys.length - 256;
-                }
-            }
-            return ret;
+    var bodyParser = __webpack_require__(106), EventEmitter = __webpack_require__(5).EventEmitter, mixin = __webpack_require__(972), proto = __webpack_require__(973), Route = __webpack_require__(457), Router = __webpack_require__(456), req = __webpack_require__(981), res = __webpack_require__(988);
+    (exports = module.exports = function() {
+        var app = function(req, res, next) {
+            app.handle(req, res, next);
         };
-        function ensureMethod(obj, methodName) {
-            var fn;
-            if (null != obj && (fn = obj[methodName]), "function" != typeof fn) {
-                var message = "Object " + util.classString(obj) + " has no method '" + util.toString(methodName) + "'";
-                throw new Promise.TypeError(message);
+        return mixin(app, EventEmitter.prototype, !1), mixin(app, proto, !1), app.request = Object.create(req, {
+            app: {
+                configurable: !0,
+                enumerable: !0,
+                writable: !0,
+                value: app
             }
-            return fn;
-        }
-        function caller(obj) {
-            return ensureMethod(obj, this.pop()).apply(obj, this);
-        }
-        function namedGetter(obj) {
-            return obj[this];
-        }
-        function indexedGetter(obj) {
-            var index = +this;
-            return index < 0 && (index = Math.max(0, index + obj.length)), obj[index];
-        }
-        getMethodCaller = function(name) {
-            return getCompiled(name, makeMethodCaller, callerCache);
-        }, getGetter = function(name) {
-            return getCompiled(name, makeGetter, getterCache);
-        }, Promise.prototype.call = function(methodName) {
-            for (var $_len = arguments.length, args = new Array(Math.max($_len - 1, 0)), $_i = 1; $_i < $_len; ++$_i) args[$_i - 1] = arguments[$_i];
-            if (canEvaluate) {
-                var maybeCaller = getMethodCaller(methodName);
-                if (null !== maybeCaller) return this._then(maybeCaller, void 0, void 0, args, void 0);
+        }), app.response = Object.create(res, {
+            app: {
+                configurable: !0,
+                enumerable: !0,
+                writable: !0,
+                value: app
             }
-            return args.push(methodName), this._then(caller, void 0, void 0, args, void 0);
-        }, Promise.prototype.get = function(propertyName) {
-            var getter;
-            if ("number" == typeof propertyName) getter = indexedGetter; else if (canEvaluate) {
-                var maybeGetter = getGetter(propertyName);
-                getter = null !== maybeGetter ? maybeGetter : namedGetter;
-            } else getter = namedGetter;
-            return this._then(getter, void 0, void 0, propertyName, void 0);
-        };
-    };
+        }), app.init(), app;
+    }).application = proto, exports.request = req, exports.response = res, exports.Route = Route, 
+    exports.Router = Router, exports.json = bodyParser.json, exports.query = __webpack_require__(459), 
+    exports.raw = bodyParser.raw, exports.static = __webpack_require__(991), exports.text = bodyParser.text, 
+    exports.urlencoded = bodyParser.urlencoded, [ "bodyParser", "compress", "cookieSession", "session", "logger", "cookieParser", "favicon", "responseTime", "errorHandler", "timeout", "methodOverride", "vhost", "csrf", "directory", "limit", "multipart", "staticCache" ].forEach((function(name) {
+        Object.defineProperty(exports, name, {
+            get: function() {
+                throw new Error("Most middleware (like " + name + ") is no longer bundled with Express and must be installed separately. Please see https://github.com/senchalabs/connect#middleware.");
+            },
+            configurable: !0
+        });
+    }));
 }

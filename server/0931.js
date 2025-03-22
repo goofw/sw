@@ -1,67 +1,45 @@
 function(module, exports, __webpack_require__) {
-    var crypto = __webpack_require__(9);
-    function sha(key, body, algorithm) {
-        return crypto.createHmac(algorithm, key).update(body).digest("base64");
-    }
-    function rfc3986(str) {
-        return encodeURIComponent(str).replace(/!/g, "%21").replace(/\*/g, "%2A").replace(/\(/g, "%28").replace(/\)/g, "%29").replace(/'/g, "%27");
-    }
-    function compare(a, b) {
-        return a > b ? 1 : a < b ? -1 : 0;
-    }
-    function generateBase(httpMethod, base_uri, params) {
-        var normalized = (function(obj) {
-            var key, val, arr = [];
-            for (key in obj) if (val = obj[key], Array.isArray(val)) for (var i = 0; i < val.length; i++) arr.push([ key, val[i] ]); else if ("object" == typeof val) for (var prop in val) arr.push([ key + "[" + prop + "]", val[prop] ]); else arr.push([ key, val ]);
-            return arr;
-        })(params).map((function(p) {
-            return [ rfc3986(p[0]), rfc3986(p[1] || "") ];
-        })).sort((function(a, b) {
-            return compare(a[0], b[0]) || compare(a[1], b[1]);
-        })).map((function(p) {
-            return p.join("=");
-        })).join("&");
-        return [ rfc3986(httpMethod ? httpMethod.toUpperCase() : "GET"), rfc3986(base_uri), rfc3986(normalized) ].join("&");
-    }
-    function hmacsign(httpMethod, base_uri, params, consumer_secret, token_secret) {
-        var base = generateBase(httpMethod, base_uri, params);
-        return sha([ consumer_secret || "", token_secret || "" ].map(rfc3986).join("&"), base, "sha1");
-    }
-    function hmacsign256(httpMethod, base_uri, params, consumer_secret, token_secret) {
-        var base = generateBase(httpMethod, base_uri, params);
-        return sha([ consumer_secret || "", token_secret || "" ].map(rfc3986).join("&"), base, "sha256");
-    }
-    function rsasign(httpMethod, base_uri, params, private_key, token_secret) {
-        return key = private_key || "", body = generateBase(httpMethod, base_uri, params), 
-        crypto.createSign("RSA-SHA1").update(body).sign(key, "base64");
-        var key, body;
-    }
-    function plaintext(consumer_secret, token_secret) {
-        return [ consumer_secret || "", token_secret || "" ].map(rfc3986).join("&");
-    }
-    exports.hmacsign = hmacsign, exports.hmacsign256 = hmacsign256, exports.rsasign = rsasign, 
-    exports.plaintext = plaintext, exports.sign = function(signMethod, httpMethod, base_uri, params, consumer_secret, token_secret) {
-        var method, skipArgs = 1;
-        switch (signMethod) {
-          case "RSA-SHA1":
-            method = rsasign;
-            break;
-
-          case "HMAC-SHA1":
-            method = hmacsign;
-            break;
-
-          case "HMAC-SHA256":
-            method = hmacsign256;
-            break;
-
-          case "PLAINTEXT":
-            method = plaintext, skipArgs = 4;
-            break;
-
-          default:
-            throw new Error("Signature method not supported: " + signMethod);
+    "use strict";
+    module.exports = function(Promise, INTERNAL, debug) {
+        var util = __webpack_require__(16), TimeoutError = Promise.TimeoutError;
+        function HandleWrapper(handle) {
+            this.handle = handle;
         }
-        return method.apply(null, [].slice.call(arguments, skipArgs));
-    }, exports.rfc3986 = rfc3986, exports.generateBase = generateBase;
+        HandleWrapper.prototype._resultCancelled = function() {
+            clearTimeout(this.handle);
+        };
+        var afterValue = function(value) {
+            return delay(+this).thenReturn(value);
+        }, delay = Promise.delay = function(ms, value) {
+            var ret, handle;
+            return void 0 !== value ? (ret = Promise.resolve(value)._then(afterValue, null, null, ms, void 0), 
+            debug.cancellation() && value instanceof Promise && ret._setOnCancel(value)) : (ret = new Promise(INTERNAL), 
+            handle = setTimeout((function() {
+                ret._fulfill();
+            }), +ms), debug.cancellation() && ret._setOnCancel(new HandleWrapper(handle)), ret._captureStackTrace()), 
+            ret._setAsyncGuaranteed(), ret;
+        };
+        function successClear(value) {
+            return clearTimeout(this.handle), value;
+        }
+        function failureClear(reason) {
+            throw clearTimeout(this.handle), reason;
+        }
+        Promise.prototype.delay = function(ms) {
+            return delay(ms, this);
+        }, Promise.prototype.timeout = function(ms, message) {
+            var ret, parent;
+            ms = +ms;
+            var handleWrapper = new HandleWrapper(setTimeout((function() {
+                ret.isPending() && (function(promise, message, parent) {
+                    var err;
+                    err = "string" != typeof message ? message instanceof Error ? message : new TimeoutError("operation timed out") : new TimeoutError(message), 
+                    util.markAsOriginatingFromRejection(err), promise._attachExtraTrace(err), promise._reject(err), 
+                    null != parent && parent.cancel();
+                })(ret, message, parent);
+            }), ms));
+            return debug.cancellation() ? (parent = this.then(), (ret = parent._then(successClear, failureClear, void 0, handleWrapper, void 0))._setOnCancel(handleWrapper)) : ret = this._then(successClear, failureClear, void 0, handleWrapper, void 0), 
+            ret;
+        };
+    };
 }

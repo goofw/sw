@@ -1,19 +1,15 @@
-function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(it, $keyword, $ruleType) {
-        var $schemaValue, out = " ", $lvl = it.level, $dataLvl = it.dataLevel, $schema = it.schema[$keyword], $schemaPath = it.schemaPath + it.util.getProperty($keyword), $errSchemaPath = it.errSchemaPath + "/" + $keyword, $breakOnError = !it.opts.allErrors, $data = "data" + ($dataLvl || ""), $isData = it.opts.$data && $schema && $schema.$data;
-        $isData ? (out += " var schema" + $lvl + " = " + it.util.getData($schema.$data, $dataLvl, it.dataPathArr) + "; ", 
-        $schemaValue = "schema" + $lvl) : $schemaValue = $schema, out += "if ( ", $isData && (out += " (" + $schemaValue + " !== undefined && typeof " + $schemaValue + " != 'string') || "), 
-        out += " !" + ($isData ? "(new RegExp(" + $schemaValue + "))" : it.usePattern($schema)) + ".test(" + $data + ") ) {   ";
-        var $$outStack = $$outStack || [];
-        $$outStack.push(out), out = "", !1 !== it.createErrors ? (out += " { keyword: 'pattern' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { pattern:  ", 
-        out += $isData ? "" + $schemaValue : "" + it.util.toQuotedString($schema), out += "  } ", 
-        !1 !== it.opts.messages && (out += " , message: 'should match pattern \"", out += $isData ? "' + " + $schemaValue + " + '" : "" + it.util.escapeQuotes($schema), 
-        out += "\"' "), it.opts.verbose && (out += " , schema:  ", out += $isData ? "validate.schema" + $schemaPath : "" + it.util.toQuotedString($schema), 
-        out += "         , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-        out += " } ") : out += " {} ";
-        var __err = out;
-        return out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-        out += "} ", $breakOnError && (out += " else { "), out;
+function(module, exports) {
+    module.exports = function(buff, search, offset, encoding) {
+        if (!Buffer.isBuffer(buff)) throw TypeError("buffer is not a buffer");
+        if (void 0 === encoding && "string" == typeof offset && (encoding = offset, offset = void 0), 
+        "string" == typeof search) search = new Buffer(search, encoding || "utf8"); else if ("number" != typeof search || isNaN(search)) {
+            if (!Buffer.isBuffer(search)) throw TypeError("search is not a bufferable object");
+        } else search = new Buffer([ search ]);
+        if (0 === search.length) return -1;
+        if (void 0 === offset || "number" == typeof offset && isNaN(offset)) offset = 0; else if ("number" != typeof offset) throw TypeError("offset is not a number");
+        offset < 0 && (offset = buff.length + offset), offset < 0 && (offset = 0);
+        for (var m = 0, s = -1, i = offset; i < buff.length && (buff[i] != search[m] && (s = -1, 
+        i -= m - 1, m = 0), buff[i] != search[m] || (-1 == s && (s = i), ++m != search.length)); ++i) ;
+        return s > -1 && buff.length - s < search.length ? -1 : s;
     };
 }

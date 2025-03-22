@@ -1,6 +1,7 @@
-function(module, exports, __webpack_require__) {
-    const mime = __webpack_require__(63);
-    module.exports = function(rarInnerFile) {
-        return mime.lookup(rarInnerFile.name) || "application/octet-stream";
+function(module, exports) {
+    for (var byteToHex = [], i = 0; i < 256; ++i) byteToHex[i] = (i + 256).toString(16).substr(1);
+    module.exports = function(buf, offset) {
+        var i = offset || 0, bth = byteToHex;
+        return [ bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], "-", bth[buf[i++]], bth[buf[i++]], "-", bth[buf[i++]], bth[buf[i++]], "-", bth[buf[i++]], bth[buf[i++]], "-", bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]], bth[buf[i++]] ].join("");
     };
 }

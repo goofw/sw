@@ -1,54 +1,45 @@
 function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(Promise) {
-        function PromiseInspection(promise) {
-            void 0 !== promise ? (promise = promise._target(), this._bitField = promise._bitField, 
-            this._settledValueField = promise._isFateSealed() ? promise._settledValue() : void 0) : (this._bitField = 0, 
-            this._settledValueField = void 0);
+    const addonSDK = __webpack_require__(969), fs = __webpack_require__(2);
+    let engineUrl = "http://127.0.0.1:11470";
+    const manifest = __webpack_require__(465), manifestNoCatalogs = __webpack_require__(999), catalogHandler = __webpack_require__(1e3), metaHandler = __webpack_require__(1001), streamHandler = __webpack_require__(1023), Storage = __webpack_require__(1024), findFiles = __webpack_require__(1025), indexer = __webpack_require__(467), mapEntryToMeta = __webpack_require__(468), storage = new Storage({
+        validateRecord: function(index, entry) {
+            fs.accessSync(index, fs.constants.R_OK);
+        },
+        entryIndexes: [ "itemId" ]
+    }), metaStorage = new Storage;
+    function logError(err) {
+        console.log("Error:", err);
+    }
+    function onDiscoveredFile(fPath) {
+        storage.indexes.primaryKey.has(fPath) || storage.indexes.primaryKey.size >= 1e4 || indexer.indexFile(fPath, (function(err, entry) {
+            err ? indexLog(fPath, "indexing error: " + (err.message || err)) : entry && (storage.saveEntry(fPath, entry, (function(err) {
+                err ? console.log(err) : entry.itemId && indexLog(fPath, "is now indexed: " + entry.itemId);
+            })), entry.files && entry.files.length > 0 && entry.itemId && mapEntryToMeta(entry).then((function(meta) {
+                metaStorage.saveEntry(meta.id, meta, (function() {}));
+            })).catch((() => {})));
+        }));
+    }
+    function indexLog(fPath, status) {
+        console.log("-> " + fPath + ": " + status);
+    }
+    module.exports = {
+        addon: function(options) {
+            const addonBuilder = new addonSDK((options = options || {}).disableCatalogSupport ? manifestNoCatalogs : manifest);
+            return addonBuilder.defineCatalogHandler((function(args, cb) {
+                catalogHandler(storage, metaStorage, args, cb);
+            })), addonBuilder.defineMetaHandler((function(args, cb) {
+                metaHandler(storage, metaStorage, engineUrl, args, cb);
+            })), addonBuilder.defineStreamHandler((function(args, cb) {
+                streamHandler(storage, args, cb);
+            })), addonBuilder;
+        },
+        setEngineUrl: function(url) {
+            engineUrl = url;
+        },
+        startIndexing: function(fPath) {
+            Promise.all([ metaStorage.load(fPath + "Meta").catch(logError), storage.load(fPath).catch(logError) ]).then((function(err) {
+                findFiles().on("file", onDiscoveredFile);
+            }));
         }
-        PromiseInspection.prototype._settledValue = function() {
-            return this._settledValueField;
-        };
-        var value = PromiseInspection.prototype.value = function() {
-            if (!this.isFulfilled()) throw new TypeError("cannot get fulfillment value of a non-fulfilled promise\n\n    See http://goo.gl/MqrFmX\n");
-            return this._settledValue();
-        }, reason = PromiseInspection.prototype.error = PromiseInspection.prototype.reason = function() {
-            if (!this.isRejected()) throw new TypeError("cannot get rejection reason of a non-rejected promise\n\n    See http://goo.gl/MqrFmX\n");
-            return this._settledValue();
-        }, isFulfilled = PromiseInspection.prototype.isFulfilled = function() {
-            return 0 != (33554432 & this._bitField);
-        }, isRejected = PromiseInspection.prototype.isRejected = function() {
-            return 0 != (16777216 & this._bitField);
-        }, isPending = PromiseInspection.prototype.isPending = function() {
-            return 0 == (50397184 & this._bitField);
-        }, isResolved = PromiseInspection.prototype.isResolved = function() {
-            return 0 != (50331648 & this._bitField);
-        };
-        PromiseInspection.prototype.isCancelled = function() {
-            return 0 != (8454144 & this._bitField);
-        }, Promise.prototype.__isCancelled = function() {
-            return 65536 == (65536 & this._bitField);
-        }, Promise.prototype._isCancelled = function() {
-            return this._target().__isCancelled();
-        }, Promise.prototype.isCancelled = function() {
-            return 0 != (8454144 & this._target()._bitField);
-        }, Promise.prototype.isPending = function() {
-            return isPending.call(this._target());
-        }, Promise.prototype.isRejected = function() {
-            return isRejected.call(this._target());
-        }, Promise.prototype.isFulfilled = function() {
-            return isFulfilled.call(this._target());
-        }, Promise.prototype.isResolved = function() {
-            return isResolved.call(this._target());
-        }, Promise.prototype.value = function() {
-            return value.call(this._target());
-        }, Promise.prototype.reason = function() {
-            var target = this._target();
-            return target._unsetRejectionIsUnhandled(), reason.call(target);
-        }, Promise.prototype._value = function() {
-            return this._settledValue();
-        }, Promise.prototype._reason = function() {
-            return this._unsetRejectionIsUnhandled(), this._settledValue();
-        }, Promise.PromiseInspection = PromiseInspection;
     };
 }

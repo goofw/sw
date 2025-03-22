@@ -1,90 +1,59 @@
 function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = function(Promise, apiRejection, INTERNAL, tryConvertToPromise, Proxyable, debug) {
-        var TypeError = __webpack_require__(58).TypeError, util = __webpack_require__(17), errorObj = util.errorObj, tryCatch = util.tryCatch, yieldHandlers = [];
-        function PromiseSpawn(generatorFunction, receiver, yieldHandler, stack) {
-            if (debug.cancellation()) {
-                var internal = new Promise(INTERNAL), _finallyPromise = this._finallyPromise = new Promise(INTERNAL);
-                this._promise = internal.lastly((function() {
-                    return _finallyPromise;
-                })), internal._captureStackTrace(), internal._setOnCancel(this);
-            } else (this._promise = new Promise(INTERNAL))._captureStackTrace();
-            this._stack = stack, this._generatorFunction = generatorFunction, this._receiver = receiver, 
-            this._generator = void 0, this._yieldHandlers = "function" == typeof yieldHandler ? [ yieldHandler ].concat(yieldHandlers) : yieldHandlers, 
-            this._yieldedPromise = null, this._cancellationPhase = !1;
-        }
-        util.inherits(PromiseSpawn, Proxyable), PromiseSpawn.prototype._isResolved = function() {
-            return null === this._promise;
-        }, PromiseSpawn.prototype._cleanup = function() {
-            this._promise = this._generator = null, debug.cancellation() && null !== this._finallyPromise && (this._finallyPromise._fulfill(), 
-            this._finallyPromise = null);
-        }, PromiseSpawn.prototype._promiseCancelled = function() {
-            if (!this._isResolved()) {
-                var result;
-                if (void 0 !== this._generator.return) this._promise._pushContext(), result = tryCatch(this._generator.return).call(this._generator, void 0), 
-                this._promise._popContext(); else {
-                    var reason = new Promise.CancellationError("generator .return() sentinel");
-                    Promise.coroutine.returnSentinel = reason, this._promise._attachExtraTrace(reason), 
-                    this._promise._pushContext(), result = tryCatch(this._generator.throw).call(this._generator, reason), 
-                    this._promise._popContext();
-                }
-                this._cancellationPhase = !0, this._yieldedPromise = null, this._continue(result);
-            }
-        }, PromiseSpawn.prototype._promiseFulfilled = function(value) {
-            this._yieldedPromise = null, this._promise._pushContext();
-            var result = tryCatch(this._generator.next).call(this._generator, value);
-            this._promise._popContext(), this._continue(result);
-        }, PromiseSpawn.prototype._promiseRejected = function(reason) {
-            this._yieldedPromise = null, this._promise._attachExtraTrace(reason), this._promise._pushContext();
-            var result = tryCatch(this._generator.throw).call(this._generator, reason);
-            this._promise._popContext(), this._continue(result);
-        }, PromiseSpawn.prototype._resultCancelled = function() {
-            if (this._yieldedPromise instanceof Promise) {
-                var promise = this._yieldedPromise;
-                this._yieldedPromise = null, promise.cancel();
-            }
-        }, PromiseSpawn.prototype.promise = function() {
-            return this._promise;
-        }, PromiseSpawn.prototype._run = function() {
-            this._generator = this._generatorFunction.call(this._receiver), this._receiver = this._generatorFunction = void 0, 
-            this._promiseFulfilled(void 0);
-        }, PromiseSpawn.prototype._continue = function(result) {
-            var promise = this._promise;
-            if (result === errorObj) return this._cleanup(), this._cancellationPhase ? promise.cancel() : promise._rejectCallback(result.e, !1);
-            var value = result.value;
-            if (!0 === result.done) return this._cleanup(), this._cancellationPhase ? promise.cancel() : promise._resolveCallback(value);
-            var maybePromise = tryConvertToPromise(value, this._promise);
-            if (maybePromise instanceof Promise || (maybePromise = (function(value, yieldHandlers, traceParent) {
-                for (var i = 0; i < yieldHandlers.length; ++i) {
-                    traceParent._pushContext();
-                    var result = tryCatch(yieldHandlers[i])(value);
-                    if (traceParent._popContext(), result === errorObj) {
-                        traceParent._pushContext();
-                        var ret = Promise.reject(errorObj.e);
-                        return traceParent._popContext(), ret;
+    var debug = __webpack_require__(8)("finalhandler"), encodeUrl = __webpack_require__(83), escapeHtml = __webpack_require__(84), onFinished = __webpack_require__(85), parseUrl = __webpack_require__(46), statuses = __webpack_require__(109), unpipe = __webpack_require__(158), DOUBLE_SPACE_REGEXP = /\x20{2}/g, NEWLINE_REGEXP = /\n/g, defer = "function" == typeof setImmediate ? setImmediate : function(fn) {
+        process.nextTick(fn.bind.apply(fn, arguments));
+    }, isFinished = onFinished.isFinished;
+    function headersSent(res) {
+        return "boolean" != typeof res.headersSent ? Boolean(res._header) : res.headersSent;
+    }
+    module.exports = function(req, res, options) {
+        var opts = options || {}, env = opts.env || "production", onerror = opts.onerror;
+        return function(err) {
+            var headers, msg, status;
+            if (err || !headersSent(res)) {
+                if (err ? (status = (function(err) {
+                    return "number" == typeof err.status && err.status >= 400 && err.status < 600 ? err.status : "number" == typeof err.statusCode && err.statusCode >= 400 && err.statusCode < 600 ? err.statusCode : void 0;
+                })(err), void 0 === status ? status = (function(res) {
+                    var status = res.statusCode;
+                    return ("number" != typeof status || status < 400 || status > 599) && (status = 500), 
+                    status;
+                })(res) : headers = (function(err) {
+                    if (err.headers && "object" == typeof err.headers) {
+                        for (var headers = Object.create(null), keys = Object.keys(err.headers), i = 0; i < keys.length; i++) {
+                            var key = keys[i];
+                            headers[key] = err.headers[key];
+                        }
+                        return headers;
                     }
-                    var maybePromise = tryConvertToPromise(result, traceParent);
-                    if (maybePromise instanceof Promise) return maybePromise;
-                }
-                return null;
-            })(maybePromise, this._yieldHandlers, this._promise), null !== maybePromise)) {
-                var bitField = (maybePromise = maybePromise._target())._bitField;
-                0 == (50397184 & bitField) ? (this._yieldedPromise = maybePromise, maybePromise._proxy(this, null)) : 0 != (33554432 & bitField) ? Promise._async.invoke(this._promiseFulfilled, this, maybePromise._value()) : 0 != (16777216 & bitField) ? Promise._async.invoke(this._promiseRejected, this, maybePromise._reason()) : this._promiseCancelled();
-            } else this._promiseRejected(new TypeError("A value %s was yielded that could not be treated as a promise\n\n    See http://goo.gl/MqrFmX\n\n".replace("%s", value) + "From coroutine:\n" + this._stack.split("\n").slice(1, -7).join("\n")));
-        }, Promise.coroutine = function(generatorFunction, options) {
-            if ("function" != typeof generatorFunction) throw new TypeError("generatorFunction must be a function\n\n    See http://goo.gl/MqrFmX\n");
-            var yieldHandler = Object(options).yieldHandler, PromiseSpawn$ = PromiseSpawn, stack = (new Error).stack;
-            return function() {
-                var generator = generatorFunction.apply(this, arguments), spawn = new PromiseSpawn$(void 0, void 0, yieldHandler, stack), ret = spawn.promise();
-                return spawn._generator = generator, spawn._promiseFulfilled(void 0), ret;
-            };
-        }, Promise.coroutine.addYieldHandler = function(fn) {
-            if ("function" != typeof fn) throw new TypeError("expecting a function but got " + util.classString(fn));
-            yieldHandlers.push(fn);
-        }, Promise.spawn = function(generatorFunction) {
-            if (debug.deprecated("Promise.spawn()", "Promise.coroutine()"), "function" != typeof generatorFunction) return apiRejection("generatorFunction must be a function\n\n    See http://goo.gl/MqrFmX\n");
-            var spawn = new PromiseSpawn(generatorFunction, this), ret = spawn.promise();
-            return spawn._run(Promise.spawn), ret;
+                })(err), msg = (function(err, status, env) {
+                    var msg;
+                    return "production" !== env && ((msg = err.stack) || "function" != typeof err.toString || (msg = err.toString())), 
+                    msg || statuses[status];
+                })(err, status, env)) : (status = 404, msg = "Cannot " + req.method + " " + encodeUrl((function(req) {
+                    try {
+                        return parseUrl.original(req).pathname;
+                    } catch (e) {
+                        return "resource";
+                    }
+                })(req))), debug("default %s", status), err && onerror && defer(onerror, err, req, res), 
+                headersSent(res)) return debug("cannot %d after headers sent", status), void req.socket.destroy();
+                !(function(req, res, status, headers, message) {
+                    function write() {
+                        var body = (function(message) {
+                            return '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<title>Error</title>\n</head>\n<body>\n<pre>' + escapeHtml(message).replace(NEWLINE_REGEXP, "<br>").replace(DOUBLE_SPACE_REGEXP, " &nbsp;") + "</pre>\n</body>\n</html>\n";
+                        })(message);
+                        res.statusCode = status, res.statusMessage = statuses[status], (function(res, headers) {
+                            if (headers) for (var keys = Object.keys(headers), i = 0; i < keys.length; i++) {
+                                var key = keys[i];
+                                res.setHeader(key, headers[key]);
+                            }
+                        })(res, headers), res.setHeader("Content-Security-Policy", "default-src 'none'"), 
+                        res.setHeader("X-Content-Type-Options", "nosniff"), res.setHeader("Content-Type", "text/html; charset=utf-8"), 
+                        res.setHeader("Content-Length", Buffer.byteLength(body, "utf8")), "HEAD" !== req.method ? res.end(body, "utf8") : res.end();
+                    }
+                    isFinished(req) ? write() : (unpipe(req), onFinished(req, write), req.resume());
+                })(req, res, status, headers, msg);
+            } else debug("cannot 404 after headers sent");
         };
     };
 }

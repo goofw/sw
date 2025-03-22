@@ -1,44 +1,26 @@
 function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(Promise, INTERNAL) {
-        var util = __webpack_require__(17), errorObj = util.errorObj, isObject = util.isObject, hasProp = {}.hasOwnProperty;
-        return function(obj, context) {
-            if (isObject(obj)) {
-                if (obj instanceof Promise) return obj;
-                var then = (function(obj) {
-                    try {
-                        return (function(obj) {
-                            return obj.then;
-                        })(obj);
-                    } catch (e) {
-                        return errorObj.e = e, errorObj;
-                    }
-                })(obj);
-                if (then === errorObj) {
-                    context && context._pushContext();
-                    var ret = Promise.reject(then.e);
-                    return context && context._popContext(), ret;
-                }
-                if ("function" == typeof then) return (function(obj) {
-                    try {
-                        return hasProp.call(obj, "_promise0");
-                    } catch (e) {
-                        return !1;
-                    }
-                })(obj) ? (ret = new Promise(INTERNAL), obj._then(ret._fulfill, ret._reject, void 0, ret, null), 
-                ret) : (function(x, then, context) {
-                    var promise = new Promise(INTERNAL), ret = promise;
-                    context && context._pushContext(), promise._captureStackTrace(), context && context._popContext();
-                    var result = util.tryCatch(then).call(x, (function(value) {
-                        promise && (promise._resolveCallback(value), promise = null);
-                    }), (function(reason) {
-                        promise && (promise._rejectCallback(reason, false, !0), promise = null);
-                    }));
-                    return !1, promise && result === errorObj && (promise._rejectCallback(result.e, !0, !0), 
-                    promise = null), ret;
-                })(obj, then, context);
-            }
-            return obj;
-        };
-    };
+    __webpack_require__(0);
+    var sax = __webpack_require__(959), TreeBuilder = __webpack_require__(449).TreeBuilder;
+    function XMLParser(target) {
+        this.parser = sax.parser(!0), this.target = target || new TreeBuilder, this.parser.onopentag = this._handleOpenTag.bind(this), 
+        this.parser.ontext = this._handleText.bind(this), this.parser.oncdata = this._handleCdata.bind(this), 
+        this.parser.ondoctype = this._handleDoctype.bind(this), this.parser.oncomment = this._handleComment.bind(this), 
+        this.parser.onclosetag = this._handleCloseTag.bind(this), this.parser.onerror = this._handleError.bind(this);
+    }
+    XMLParser.prototype._handleOpenTag = function(tag) {
+        this.target.start(tag.name, tag.attributes);
+    }, XMLParser.prototype._handleText = function(text) {
+        this.target.data(text);
+    }, XMLParser.prototype._handleCdata = function(text) {
+        this.target.data(text);
+    }, XMLParser.prototype._handleDoctype = function(text) {}, XMLParser.prototype._handleComment = function(comment) {}, 
+    XMLParser.prototype._handleCloseTag = function(tag) {
+        this.target.end(tag);
+    }, XMLParser.prototype._handleError = function(err) {
+        throw err;
+    }, XMLParser.prototype.feed = function(chunk) {
+        this.parser.write(chunk);
+    }, XMLParser.prototype.close = function() {
+        return this.parser.close(), this.target.close();
+    }, exports.XMLParser = XMLParser;
 }

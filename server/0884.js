@@ -1,46 +1,80 @@
 function(module, exports, __webpack_require__) {
     "use strict";
-    module.exports = function(it, $keyword, $ruleType) {
-        var $async, $refCode, out = " ", $lvl = it.level, $dataLvl = it.dataLevel, $schema = it.schema[$keyword], $errSchemaPath = it.errSchemaPath + "/" + $keyword, $breakOnError = !it.opts.allErrors, $data = "data" + ($dataLvl || ""), $valid = "valid" + $lvl;
-        if ("#" == $schema || "#/" == $schema) it.isRoot ? ($async = it.async, $refCode = "validate") : ($async = !0 === it.root.schema.$async, 
-        $refCode = "root.refVal[0]"); else {
-            var $refVal = it.resolveRef(it.baseId, $schema, it.isRoot);
-            if (void 0 === $refVal) {
-                var $message = it.MissingRefError.message(it.baseId, $schema);
-                if ("fail" == it.opts.missingRefs) {
-                    it.logger.error($message), ($$outStack = $$outStack || []).push(out), out = "", 
-                    !1 !== it.createErrors ? (out += " { keyword: '$ref' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { ref: '" + it.util.escapeQuotes($schema) + "' } ", 
-                    !1 !== it.opts.messages && (out += " , message: 'can\\'t resolve reference " + it.util.escapeQuotes($schema) + "' "), 
-                    it.opts.verbose && (out += " , schema: " + it.util.toQuotedString($schema) + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                    out += " } ") : out += " {} ";
-                    var __err = out;
-                    out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-                    $breakOnError && (out += " if (false) { ");
-                } else {
-                    if ("ignore" != it.opts.missingRefs) throw new it.MissingRefError(it.baseId, $schema, $message);
-                    it.logger.warn($message), $breakOnError && (out += " if (true) { ");
+    Object.defineProperty(exports, "__esModule", {
+        value: !0
+    });
+    const stream_1 = __webpack_require__(3);
+    class m3u8Parser extends stream_1.Writable {
+        constructor() {
+            super(), this._lastLine = "", this._seq = 0, this._nextItemDuration = null, this._nextItemRange = null, 
+            this._lastItemRangeEnd = 0, this.on("finish", (() => {
+                this._parseLine(this._lastLine), this.emit("end");
+            }));
+        }
+        _parseAttrList(value) {
+            let match, attrs = {}, regex = /([A-Z0-9-]+)=(?:"([^"]*?)"|([^,]*?))/g;
+            for (;null != (match = regex.exec(value)); ) attrs[match[1]] = match[2] || match[3];
+            return attrs;
+        }
+        _parseRange(value) {
+            if (!value) return null;
+            let svalue = value.split("@"), start = svalue[1] ? parseInt(svalue[1]) : this._lastItemRangeEnd + 1, range = {
+                start: start,
+                end: start + parseInt(svalue[0]) - 1
+            };
+            return this._lastItemRangeEnd = range.end, range;
+        }
+        _parseLine(line) {
+            let match = line.match(/^#(EXT[A-Z0-9-]+)(?::(.*))?/);
+            if (match) {
+                const tag = match[1], value = match[2] || "";
+                switch (tag) {
+                  case "EXT-X-PROGRAM-DATE-TIME":
+                    this.emit("starttime", new Date(value).getTime());
+                    break;
+
+                  case "EXT-X-MEDIA-SEQUENCE":
+                    this._seq = parseInt(value);
+                    break;
+
+                  case "EXT-X-MAP":
+                    {
+                        let attrs = this._parseAttrList(value);
+                        if (!attrs.URI) return void this.destroy(new Error("`EXT-X-MAP` found without required attribute `URI`"));
+                        this.emit("item", {
+                            url: attrs.URI,
+                            seq: this._seq,
+                            init: !0,
+                            duration: 0,
+                            range: this._parseRange(attrs.BYTERANGE)
+                        });
+                        break;
+                    }
+
+                  case "EXT-X-BYTERANGE":
+                    this._nextItemRange = this._parseRange(value);
+                    break;
+
+                  case "EXTINF":
+                    this._nextItemDuration = Math.round(1e3 * parseFloat(value.split(",")[0]));
+                    break;
+
+                  case "EXT-X-ENDLIST":
+                    this.emit("endlist");
                 }
-            } else if ($refVal.inline) {
-                var $it = it.util.copy(it);
-                $it.level++;
-                var $nextValid = "valid" + $it.level;
-                $it.schema = $refVal.schema, $it.schemaPath = "", $it.errSchemaPath = $schema, out += " " + it.validate($it).replace(/validate\.schema/g, $refVal.code) + " ", 
-                $breakOnError && (out += " if (" + $nextValid + ") { ");
-            } else $async = !0 === $refVal.$async || it.async && !1 !== $refVal.$async, $refCode = $refVal.code;
+            } else !/^#/.test(line) && line.trim() && (this.emit("item", {
+                url: line.trim(),
+                seq: this._seq++,
+                duration: this._nextItemDuration,
+                range: this._nextItemRange
+            }), this._nextItemRange = null);
         }
-        if ($refCode) {
-            var $$outStack;
-            ($$outStack = $$outStack || []).push(out), out = "", it.opts.passContext ? out += " " + $refCode + ".call(this, " : out += " " + $refCode + "( ", 
-            out += " " + $data + ", (dataPath || '')", '""' != it.errorPath && (out += " + " + it.errorPath);
-            var __callValidate = out += " , " + ($dataLvl ? "data" + ($dataLvl - 1 || "") : "parentData") + " , " + ($dataLvl ? it.dataPathArr[$dataLvl] : "parentDataProperty") + ", rootData)  ";
-            if (out = $$outStack.pop(), $async) {
-                if (!it.async) throw new Error("async schema referenced by sync schema");
-                $breakOnError && (out += " var " + $valid + "; "), out += " try { await " + __callValidate + "; ", 
-                $breakOnError && (out += " " + $valid + " = true; "), out += " } catch (e) { if (!(e instanceof ValidationError)) throw e; if (vErrors === null) vErrors = e.errors; else vErrors = vErrors.concat(e.errors); errors = vErrors.length; ", 
-                $breakOnError && (out += " " + $valid + " = false; "), out += " } ", $breakOnError && (out += " if (" + $valid + ") { ");
-            } else out += " if (!" + __callValidate + ") { if (vErrors === null) vErrors = " + $refCode + ".errors; else vErrors = vErrors.concat(" + $refCode + ".errors); errors = vErrors.length; } ", 
-            $breakOnError && (out += " else { ");
+        _write(chunk, encoding, callback) {
+            let lines = chunk.toString("utf8").split("\n");
+            this._lastLine && (lines[0] = this._lastLine + lines[0]), lines.forEach(((line, i) => {
+                this.destroyed || (i < lines.length - 1 ? this._parseLine(line) : this._lastLine = line);
+            })), callback();
         }
-        return out;
-    };
+    }
+    exports.default = m3u8Parser;
 }

@@ -1,111 +1,96 @@
 function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(it, $keyword, $ruleType) {
-        var out = " ", $lvl = it.level, $dataLvl = it.dataLevel, $schema = it.schema[$keyword], $schemaPath = it.schemaPath + it.util.getProperty($keyword), $errSchemaPath = it.errSchemaPath + "/" + $keyword, $breakOnError = !it.opts.allErrors, $data = "data" + ($dataLvl || ""), $errs = "errs__" + $lvl, $it = it.util.copy(it), $closingBraces = "";
-        $it.level++;
-        var $nextValid = "valid" + $it.level, $key = "key" + $lvl, $idx = "idx" + $lvl, $dataNxt = $it.dataLevel = it.dataLevel + 1, $nextData = "data" + $dataNxt, $dataProperties = "dataProperties" + $lvl, $schemaKeys = Object.keys($schema || {}), $pProperties = it.schema.patternProperties || {}, $pPropertyKeys = Object.keys($pProperties), $aProperties = it.schema.additionalProperties, $someProperties = $schemaKeys.length || $pPropertyKeys.length, $noAdditional = !1 === $aProperties, $additionalIsSchema = "object" == typeof $aProperties && Object.keys($aProperties).length, $removeAdditional = it.opts.removeAdditional, $checkAdditional = $noAdditional || $additionalIsSchema || $removeAdditional, $ownProperties = it.opts.ownProperties, $currentBaseId = it.baseId, $required = it.schema.required;
-        if ($required && (!it.opts.$data || !$required.$data) && $required.length < it.opts.loopRequired) var $requiredHash = it.util.toHash($required);
-        if (out += "var " + $errs + " = errors;var " + $nextValid + " = true;", $ownProperties && (out += " var " + $dataProperties + " = undefined;"), 
-        $checkAdditional) {
-            if (out += $ownProperties ? " " + $dataProperties + " = " + $dataProperties + " || Object.keys(" + $data + "); for (var " + $idx + "=0; " + $idx + "<" + $dataProperties + ".length; " + $idx + "++) { var " + $key + " = " + $dataProperties + "[" + $idx + "]; " : " for (var " + $key + " in " + $data + ") { ", 
-            $someProperties) {
-                if (out += " var isAdditional" + $lvl + " = !(false ", $schemaKeys.length) if ($schemaKeys.length > 8) out += " || validate.schema" + $schemaPath + ".hasOwnProperty(" + $key + ") "; else {
-                    var arr1 = $schemaKeys;
-                    if (arr1) for (var i1 = -1, l1 = arr1.length - 1; i1 < l1; ) $propertyKey = arr1[i1 += 1], 
-                    out += " || " + $key + " == " + it.util.toQuotedString($propertyKey) + " ";
-                }
-                if ($pPropertyKeys.length) {
-                    var arr2 = $pPropertyKeys;
-                    if (arr2) for (var $i = -1, l2 = arr2.length - 1; $i < l2; ) $pProperty = arr2[$i += 1], 
-                    out += " || " + it.usePattern($pProperty) + ".test(" + $key + ") ";
-                }
-                out += " ); if (isAdditional" + $lvl + ") { ";
+    var packet = __webpack_require__(900), dgram = __webpack_require__(69), thunky = __webpack_require__(904), events = __webpack_require__(5), os = __webpack_require__(21), noop = function() {};
+    module.exports = function(opts) {
+        opts || (opts = {});
+        var that = new events.EventEmitter, port = "number" == typeof opts.port ? opts.port : 5353, type = opts.type || "udp4", ip = opts.ip || opts.host || ("udp4" === type ? "224.0.0.251" : null), me = {
+            address: ip,
+            port: port
+        }, memberships = {}, destroyed = !1, interval = null;
+        if (!("udp6" !== type || ip && opts.interface)) throw new Error("For IPv6 multicast you must specify `ip` and `interface`");
+        var socket = opts.socket || dgram.createSocket({
+            type: type,
+            reuseAddr: !1 !== opts.reuseAddr,
+            toString: function() {
+                return type;
             }
-            if ("all" == $removeAdditional) out += " delete " + $data + "[" + $key + "]; "; else {
-                var $currentErrorPath = it.errorPath, $additionalProperty = "' + " + $key + " + '";
-                if (it.opts._errorDataPathProperty && (it.errorPath = it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers)), 
-                $noAdditional) if ($removeAdditional) out += " delete " + $data + "[" + $key + "]; "; else {
-                    out += " " + $nextValid + " = false; ";
-                    var $currErrSchemaPath = $errSchemaPath;
-                    $errSchemaPath = it.errSchemaPath + "/additionalProperties", ($$outStack = $$outStack || []).push(out), 
-                    out = "", !1 !== it.createErrors ? (out += " { keyword: 'additionalProperties' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { additionalProperty: '" + $additionalProperty + "' } ", 
-                    !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is an invalid additional property" : out += "should NOT have additional properties", 
-                    out += "' "), it.opts.verbose && (out += " , schema: false , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                    out += " } ") : out += " {} ";
-                    var __err = out;
-                    out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-                    $errSchemaPath = $currErrSchemaPath, $breakOnError && (out += " break; ");
-                } else if ($additionalIsSchema) if ("failing" == $removeAdditional) {
-                    out += " var " + $errs + " = errors;  ";
-                    var $wasComposite = it.compositeRule;
-                    it.compositeRule = $it.compositeRule = !0, $it.schema = $aProperties, $it.schemaPath = it.schemaPath + ".additionalProperties", 
-                    $it.errSchemaPath = it.errSchemaPath + "/additionalProperties", $it.errorPath = it.opts._errorDataPathProperty ? it.errorPath : it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers);
-                    var $passData = $data + "[" + $key + "]";
-                    $it.dataPathArr[$dataNxt] = $key;
-                    var $code = it.validate($it);
-                    $it.baseId = $currentBaseId, it.util.varOccurences($code, $nextData) < 2 ? out += " " + it.util.varReplace($code, $nextData, $passData) + " " : out += " var " + $nextData + " = " + $passData + "; " + $code + " ", 
-                    out += " if (!" + $nextValid + ") { errors = " + $errs + "; if (validate.errors !== null) { if (errors) validate.errors.length = errors; else validate.errors = null; } delete " + $data + "[" + $key + "]; }  ", 
-                    it.compositeRule = $it.compositeRule = $wasComposite;
-                } else $it.schema = $aProperties, $it.schemaPath = it.schemaPath + ".additionalProperties", 
-                $it.errSchemaPath = it.errSchemaPath + "/additionalProperties", $it.errorPath = it.opts._errorDataPathProperty ? it.errorPath : it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers), 
-                $passData = $data + "[" + $key + "]", $it.dataPathArr[$dataNxt] = $key, $code = it.validate($it), 
-                $it.baseId = $currentBaseId, it.util.varOccurences($code, $nextData) < 2 ? out += " " + it.util.varReplace($code, $nextData, $passData) + " " : out += " var " + $nextData + " = " + $passData + "; " + $code + " ", 
-                $breakOnError && (out += " if (!" + $nextValid + ") break; ");
-                it.errorPath = $currentErrorPath;
+        });
+        socket.on("error", (function(err) {
+            "EACCES" === err.code || "EADDRINUSE" === err.code ? that.emit("error", err) : that.emit("warning", err);
+        })), socket.on("message", (function(message, rinfo) {
+            try {
+                message = packet.decode(message);
+            } catch (err) {
+                return void that.emit("warning", err);
             }
-            $someProperties && (out += " } "), out += " }  ", $breakOnError && (out += " if (" + $nextValid + ") { ", 
-            $closingBraces += "}");
-        }
-        var $useDefaults = it.opts.useDefaults && !it.compositeRule;
-        if ($schemaKeys.length) {
-            var arr3 = $schemaKeys;
-            if (arr3) for (var $propertyKey, i3 = -1, l3 = arr3.length - 1; i3 < l3; ) {
-                var $sch = $schema[$propertyKey = arr3[i3 += 1]];
-                if (it.util.schemaHasRules($sch, it.RULES.all)) {
-                    var $prop = it.util.getProperty($propertyKey), $hasDefault = ($passData = $data + $prop, 
-                    $useDefaults && void 0 !== $sch.default);
-                    if ($it.schema = $sch, $it.schemaPath = $schemaPath + $prop, $it.errSchemaPath = $errSchemaPath + "/" + it.util.escapeFragment($propertyKey), 
-                    $it.errorPath = it.util.getPath(it.errorPath, $propertyKey, it.opts.jsonPointers), 
-                    $it.dataPathArr[$dataNxt] = it.util.toQuotedString($propertyKey), $code = it.validate($it), 
-                    $it.baseId = $currentBaseId, it.util.varOccurences($code, $nextData) < 2) {
-                        $code = it.util.varReplace($code, $nextData, $passData);
-                        var $useData = $passData;
-                    } else $useData = $nextData, out += " var " + $nextData + " = " + $passData + "; ";
-                    if ($hasDefault) out += " " + $code + " "; else {
-                        if ($requiredHash && $requiredHash[$propertyKey]) {
-                            out += " if ( " + $useData + " === undefined ", $ownProperties && (out += " || ! Object.prototype.hasOwnProperty.call(" + $data + ", '" + it.util.escapeQuotes($propertyKey) + "') "), 
-                            out += ") { " + $nextValid + " = false; ", $currentErrorPath = it.errorPath, $currErrSchemaPath = $errSchemaPath;
-                            var $$outStack, $missingProperty = it.util.escapeQuotes($propertyKey);
-                            it.opts._errorDataPathProperty && (it.errorPath = it.util.getPath($currentErrorPath, $propertyKey, it.opts.jsonPointers)), 
-                            $errSchemaPath = it.errSchemaPath + "/required", ($$outStack = $$outStack || []).push(out), 
-                            out = "", !1 !== it.createErrors ? (out += " { keyword: 'required' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { missingProperty: '" + $missingProperty + "' } ", 
-                            !1 !== it.opts.messages && (out += " , message: '", it.opts._errorDataPathProperty ? out += "is a required property" : out += "should have required property \\'" + $missingProperty + "\\'", 
-                            out += "' "), it.opts.verbose && (out += " , schema: validate.schema" + $schemaPath + " , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-                            out += " } ") : out += " {} ", __err = out, out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-                            $errSchemaPath = $currErrSchemaPath, it.errorPath = $currentErrorPath, out += " } else { ";
-                        } else $breakOnError ? (out += " if ( " + $useData + " === undefined ", $ownProperties && (out += " || ! Object.prototype.hasOwnProperty.call(" + $data + ", '" + it.util.escapeQuotes($propertyKey) + "') "), 
-                        out += ") { " + $nextValid + " = true; } else { ") : (out += " if (" + $useData + " !== undefined ", 
-                        $ownProperties && (out += " &&   Object.prototype.hasOwnProperty.call(" + $data + ", '" + it.util.escapeQuotes($propertyKey) + "') "), 
-                        out += " ) { ");
-                        out += " " + $code + " } ";
+            that.emit("packet", message, rinfo), "query" === message.type && that.emit("query", message, rinfo), 
+            "response" === message.type && that.emit("response", message, rinfo);
+        })), socket.on("listening", (function() {
+            port || (port = me.port = socket.address().port), !1 !== opts.multicast && (that.update(), 
+            interval = setInterval(that.update, 5e3), socket.setMulticastTTL(opts.ttl || 255), 
+            socket.setMulticastLoopback(!1 !== opts.loopback));
+        }));
+        var bind = thunky((function(cb) {
+            if (!port) return cb(null);
+            socket.once("error", cb), socket.bind(port, opts.interface, (function() {
+                socket.removeListener("error", cb), cb(null);
+            }));
+        }));
+        return bind((function(err) {
+            if (err) return that.emit("error", err);
+            that.emit("ready");
+        })), that.send = function(value, rinfo, cb) {
+            if ("function" == typeof rinfo) return that.send(value, null, rinfo);
+            cb || (cb = noop), rinfo || (rinfo = me), bind((function(err) {
+                if (destroyed) return cb();
+                if (err) return cb(err);
+                var message = packet.encode(value);
+                socket.send(message, 0, message.length, rinfo.port, rinfo.address || rinfo.host, cb);
+            }));
+        }, that.response = that.respond = function(res, rinfo, cb) {
+            Array.isArray(res) && (res = {
+                answers: res
+            }), res.type = "response", res.flags = (res.flags || 0) | packet.AUTHORITATIVE_ANSWER, 
+            that.send(res, rinfo, cb);
+        }, that.query = function(q, type, rinfo, cb) {
+            return "function" == typeof type ? that.query(q, null, null, type) : "object" == typeof type && type && type.port ? that.query(q, null, type, rinfo) : "function" == typeof rinfo ? that.query(q, type, null, rinfo) : (cb || (cb = noop), 
+            "string" == typeof q && (q = [ {
+                name: q,
+                type: type || "ANY"
+            } ]), Array.isArray(q) && (q = {
+                type: "query",
+                questions: q
+            }), q.type = "query", void that.send(q, rinfo, cb));
+        }, that.destroy = function(cb) {
+            if (cb || (cb = noop), destroyed) return process.nextTick(cb);
+            destroyed = !0, clearInterval(interval), socket.once("close", cb), socket.close();
+        }, that.update = function() {
+            for (var ifaces = opts.interface ? [].concat(opts.interface) : (function() {
+                for (var networks = os.networkInterfaces(), names = Object.keys(networks), res = [], i = 0; i < names.length; i++) for (var net = networks[names[i]], j = 0; j < net.length; j++) {
+                    var iface = net[j];
+                    if ("IPv4" === iface.family) {
+                        res.push(iface.address);
+                        break;
                     }
                 }
-                $breakOnError && (out += " if (" + $nextValid + ") { ", $closingBraces += "}");
+                return res;
+            })(), updated = !1, i = 0; i < ifaces.length; i++) {
+                var addr = ifaces[i];
+                if (!memberships[addr]) {
+                    memberships[addr] = !0, updated = !0;
+                    try {
+                        socket.addMembership(ip, addr);
+                    } catch (err) {
+                        that.emit("warning", err);
+                    }
+                }
             }
-        }
-        if ($pPropertyKeys.length) {
-            var arr4 = $pPropertyKeys;
-            if (arr4) for (var $pProperty, i4 = -1, l4 = arr4.length - 1; i4 < l4; ) $sch = $pProperties[$pProperty = arr4[i4 += 1]], 
-            it.util.schemaHasRules($sch, it.RULES.all) && ($it.schema = $sch, $it.schemaPath = it.schemaPath + ".patternProperties" + it.util.getProperty($pProperty), 
-            $it.errSchemaPath = it.errSchemaPath + "/patternProperties/" + it.util.escapeFragment($pProperty), 
-            out += $ownProperties ? " " + $dataProperties + " = " + $dataProperties + " || Object.keys(" + $data + "); for (var " + $idx + "=0; " + $idx + "<" + $dataProperties + ".length; " + $idx + "++) { var " + $key + " = " + $dataProperties + "[" + $idx + "]; " : " for (var " + $key + " in " + $data + ") { ", 
-            out += " if (" + it.usePattern($pProperty) + ".test(" + $key + ")) { ", $it.errorPath = it.util.getPathExpr(it.errorPath, $key, it.opts.jsonPointers), 
-            $passData = $data + "[" + $key + "]", $it.dataPathArr[$dataNxt] = $key, $code = it.validate($it), 
-            $it.baseId = $currentBaseId, it.util.varOccurences($code, $nextData) < 2 ? out += " " + it.util.varReplace($code, $nextData, $passData) + " " : out += " var " + $nextData + " = " + $passData + "; " + $code + " ", 
-            $breakOnError && (out += " if (!" + $nextValid + ") break; "), out += " } ", $breakOnError && (out += " else " + $nextValid + " = true; "), 
-            out += " }  ", $breakOnError && (out += " if (" + $nextValid + ") { ", $closingBraces += "}"));
-        }
-        return $breakOnError && (out += " " + $closingBraces + " if (" + $errs + " == errors) {"), 
-        it.util.cleanUpCode(out);
+            updated && socket.setMulticastInterface && socket.setMulticastInterface(opts.interface || (function() {
+                for (var networks = os.networkInterfaces(), names = Object.keys(networks), i = 0; i < names.length; i++) for (var net = networks[names[i]], j = 0; j < net.length; j++) {
+                    var iface = net[j];
+                    if ("IPv4" === iface.family && !iface.internal) return iface.address;
+                }
+                return "127.0.0.1";
+            })());
+        }, that;
     };
 }

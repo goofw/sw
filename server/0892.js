@@ -1,54 +1,164 @@
 function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(it, $keyword, $ruleType) {
-        var out = " ", $lvl = it.level, $dataLvl = it.dataLevel, $schema = it.schema[$keyword], $schemaPath = it.schemaPath + it.util.getProperty($keyword), $errSchemaPath = it.errSchemaPath + "/" + $keyword, $breakOnError = !it.opts.allErrors, $data = "data" + ($dataLvl || "");
-        if (!1 === it.opts.format) return $breakOnError && (out += " if (true) { "), out;
-        var $schemaValue, $isData = it.opts.$data && $schema && $schema.$data;
-        $isData ? (out += " var schema" + $lvl + " = " + it.util.getData($schema.$data, $dataLvl, it.dataPathArr) + "; ", 
-        $schemaValue = "schema" + $lvl) : $schemaValue = $schema;
-        var $unknownFormats = it.opts.unknownFormats, $allowUnknown = Array.isArray($unknownFormats);
-        if ($isData) out += " var " + ($format = "format" + $lvl) + " = formats[" + $schemaValue + "]; var " + ($isObject = "isObject" + $lvl) + " = typeof " + $format + " == 'object' && !(" + $format + " instanceof RegExp) && " + $format + ".validate; var " + ($formatType = "formatType" + $lvl) + " = " + $isObject + " && " + $format + ".type || 'string'; if (" + $isObject + ") { ", 
-        it.async && (out += " var async" + $lvl + " = " + $format + ".async; "), out += " " + $format + " = " + $format + ".validate; } if (  ", 
-        $isData && (out += " (" + $schemaValue + " !== undefined && typeof " + $schemaValue + " != 'string') || "), 
-        out += " (", "ignore" != $unknownFormats && (out += " (" + $schemaValue + " && !" + $format + " ", 
-        $allowUnknown && (out += " && self._opts.unknownFormats.indexOf(" + $schemaValue + ") == -1 "), 
-        out += ") || "), out += " (" + $format + " && " + $formatType + " == '" + $ruleType + "' && !(typeof " + $format + " == 'function' ? ", 
-        it.async ? out += " (async" + $lvl + " ? await " + $format + "(" + $data + ") : " + $format + "(" + $data + ")) " : out += " " + $format + "(" + $data + ") ", 
-        out += " : " + $format + ".test(" + $data + "))))) {"; else {
-            var $format;
-            if (!($format = it.formats[$schema])) {
-                if ("ignore" == $unknownFormats) return it.logger.warn('unknown format "' + $schema + '" ignored in schema at path "' + it.errSchemaPath + '"'), 
-                $breakOnError && (out += " if (true) { "), out;
-                if ($allowUnknown && $unknownFormats.indexOf($schema) >= 0) return $breakOnError && (out += " if (true) { "), 
-                out;
-                throw new Error('unknown format "' + $schema + '" is used in schema at path "' + it.errSchemaPath + '"');
+    var child = __webpack_require__(31), fs = __webpack_require__(2), stremioCast = __webpack_require__(893), enginefs = __webpack_require__(155), http = __webpack_require__(11), os = __webpack_require__(21), path = __webpack_require__(4);
+    module.exports = function(devices) {
+        var players = {
+            vlc: {
+                title: "VLC",
+                args: [ "--no-video-title-show" ],
+                subArg: "--sub-file=",
+                timeArg: "--start-time=",
+                playArg: "",
+                darwin: {
+                    path: [ "/Applications/VLC.app/Contents/MacOS/VLC" ]
+                },
+                linux: {
+                    path: [ "/usr/bin/vlc", "/usr/local/bin/vlc" ]
+                },
+                win32: {
+                    path: [ '"C:\\Program Files (x86)\\VideoLAN\\VLC\\vlc.exe"', '"C:\\Program Files\\VideoLAN\\VLC\\vlc.exe"' ]
+                }
+            },
+            mplayerx: {
+                title: "MPlayerX",
+                args: [ "" ],
+                subArg: "-SubFileNameRule ",
+                timeArg: "-SeekStepTimeU ",
+                playArg: "-url ",
+                darwin: {
+                    path: [ "/Applications/MPlayerX.app/Contents/MacOS/MPlayerX" ]
+                },
+                linux: {
+                    path: []
+                },
+                win32: {
+                    path: []
+                }
+            },
+            mplayer: {
+                title: "MPlayer",
+                args: [ "" ],
+                subArg: "-sub ",
+                timeArg: "-ss ",
+                playArg: "",
+                darwin: {
+                    path: [ "/usr/local/bin/mplayer", "/opt/local/bin/mplayer", "/sw/bin/mplayer" ]
+                },
+                linux: {
+                    path: [ "/usr/bin/mplayer" ]
+                },
+                win32: {
+                    path: []
+                }
+            },
+            mpv: {
+                title: "MPV",
+                args: [ "--no-terminal" ],
+                subArg: "--sub-file=",
+                timeArg: "--start=",
+                playArg: "",
+                darwin: {
+                    path: [ "/usr/local/bin/mpv", "/opt/local/bin/mpv", "/sw/bin/mpv" ]
+                },
+                linux: {
+                    path: [ "/usr/bin/mpv" ]
+                },
+                win32: {
+                    path: []
+                }
+            },
+            bomi: {
+                title: "Bomi",
+                args: [],
+                subArg: "--set-subtitle ",
+                timeArg: "",
+                playArg: "",
+                darwin: {
+                    path: []
+                },
+                linux: {
+                    path: [ "/usr/bin/bomi" ]
+                },
+                win32: {
+                    path: []
+                }
+            },
+            mpcBe: {
+                title: "MPC-BE",
+                args: [ "" ],
+                subArg: "/sub ",
+                timeArg: "start ",
+                playArg: "",
+                darwin: {
+                    path: []
+                },
+                linux: {
+                    path: []
+                },
+                win32: {
+                    path: [ '"C:\\Program Files (x86)\\MPC-BE x64\\mpc-be4.exe"', '"C:\\Program Files\\MPC-BE x64\\mpc-be64.exe"' ]
+                }
             }
-            var $isObject, $formatType = ($isObject = "object" == typeof $format && !($format instanceof RegExp) && $format.validate) && $format.type || "string";
-            if ($isObject) {
-                var $async = !0 === $format.async;
-                $format = $format.validate;
-            }
-            if ($formatType != $ruleType) return $breakOnError && (out += " if (true) { "), 
-            out;
-            if ($async) {
-                if (!it.async) throw new Error("async format in sync schema");
-                out += " if (!(await " + ($formatRef = "formats" + it.util.getProperty($schema) + ".validate") + "(" + $data + "))) { ";
-            } else {
-                out += " if (! ";
-                var $formatRef = "formats" + it.util.getProperty($schema);
-                $isObject && ($formatRef += ".validate"), out += "function" == typeof $format ? " " + $formatRef + "(" + $data + ") " : " " + $formatRef + ".test(" + $data + ") ", 
-                out += ") { ";
-            }
-        }
-        var $$outStack = $$outStack || [];
-        $$outStack.push(out), out = "", !1 !== it.createErrors ? (out += " { keyword: 'format' , dataPath: (dataPath || '') + " + it.errorPath + " , schemaPath: " + it.util.toQuotedString($errSchemaPath) + " , params: { format:  ", 
-        out += $isData ? "" + $schemaValue : "" + it.util.toQuotedString($schema), out += "  } ", 
-        !1 !== it.opts.messages && (out += " , message: 'should match format \"", out += $isData ? "' + " + $schemaValue + " + '" : "" + it.util.escapeQuotes($schema), 
-        out += "\"' "), it.opts.verbose && (out += " , schema:  ", out += $isData ? "validate.schema" + $schemaPath : "" + it.util.toQuotedString($schema), 
-        out += "         , parentSchema: validate.schema" + it.schemaPath + " , data: " + $data + " "), 
-        out += " } ") : out += " {} ";
-        var __err = out;
-        return out = $$outStack.pop(), !it.compositeRule && $breakOnError ? it.async ? out += " throw new ValidationError([" + __err + "]); " : out += " validate.errors = [" + __err + "]; return false; " : out += " var err = " + __err + ";  if (vErrors === null) vErrors = [err]; else vErrors.push(err); errors++; ", 
-        out += " } ", $breakOnError && (out += " else { "), out;
+        };
+        devices.groups.external = [], Object.keys(players).forEach((function(el) {
+            var player = players[el];
+            player[process.platform] && player[process.platform].path.forEach((function(p) {
+                fs.existsSync(p.replace(/"/gi, "")) && devices.groups.external.push((function(player, platform) {
+                    var playerObj = players[player], platformObj = playerObj[platform];
+                    return {
+                        name: playerObj.title,
+                        type: "external",
+                        id: player,
+                        onlyHtml5Formats: playerObj.onlyHtml5Formats,
+                        play: function(src) {
+                            var torrentUrl = src.match(/\/(?<ih>[0-9a-f]{40})\/(?<id>[0-9]+)$/);
+                            if (torrentUrl) {
+                                var fileIdx = torrentUrl.groups.id, filename = enginefs.getFilename(torrentUrl.groups.ih, fileIdx);
+                                filename && (src = src.replace(new RegExp(fileIdx + "$"), encodeURIComponent(filename)));
+                            }
+                            var self = this;
+                            setTimeout((function() {
+                                var port = enginefs.baseUrl.match(".*?:([0-9]+)")[1], host = enginefs.baseUrl.match("^http://(.*):[0-9]+$")[1], subsPath = self.subtitlesSrc, time = self.time, subsFile = "", playExternal = function() {
+                                    var playerPaths = platformObj.path.filter((function(path) {
+                                        return fs.existsSync(path.replace(/"/gi, ""));
+                                    }));
+                                    if (playerPaths.length > 0) {
+                                        var wrappedSrc = '"' + src + '"', subsCmd = subsFile && players[player].subArg && players[player].subArg.length > 0 ? players[player].subArg + subsFile : "", argsCmd = players[player].args && players[player].args.length > 0 ? players[player].args.join(" ") : "", timeCmd = players[player].timeArg && players[player].timeArg.length > 0 ? players[player].timeArg + parseInt(time / 1e3) : "", playCmd = players[player].playArg && players[player].playArg.length > 0 ? players[player].playArg + wrappedSrc : wrappedSrc, fullCmd = playerPaths[0] + " " + timeCmd + " " + argsCmd + " " + subsCmd + " " + playCmd;
+                                        child.exec(fullCmd, (function(error) {
+                                            console.error("Failed executing external player command:", error);
+                                        })).on("exit", (function() {
+                                            if (subsFile) try {
+                                                fs.unlinkSync(subsFile);
+                                            } catch (e) {
+                                                console.error("Cannot remove the subtitles file:", e);
+                                            }
+                                        }));
+                                    }
+                                };
+                                subsPath ? (subsFile = path.join(os.tmpdir(), "stremio-" + player + "-subtitles.srt"), 
+                                http.request({
+                                    host: host,
+                                    path: "/subtitles.srt?from=" + encodeURIComponent(subsPath),
+                                    port: port
+                                }, (function(response) {
+                                    var data = "";
+                                    response.on("data", (function(d) {
+                                        data += d.toString();
+                                    })), response.on("end", (function() {
+                                        try {
+                                            fs.writeFileSync(subsFile, data.toString());
+                                        } catch (e) {
+                                            console.error("Cannot get the subtitles:", e), subsFile = "";
+                                        }
+                                        playExternal();
+                                    }));
+                                })).end()) : playExternal();
+                            }), 1500);
+                        }
+                    };
+                })(el, process.platform));
+            }));
+        })), devices.groups.external.forEach((function(dev) {
+            dev.usePlayerUI = !0, dev.stop = function() {}, dev.middleware = new stremioCast.Server(dev);
+        })), devices.update();
     };
 }

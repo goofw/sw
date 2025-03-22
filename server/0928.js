@@ -1,194 +1,67 @@
-function(module) {
-    module.exports = {
-        $schema: "http://json-schema.org/draft-06/schema#",
-        $id: "http://json-schema.org/draft-06/schema#",
-        title: "Core schema meta-schema",
-        definitions: {
-            schemaArray: {
-                type: "array",
-                minItems: 1,
-                items: {
-                    $ref: "#"
-                }
-            },
-            nonNegativeInteger: {
-                type: "integer",
-                minimum: 0
-            },
-            nonNegativeIntegerDefault0: {
-                allOf: [ {
-                    $ref: "#/definitions/nonNegativeInteger"
-                }, {
-                    default: 0
-                } ]
-            },
-            simpleTypes: {
-                enum: [ "array", "boolean", "integer", "null", "number", "object", "string" ]
-            },
-            stringArray: {
-                type: "array",
-                items: {
-                    type: "string"
-                },
-                uniqueItems: !0,
-                default: []
+function(module, exports, __webpack_require__) {
+    "use strict";
+    module.exports = function(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
+        var getDomain = Promise._getDomain, util = __webpack_require__(16), tryCatch = util.tryCatch;
+        function ReductionPromiseArray(promises, fn, initialValue, _each) {
+            this.constructor$(promises);
+            var domain = getDomain();
+            this._fn = null === domain ? fn : util.domainBind(domain, fn), void 0 !== initialValue && (initialValue = Promise.resolve(initialValue))._attachCancellationCallback(this), 
+            this._initialValue = initialValue, this._currentCancellable = null, this._eachValues = _each === INTERNAL ? Array(this._length) : 0 === _each ? null : void 0, 
+            this._promise._captureStackTrace(), this._init$(void 0, -5);
+        }
+        function completed(valueOrReason, array) {
+            this.isFulfilled() ? array._resolve(valueOrReason) : array._reject(valueOrReason);
+        }
+        function reduce(promises, fn, initialValue, _each) {
+            return "function" != typeof fn ? apiRejection("expecting a function but got " + util.classString(fn)) : new ReductionPromiseArray(promises, fn, initialValue, _each).promise();
+        }
+        function gotAccum(accum) {
+            this.accum = accum, this.array._gotAccum(accum);
+            var value = tryConvertToPromise(this.value, this.array._promise);
+            return value instanceof Promise ? (this.array._currentCancellable = value, value._then(gotValue, void 0, void 0, this, void 0)) : gotValue.call(this, value);
+        }
+        function gotValue(value) {
+            var ret, array = this.array, promise = array._promise, fn = tryCatch(array._fn);
+            promise._pushContext(), (ret = void 0 !== array._eachValues ? fn.call(promise._boundValue(), value, this.index, this.length) : fn.call(promise._boundValue(), this.accum, value, this.index, this.length)) instanceof Promise && (array._currentCancellable = ret);
+            var promiseCreated = promise._popContext();
+            return debug.checkForgottenReturns(ret, promiseCreated, void 0 !== array._eachValues ? "Promise.each" : "Promise.reduce", promise), 
+            ret;
+        }
+        util.inherits(ReductionPromiseArray, PromiseArray), ReductionPromiseArray.prototype._gotAccum = function(accum) {
+            void 0 !== this._eachValues && null !== this._eachValues && accum !== INTERNAL && this._eachValues.push(accum);
+        }, ReductionPromiseArray.prototype._eachComplete = function(value) {
+            return null !== this._eachValues && this._eachValues.push(value), this._eachValues;
+        }, ReductionPromiseArray.prototype._init = function() {}, ReductionPromiseArray.prototype._resolveEmptyArray = function() {
+            this._resolve(void 0 !== this._eachValues ? this._eachValues : this._initialValue);
+        }, ReductionPromiseArray.prototype.shouldCopyValues = function() {
+            return !1;
+        }, ReductionPromiseArray.prototype._resolve = function(value) {
+            this._promise._resolveCallback(value), this._values = null;
+        }, ReductionPromiseArray.prototype._resultCancelled = function(sender) {
+            if (sender === this._initialValue) return this._cancel();
+            this._isResolved() || (this._resultCancelled$(), this._currentCancellable instanceof Promise && this._currentCancellable.cancel(), 
+            this._initialValue instanceof Promise && this._initialValue.cancel());
+        }, ReductionPromiseArray.prototype._iterate = function(values) {
+            var value, i;
+            this._values = values;
+            var length = values.length;
+            if (void 0 !== this._initialValue ? (value = this._initialValue, i = 0) : (value = Promise.resolve(values[0]), 
+            i = 1), this._currentCancellable = value, !value.isRejected()) for (;i < length; ++i) {
+                var ctx = {
+                    accum: null,
+                    value: values[i],
+                    index: i,
+                    length: length,
+                    array: this
+                };
+                value = value._then(gotAccum, void 0, void 0, ctx, void 0);
             }
-        },
-        type: [ "object", "boolean" ],
-        properties: {
-            $id: {
-                type: "string",
-                format: "uri-reference"
-            },
-            $schema: {
-                type: "string",
-                format: "uri"
-            },
-            $ref: {
-                type: "string",
-                format: "uri-reference"
-            },
-            title: {
-                type: "string"
-            },
-            description: {
-                type: "string"
-            },
-            default: {},
-            examples: {
-                type: "array",
-                items: {}
-            },
-            multipleOf: {
-                type: "number",
-                exclusiveMinimum: 0
-            },
-            maximum: {
-                type: "number"
-            },
-            exclusiveMaximum: {
-                type: "number"
-            },
-            minimum: {
-                type: "number"
-            },
-            exclusiveMinimum: {
-                type: "number"
-            },
-            maxLength: {
-                $ref: "#/definitions/nonNegativeInteger"
-            },
-            minLength: {
-                $ref: "#/definitions/nonNegativeIntegerDefault0"
-            },
-            pattern: {
-                type: "string",
-                format: "regex"
-            },
-            additionalItems: {
-                $ref: "#"
-            },
-            items: {
-                anyOf: [ {
-                    $ref: "#"
-                }, {
-                    $ref: "#/definitions/schemaArray"
-                } ],
-                default: {}
-            },
-            maxItems: {
-                $ref: "#/definitions/nonNegativeInteger"
-            },
-            minItems: {
-                $ref: "#/definitions/nonNegativeIntegerDefault0"
-            },
-            uniqueItems: {
-                type: "boolean",
-                default: !1
-            },
-            contains: {
-                $ref: "#"
-            },
-            maxProperties: {
-                $ref: "#/definitions/nonNegativeInteger"
-            },
-            minProperties: {
-                $ref: "#/definitions/nonNegativeIntegerDefault0"
-            },
-            required: {
-                $ref: "#/definitions/stringArray"
-            },
-            additionalProperties: {
-                $ref: "#"
-            },
-            definitions: {
-                type: "object",
-                additionalProperties: {
-                    $ref: "#"
-                },
-                default: {}
-            },
-            properties: {
-                type: "object",
-                additionalProperties: {
-                    $ref: "#"
-                },
-                default: {}
-            },
-            patternProperties: {
-                type: "object",
-                additionalProperties: {
-                    $ref: "#"
-                },
-                default: {}
-            },
-            dependencies: {
-                type: "object",
-                additionalProperties: {
-                    anyOf: [ {
-                        $ref: "#"
-                    }, {
-                        $ref: "#/definitions/stringArray"
-                    } ]
-                }
-            },
-            propertyNames: {
-                $ref: "#"
-            },
-            const: {},
-            enum: {
-                type: "array",
-                minItems: 1,
-                uniqueItems: !0
-            },
-            type: {
-                anyOf: [ {
-                    $ref: "#/definitions/simpleTypes"
-                }, {
-                    type: "array",
-                    items: {
-                        $ref: "#/definitions/simpleTypes"
-                    },
-                    minItems: 1,
-                    uniqueItems: !0
-                } ]
-            },
-            format: {
-                type: "string"
-            },
-            allOf: {
-                $ref: "#/definitions/schemaArray"
-            },
-            anyOf: {
-                $ref: "#/definitions/schemaArray"
-            },
-            oneOf: {
-                $ref: "#/definitions/schemaArray"
-            },
-            not: {
-                $ref: "#"
-            }
-        },
-        default: {}
+            void 0 !== this._eachValues && (value = value._then(this._eachComplete, void 0, void 0, this, void 0)), 
+            value._then(completed, completed, void 0, value, this);
+        }, Promise.prototype.reduce = function(fn, initialValue) {
+            return reduce(this, fn, initialValue, null);
+        }, Promise.reduce = function(promises, fn, initialValue, _each) {
+            return reduce(promises, fn, initialValue, _each);
+        };
     };
 }

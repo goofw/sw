@@ -1,67 +1,73 @@
-function(module, exports, __webpack_require__) {
-    "use strict";
-    module.exports = function(Promise, PromiseArray, apiRejection, tryConvertToPromise, INTERNAL, debug) {
-        var getDomain = Promise._getDomain, util = __webpack_require__(17), tryCatch = util.tryCatch;
-        function ReductionPromiseArray(promises, fn, initialValue, _each) {
-            this.constructor$(promises);
-            var domain = getDomain();
-            this._fn = null === domain ? fn : util.domainBind(domain, fn), void 0 !== initialValue && (initialValue = Promise.resolve(initialValue))._attachCancellationCallback(this), 
-            this._initialValue = initialValue, this._currentCancellable = null, this._eachValues = _each === INTERNAL ? Array(this._length) : 0 === _each ? null : void 0, 
-            this._promise._captureStackTrace(), this._init$(void 0, -5);
-        }
-        function completed(valueOrReason, array) {
-            this.isFulfilled() ? array._resolve(valueOrReason) : array._reject(valueOrReason);
-        }
-        function reduce(promises, fn, initialValue, _each) {
-            return "function" != typeof fn ? apiRejection("expecting a function but got " + util.classString(fn)) : new ReductionPromiseArray(promises, fn, initialValue, _each).promise();
-        }
-        function gotAccum(accum) {
-            this.accum = accum, this.array._gotAccum(accum);
-            var value = tryConvertToPromise(this.value, this.array._promise);
-            return value instanceof Promise ? (this.array._currentCancellable = value, value._then(gotValue, void 0, void 0, this, void 0)) : gotValue.call(this, value);
-        }
-        function gotValue(value) {
-            var ret, array = this.array, promise = array._promise, fn = tryCatch(array._fn);
-            promise._pushContext(), (ret = void 0 !== array._eachValues ? fn.call(promise._boundValue(), value, this.index, this.length) : fn.call(promise._boundValue(), this.accum, value, this.index, this.length)) instanceof Promise && (array._currentCancellable = ret);
-            var promiseCreated = promise._popContext();
-            return debug.checkForgottenReturns(ret, promiseCreated, void 0 !== array._eachValues ? "Promise.each" : "Promise.reduce", promise), 
-            ret;
-        }
-        util.inherits(ReductionPromiseArray, PromiseArray), ReductionPromiseArray.prototype._gotAccum = function(accum) {
-            void 0 !== this._eachValues && null !== this._eachValues && accum !== INTERNAL && this._eachValues.push(accum);
-        }, ReductionPromiseArray.prototype._eachComplete = function(value) {
-            return null !== this._eachValues && this._eachValues.push(value), this._eachValues;
-        }, ReductionPromiseArray.prototype._init = function() {}, ReductionPromiseArray.prototype._resolveEmptyArray = function() {
-            this._resolve(void 0 !== this._eachValues ? this._eachValues : this._initialValue);
-        }, ReductionPromiseArray.prototype.shouldCopyValues = function() {
-            return !1;
-        }, ReductionPromiseArray.prototype._resolve = function(value) {
-            this._promise._resolveCallback(value), this._values = null;
-        }, ReductionPromiseArray.prototype._resultCancelled = function(sender) {
-            if (sender === this._initialValue) return this._cancel();
-            this._isResolved() || (this._resultCancelled$(), this._currentCancellable instanceof Promise && this._currentCancellable.cancel(), 
-            this._initialValue instanceof Promise && this._initialValue.cancel());
-        }, ReductionPromiseArray.prototype._iterate = function(values) {
-            var value, i;
-            this._values = values;
-            var length = values.length;
-            if (void 0 !== this._initialValue ? (value = this._initialValue, i = 0) : (value = Promise.resolve(values[0]), 
-            i = 1), this._currentCancellable = value, !value.isRejected()) for (;i < length; ++i) {
-                var ctx = {
-                    accum: null,
-                    value: values[i],
-                    index: i,
-                    length: length,
-                    array: this
-                };
-                value = value._then(gotAccum, void 0, void 0, ctx, void 0);
+function(module, exports) {
+    var s = 1e3, m = 60 * s, h = 60 * m, d = 24 * h;
+    function plural(ms, msAbs, n, name) {
+        var isPlural = msAbs >= 1.5 * n;
+        return Math.round(ms / n) + " " + name + (isPlural ? "s" : "");
+    }
+    module.exports = function(val, options) {
+        options = options || {};
+        var ms, msAbs, type = typeof val;
+        if ("string" === type && val.length > 0) return (function(str) {
+            if (!((str = String(str)).length > 100)) {
+                var match = /^((?:\d+)?\-?\d?\.?\d+) *(milliseconds?|msecs?|ms|seconds?|secs?|s|minutes?|mins?|m|hours?|hrs?|h|days?|d|weeks?|w|years?|yrs?|y)?$/i.exec(str);
+                if (match) {
+                    var n = parseFloat(match[1]);
+                    switch ((match[2] || "ms").toLowerCase()) {
+                      case "years":
+                      case "year":
+                      case "yrs":
+                      case "yr":
+                      case "y":
+                        return 315576e5 * n;
+
+                      case "weeks":
+                      case "week":
+                      case "w":
+                        return 6048e5 * n;
+
+                      case "days":
+                      case "day":
+                      case "d":
+                        return n * d;
+
+                      case "hours":
+                      case "hour":
+                      case "hrs":
+                      case "hr":
+                      case "h":
+                        return n * h;
+
+                      case "minutes":
+                      case "minute":
+                      case "mins":
+                      case "min":
+                      case "m":
+                        return n * m;
+
+                      case "seconds":
+                      case "second":
+                      case "secs":
+                      case "sec":
+                      case "s":
+                        return n * s;
+
+                      case "milliseconds":
+                      case "millisecond":
+                      case "msecs":
+                      case "msec":
+                      case "ms":
+                        return n;
+
+                      default:
+                        return;
+                    }
+                }
             }
-            void 0 !== this._eachValues && (value = value._then(this._eachComplete, void 0, void 0, this, void 0)), 
-            value._then(completed, completed, void 0, value, this);
-        }, Promise.prototype.reduce = function(fn, initialValue) {
-            return reduce(this, fn, initialValue, null);
-        }, Promise.reduce = function(promises, fn, initialValue, _each) {
-            return reduce(promises, fn, initialValue, _each);
-        };
+        })(val);
+        if ("number" === type && !1 === isNaN(val)) return options.long ? (ms = val, (msAbs = Math.abs(ms)) >= d ? plural(ms, msAbs, d, "day") : msAbs >= h ? plural(ms, msAbs, h, "hour") : msAbs >= m ? plural(ms, msAbs, m, "minute") : msAbs >= s ? plural(ms, msAbs, s, "second") : ms + " ms") : (function(ms) {
+            var msAbs = Math.abs(ms);
+            return msAbs >= d ? Math.round(ms / d) + "d" : msAbs >= h ? Math.round(ms / h) + "h" : msAbs >= m ? Math.round(ms / m) + "m" : msAbs >= s ? Math.round(ms / s) + "s" : ms + "ms";
+        })(val);
+        throw new Error("val is not a non-empty string or a valid number. val=" + JSON.stringify(val));
     };
 }

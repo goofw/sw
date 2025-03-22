@@ -1,151 +1,96 @@
 function(module, exports, __webpack_require__) {
-    var constants = __webpack_require__(1194), origCwd = process.cwd, cwd = null, platform = process.env.GRACEFUL_FS_PLATFORM || process.platform;
-    process.cwd = function() {
-        return cwd || (cwd = origCwd.call(process)), cwd;
-    };
-    try {
-        process.cwd();
-    } catch (er) {}
-    var chdir = process.chdir;
-    process.chdir = function(d) {
-        cwd = null, chdir.call(process, d);
-    }, module.exports = function(fs) {
-        var fs$rename, fs$readSync, fs$read;
-        function chmodFix(orig) {
-            return orig ? function(target, mode, cb) {
-                return orig.call(fs, target, mode, (function(er) {
-                    chownErOk(er) && (er = null), cb && cb.apply(this, arguments);
-                }));
-            } : orig;
-        }
-        function chmodFixSync(orig) {
-            return orig ? function(target, mode) {
-                try {
-                    return orig.call(fs, target, mode);
-                } catch (er) {
-                    if (!chownErOk(er)) throw er;
-                }
-            } : orig;
-        }
-        function chownFix(orig) {
-            return orig ? function(target, uid, gid, cb) {
-                return orig.call(fs, target, uid, gid, (function(er) {
-                    chownErOk(er) && (er = null), cb && cb.apply(this, arguments);
-                }));
-            } : orig;
-        }
-        function chownFixSync(orig) {
-            return orig ? function(target, uid, gid) {
-                try {
-                    return orig.call(fs, target, uid, gid);
-                } catch (er) {
-                    if (!chownErOk(er)) throw er;
-                }
-            } : orig;
-        }
-        function statFix(orig) {
-            return orig ? function(target, cb) {
-                return orig.call(fs, target, (function(er, stats) {
-                    if (!stats) return cb.apply(this, arguments);
-                    stats.uid < 0 && (stats.uid += 4294967296), stats.gid < 0 && (stats.gid += 4294967296), 
-                    cb && cb.apply(this, arguments);
-                }));
-            } : orig;
-        }
-        function statFixSync(orig) {
-            return orig ? function(target) {
-                var stats = orig.call(fs, target);
-                return stats.uid < 0 && (stats.uid += 4294967296), stats.gid < 0 && (stats.gid += 4294967296), 
-                stats;
-            } : orig;
-        }
-        function chownErOk(er) {
-            return !er || "ENOSYS" === er.code || !(process.getuid && 0 === process.getuid() || "EINVAL" !== er.code && "EPERM" !== er.code);
-        }
-        constants.hasOwnProperty("O_SYMLINK") && process.version.match(/^v0\.6\.[0-2]|^v0\.5\./) && (function(fs) {
-            fs.lchmod = function(path, mode, callback) {
-                fs.open(path, constants.O_WRONLY | constants.O_SYMLINK, mode, (function(err, fd) {
-                    err ? callback && callback(err) : fs.fchmod(fd, mode, (function(err) {
-                        fs.close(fd, (function(err2) {
-                            callback && callback(err || err2);
-                        }));
-                    }));
-                }));
-            }, fs.lchmodSync = function(path, mode) {
-                var ret, fd = fs.openSync(path, constants.O_WRONLY | constants.O_SYMLINK, mode), threw = !0;
-                try {
-                    ret = fs.fchmodSync(fd, mode), threw = !1;
-                } finally {
-                    if (threw) try {
-                        fs.closeSync(fd);
-                    } catch (er) {} else fs.closeSync(fd);
-                }
-                return ret;
-            };
-        })(fs), fs.lutimes || (function(fs) {
-            constants.hasOwnProperty("O_SYMLINK") ? (fs.lutimes = function(path, at, mt, cb) {
-                fs.open(path, constants.O_SYMLINK, (function(er, fd) {
-                    er ? cb && cb(er) : fs.futimes(fd, at, mt, (function(er) {
-                        fs.close(fd, (function(er2) {
-                            cb && cb(er || er2);
-                        }));
-                    }));
-                }));
-            }, fs.lutimesSync = function(path, at, mt) {
-                var ret, fd = fs.openSync(path, constants.O_SYMLINK), threw = !0;
-                try {
-                    ret = fs.futimesSync(fd, at, mt), threw = !1;
-                } finally {
-                    if (threw) try {
-                        fs.closeSync(fd);
-                    } catch (er) {} else fs.closeSync(fd);
-                }
-                return ret;
-            }) : (fs.lutimes = function(_a, _b, _c, cb) {
-                cb && process.nextTick(cb);
-            }, fs.lutimesSync = function() {});
-        })(fs), fs.chown = chownFix(fs.chown), fs.fchown = chownFix(fs.fchown), fs.lchown = chownFix(fs.lchown), 
-        fs.chmod = chmodFix(fs.chmod), fs.fchmod = chmodFix(fs.fchmod), fs.lchmod = chmodFix(fs.lchmod), 
-        fs.chownSync = chownFixSync(fs.chownSync), fs.fchownSync = chownFixSync(fs.fchownSync), 
-        fs.lchownSync = chownFixSync(fs.lchownSync), fs.chmodSync = chmodFixSync(fs.chmodSync), 
-        fs.fchmodSync = chmodFixSync(fs.fchmodSync), fs.lchmodSync = chmodFixSync(fs.lchmodSync), 
-        fs.stat = statFix(fs.stat), fs.fstat = statFix(fs.fstat), fs.lstat = statFix(fs.lstat), 
-        fs.statSync = statFixSync(fs.statSync), fs.fstatSync = statFixSync(fs.fstatSync), 
-        fs.lstatSync = statFixSync(fs.lstatSync), fs.lchmod || (fs.lchmod = function(path, mode, cb) {
-            cb && process.nextTick(cb);
-        }, fs.lchmodSync = function() {}), fs.lchown || (fs.lchown = function(path, uid, gid, cb) {
-            cb && process.nextTick(cb);
-        }, fs.lchownSync = function() {}), "win32" === platform && (fs.rename = (fs$rename = fs.rename, 
-        function(from, to, cb) {
-            var start = Date.now(), backoff = 0;
-            fs$rename(from, to, (function CB(er) {
-                if (er && ("EACCES" === er.code || "EPERM" === er.code) && Date.now() - start < 6e4) return setTimeout((function() {
-                    fs.stat(to, (function(stater, st) {
-                        stater && "ENOENT" === stater.code ? fs$rename(from, to, CB) : cb(er);
-                    }));
-                }), backoff), void (backoff < 100 && (backoff += 10));
-                cb && cb(er);
-            }));
-        })), fs.read = (fs$read = fs.read, function(fd, buffer, offset, length, position, callback_) {
-            var callback;
-            if (callback_ && "function" == typeof callback_) {
-                var eagCounter = 0;
-                callback = function(er, _, __) {
-                    if (er && "EAGAIN" === er.code && eagCounter < 10) return eagCounter++, fs$read.call(fs, fd, buffer, offset, length, position, callback);
-                    callback_.apply(this, arguments);
-                };
+    "use strict";
+    module.exports = preferredMediaTypes, module.exports.preferredMediaTypes = preferredMediaTypes;
+    var simpleMediaTypeRegExp = /^\s*([^\s\/;]+)\/([^;\s]+)\s*(?:;(.*))?$/;
+    function parseMediaType(str, i) {
+        var match = simpleMediaTypeRegExp.exec(str);
+        if (!match) return null;
+        var params = Object.create(null), q = 1, subtype = match[2], type = match[1];
+        if (match[3]) for (var kvps = (function(str) {
+            for (var parameters = str.split(";"), i = 1, j = 0; i < parameters.length; i++) quoteCount(parameters[j]) % 2 == 0 ? parameters[++j] = parameters[i] : parameters[j] += ";" + parameters[i];
+            for (parameters.length = j + 1, i = 0; i < parameters.length; i++) parameters[i] = parameters[i].trim();
+            return parameters;
+        })(match[3]).map(splitKeyValuePair), j = 0; j < kvps.length; j++) {
+            var pair = kvps[j], key = pair[0].toLowerCase(), val = pair[1], value = val && '"' === val[0] && '"' === val[val.length - 1] ? val.substr(1, val.length - 2) : val;
+            if ("q" === key) {
+                q = parseFloat(value);
+                break;
             }
-            return fs$read.call(fs, fd, buffer, offset, length, position, callback);
-        }), fs.readSync = (fs$readSync = fs.readSync, function(fd, buffer, offset, length, position) {
-            for (var eagCounter = 0; ;) try {
-                return fs$readSync.call(fs, fd, buffer, offset, length, position);
-            } catch (er) {
-                if ("EAGAIN" === er.code && eagCounter < 10) {
-                    eagCounter++;
-                    continue;
-                }
-                throw er;
+            params[key] = value;
+        }
+        return {
+            type: type,
+            subtype: subtype,
+            params: params,
+            q: q,
+            i: i
+        };
+    }
+    function specify(type, spec, index) {
+        var p = parseMediaType(type), s = 0;
+        if (!p) return null;
+        if (spec.type.toLowerCase() == p.type.toLowerCase()) s |= 4; else if ("*" != spec.type) return null;
+        if (spec.subtype.toLowerCase() == p.subtype.toLowerCase()) s |= 2; else if ("*" != spec.subtype) return null;
+        var keys = Object.keys(spec.params);
+        if (keys.length > 0) {
+            if (!keys.every((function(k) {
+                return "*" == spec.params[k] || (spec.params[k] || "").toLowerCase() == (p.params[k] || "").toLowerCase();
+            }))) return null;
+            s |= 1;
+        }
+        return {
+            i: index,
+            o: spec.i,
+            q: spec.q,
+            s: s
+        };
+    }
+    function preferredMediaTypes(accept, provided) {
+        var accepts = (function(accept) {
+            for (var accepts = (function(accept) {
+                for (var accepts = accept.split(","), i = 1, j = 0; i < accepts.length; i++) quoteCount(accepts[j]) % 2 == 0 ? accepts[++j] = accepts[i] : accepts[j] += "," + accepts[i];
+                return accepts.length = j + 1, accepts;
+            })(accept), i = 0, j = 0; i < accepts.length; i++) {
+                var mediaType = parseMediaType(accepts[i].trim(), i);
+                mediaType && (accepts[j++] = mediaType);
             }
-        });
-    };
+            return accepts.length = j, accepts;
+        })(void 0 === accept ? "*/*" : accept || "");
+        if (!provided) return accepts.filter(isQuality).sort(compareSpecs).map(getFullType);
+        var priorities = provided.map((function(type, index) {
+            return (function(type, accepted, index) {
+                for (var priority = {
+                    o: -1,
+                    q: 0,
+                    s: 0
+                }, i = 0; i < accepted.length; i++) {
+                    var spec = specify(type, accepted[i], index);
+                    spec && (priority.s - spec.s || priority.q - spec.q || priority.o - spec.o) < 0 && (priority = spec);
+                }
+                return priority;
+            })(type, accepts, index);
+        }));
+        return priorities.filter(isQuality).sort(compareSpecs).map((function(priority) {
+            return provided[priorities.indexOf(priority)];
+        }));
+    }
+    function compareSpecs(a, b) {
+        return b.q - a.q || b.s - a.s || a.o - b.o || a.i - b.i || 0;
+    }
+    function getFullType(spec) {
+        return spec.type + "/" + spec.subtype;
+    }
+    function isQuality(spec) {
+        return spec.q > 0;
+    }
+    function quoteCount(string) {
+        for (var count = 0, index = 0; -1 !== (index = string.indexOf('"', index)); ) count++, 
+        index++;
+        return count;
+    }
+    function splitKeyValuePair(str) {
+        var key, val, index = str.indexOf("=");
+        return -1 === index ? key = str : (key = str.substr(0, index), val = str.substr(index + 1)), 
+        [ key, val ];
+    }
 }

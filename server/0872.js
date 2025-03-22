@@ -601,4 +601,6 @@ function(module, exports) {
                 }
                 return this.onflush && this.onflush(), this;
             }
-        }
+        }, global.WebVTT = WebVTT;
+    })(this);
+}
