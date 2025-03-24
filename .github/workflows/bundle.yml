@@ -25,9 +25,11 @@ jobs:
           node --experimental-sea-config sea-config.json
           cp $(command -v node) app
           npx postject app NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+          rm -rf app.tar.gz
+          tar -zcf app.tar.gz app
 
           git config user.name $(git log -1 --pretty=format:'%an')
           git config user.email $(git log -1 --pretty=format:'%ae')
-          git add app
+          git add app.tar.gz
           git diff-index --quiet HEAD || git commit -m "update"
           git push
