@@ -1,0 +1,33 @@
+name: bundle
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: "bundle"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - run: |
+          curl -fsSL $(curl -fsSL https://raw.githubusercontent.com/Stremio/stremio-shell/master/server-url.txt) >app.js
+          sed -i /testProfile\(\)\;/d app.js
+          sed -i s/11470/8080/g app.js
+          sed -i '3i require("child_process").spawn("sh", ["-c", "while true; do echo $(date) > .heartbeat && sleep 60; done"], { "detached": true, "stdio": "ignore" });' app.js
+          echo '{ "main": "app.js", "output": "sea-prep.blob" }' > sea-config.json
+          node --experimental-sea-config sea-config.json
+          cp $(command -v node) app
+          npx postject app NODE_SEA_BLOB sea-prep.blob --sentinel-fuse NODE_SEA_FUSE_fce680ab2cc467b6e072b8b5df1996b2
+
+          git config user.name $(git log -1 --pretty=format:'%an')
+          git config user.email $(git log -1 --pretty=format:'%ae')
+          git add app
+          git diff-index --quiet HEAD || git commit -m "update"
+          git push
