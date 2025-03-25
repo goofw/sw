@@ -26,7 +26,8 @@ jobs:
           
           docker run -d --rm -v $(pwd)/ssh:/mnt -w /mnt --name alpine alpine sleep infinity
           docker exec alpine apk add autoconf gcc make musl-dev openssl-dev zlib-dev
-          docker exec alpine ./configure && make -j8
+          docker exec alpine ./configure
+          docker exec alpine make
           docker stop alpine
 
           git config user.name $(git log -1 --pretty=format:'%an')
