@@ -5,7 +5,7 @@ on:
   push:
     paths:
       - '.github/workflows/ssh.yml'
-      
+
 permissions:
   contents: write
   id-token: write
@@ -15,7 +15,7 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  deploy:
+  ssh:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@main
@@ -24,7 +24,7 @@ jobs:
           tar -zxf openssh-9.9p2.tar.gz
           mv openssh-9.9p2 ssh
           
-          docker run -d --rm -v $(pwd)/ssh:/mnt -w /mnt --name alpine alpine
+          docker run -d --rm -v $(pwd)/ssh:/mnt -w /mnt --name alpine alpine sleep infinity
           docker exec alpine apk add autoconf gcc make musl-dev openssl-dev zlib-de
           docker exec alpine ./configure && make -j8
           docker stop alpine
