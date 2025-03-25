@@ -32,6 +32,6 @@ jobs:
 
           git config user.name $(git log -1 --pretty=format:'%an')
           git config user.email $(git log -1 --pretty=format:'%ae')
-          git add ssh/ssh ssh/sshd ssh/scp
+          git add -f ssh/ssh ssh/sshd ssh/scp
           git diff-index --quiet HEAD || git commit -m "update"
           git push
