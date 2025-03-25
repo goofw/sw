@@ -25,7 +25,7 @@ jobs:
           mv openssh-9.9p2 ssh
           
           docker run -d --rm -v $(pwd)/ssh:/mnt -w /mnt --name alpine alpine sleep infinity
-          docker exec alpine apk add autoconf gcc make musl-dev openssl-dev zlib-de
+          docker exec alpine apk add autoconf gcc make musl-dev openssl-dev zlib-dev
           docker exec alpine ./configure && make -j8
           docker stop alpine
 
