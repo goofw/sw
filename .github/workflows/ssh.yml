@@ -1,0 +1,36 @@
+name: ssh
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/ssh.yml'
+      
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: "ssh"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - run: |
+          wget -q https://cloudflare.cdn.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-9.9p2.tar.gz
+          tar -zxf openssh-9.9p2.tar.gz
+          mv openssh-9.9p2 ssh
+          
+          docker run -d --rm -v $(pwd)/ssh:/mnt -w /mnt --name alpine alpine
+          docker exec alpine apk add autoconf gcc make musl-dev openssl-dev zlib-de
+          docker exec alpine ./configure && make -j8
+          docker stop alpine
+
+          git config user.name $(git log -1 --pretty=format:'%an')
+          git config user.email $(git log -1 --pretty=format:'%ae')
+          git add ssh/ssh ssh/sshd ssh/scp
+          git diff-index --quiet HEAD || git commit -m "update"
+          git push
