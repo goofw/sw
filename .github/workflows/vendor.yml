@@ -1,0 +1,30 @@
+name: vendor
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '44 4 * * *'
+
+permissions:
+  contents: write
+  id-token: write
+
+concurrency:
+  group: "vendor"
+  cancel-in-progress: false
+
+jobs:
+  vendor:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@main
+      - run: |
+          url=$(curl -fsSL https://pstream.mov | grep -oE "\/assets\/vendor\-.+\.js")
+          curl -fsSL "https://pstream.mov$url" > new.js
+          grep xprime new.js >/dev/null && mv new.js vendor.js || rm new.js
+
+          git config user.name $(git log -1 --pretty=format:'%an')
+          git config user.email $(git log -1 --pretty=format:'%ae')
+          git add .
+          git diff-index --quiet HEAD || git commit -m "update"
+          git push
