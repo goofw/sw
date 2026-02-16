@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@main
       - run: |
-          url=$(curl -fsSL https://pstream.mov | grep -oE "\/assets\/vendor\-.+\.js")
-          curl -fsSL "https://pstream.mov$url" > new.js
+          url=$(curl -x http://195.158.8.123:3128 -fsSL https://pstream.mov | grep -oE "\/assets\/vendor\-.+\.js")
+          curl -x http://195.158.8.123:3128 -fsSL "https://pstream.mov$url" > new.js
           grep xprime new.js >/dev/null && mv new.js vendor.js || rm new.js
 
           git config user.name $(git log -1 --pretty=format:'%an')
