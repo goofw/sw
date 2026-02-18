@@ -1,4 +1,4 @@
-const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-CrpVIQHi.js", "assets/locales-BbqYBiZD.js", "assets/Icons-CB9jzfS4.js", "assets/language-db-Bm2HFkq_.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-CNMyJlPI.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-BrjQA1yu.js", "assets/index-C-NKXi2k.css"]))) => i.map(i => d[i]);
+const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-CDmDmA0L.js", "assets/locales-BbqYBiZD.js", "assets/Icons-BmnEr0SC.js", "assets/language-db-Y-7TKMil.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-I8Q5CzGP.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-C8HLde5A.js", "assets/index-C-NKXi2k.css"]))) => i.map(i => d[i]);
 var QN = Object.defineProperty;
 var lN = (A, e, t) => e in A ? QN(A, e, {
     enumerable: !0,
@@ -21,7 +21,7 @@ import {
     p as fN,
     c as pN,
     F as yN
-} from "./caption-parsing-BrjQA1yu.js";
+} from "./caption-parsing-C8HLde5A.js";
 
 function mN(A, e) {
     for (var t = 0; t < e.length; t++) {
@@ -2109,11 +2109,11 @@ var Ir = {
         getTypedArrayConstructor: $p,
         TypedArrayPrototype: xe
     },
-    Ay = Ir,
+    A0 = Ir,
     XM = ve,
     jM = Qt,
-    VM = Ay.aTypedArray,
-    WM = Ay.exportTypedArrayMethod;
+    VM = A0.aTypedArray,
+    WM = A0.exportTypedArrayMethod;
 WM("at", function(e) {
     var t = VM(this),
         r = XM(t),
@@ -2121,17 +2121,17 @@ WM("at", function(e) {
         n = i >= 0 ? i : r + i;
     return n < 0 || n >= r ? void 0 : t[n]
 });
-var ey = Ir,
+var e0 = Ir,
     ZM = wg.findLast,
-    $M = ey.aTypedArray,
-    Ak = ey.exportTypedArrayMethod;
+    $M = e0.aTypedArray,
+    Ak = e0.exportTypedArrayMethod;
 Ak("findLast", function(e) {
     return ZM($M(this), e, arguments.length > 1 ? arguments[1] : void 0)
 });
-var ty = Ir,
+var t0 = Ir,
     ek = wg.findLastIndex,
-    tk = ty.aTypedArray,
-    rk = ty.exportTypedArrayMethod;
+    tk = t0.aTypedArray,
+    rk = t0.exportTypedArrayMethod;
 rk("findLastIndex", function(e) {
     return ek(tk(this), e, arguments.length > 1 ? arguments[1] : void 0)
 });
@@ -2149,27 +2149,27 @@ var ik = Qt,
         if (t % e) throw new gk("Wrong offset");
         return t
     },
-    ry = MA,
-    iy = Ze,
+    r0 = MA,
+    i0 = Ze,
     HB = Ir,
     Ik = ve,
     ck = sk,
     Bk = Vr,
-    ny = JA,
-    Ck = ry.RangeError,
-    cc = ry.Int8Array,
+    n0 = JA,
+    Ck = r0.RangeError,
+    cc = r0.Int8Array,
     bQ = cc && cc.prototype,
-    ay = bQ && bQ.set,
+    a0 = bQ && bQ.set,
     Ek = HB.aTypedArray,
     Qk = HB.exportTypedArrayMethod,
-    Bc = !ny(function() {
+    Bc = !n0(function() {
         var A = new Uint8ClampedArray(2);
-        return iy(ay, A, {
+        return i0(a0, A, {
             length: 1,
             0: 3
         }, 1), A[1] !== 3
     }),
-    lk = Bc && HB.NATIVE_ARRAY_BUFFER_VIEWS && ny(function() {
+    lk = Bc && HB.NATIVE_ARRAY_BUFFER_VIEWS && n0(function() {
         var A = new cc(2);
         return A.set(1), A.set("2", 1), A[0] !== 0 || A[1] !== 2
     });
@@ -2177,7 +2177,7 @@ Qk("set", function(e) {
     Ek(this);
     var t = ck(arguments.length > 1 ? arguments[1] : void 0, 1),
         r = Bk(e);
-    if (Bc) return iy(ay, this, r, t);
+    if (Bc) return i0(a0, this, r, t);
     var i = this.length,
         n = Ik(r),
         a = 0;
@@ -2226,7 +2226,7 @@ var bk = Wr,
     Uk = JB.aTypedArray,
     Lk = JB.getTypedArrayConstructor,
     Hk = JB.exportTypedArrayMethod,
-    oy = function() {
+    o0 = function() {
         try {
             new Int8Array(1).with(2, {
                 valueOf: function() {
@@ -2237,7 +2237,7 @@ var bk = Wr,
             return A === 8
         }
     }(),
-    Ok = oy && function() {
+    Ok = o0 && function() {
         try {
             new Int8Array(1).with(-.5, 1)
         } catch {
@@ -2249,7 +2249,7 @@ Hk("with", function(A, e) {
         r = xk(A),
         i = kk(t) ? Yk(e) : +e;
     return Mk(t, Lk(t), r, i)
-}, !oy || Ok);
+}, !o0 || Ok);
 var Jk = Rn,
     Kk = TypeError,
     Tk = function(A, e) {
@@ -2396,7 +2396,7 @@ var Jk = Rn,
     jk = Dp,
     Vk = Ae,
     kn = "DOMException",
-    gy = KB("Error"),
+    g0 = KB("Error"),
     xn = KB(kn),
     TB = function() {
         Pk(this, Wk);
@@ -2404,11 +2404,11 @@ var Jk = Rn,
             t = GQ(e < 1 ? void 0 : arguments[0]),
             r = GQ(e < 2 ? void 0 : arguments[1], "Error"),
             i = new xn(t, r),
-            n = new gy(t);
+            n = new g0(t);
         return n.name = kn, Ec(i, "stack", Cc(1, jk(n.stack, 1))), Xk(i, this, TB), i
     },
     Wk = TB.prototype = xn.prototype,
-    Zk = "stack" in new gy(kn),
+    Zk = "stack" in new g0(kn),
     $k = "stack" in new xn(1, 2),
     Hs = xn && Vk && Object.getOwnPropertyDescriptor(zk, kn),
     A3 = !!Hs && !(Hs.writable && Hs.configurable),
@@ -2432,7 +2432,7 @@ if (RQ.constructor !== Yi) {
         }
 }
 var e3 = GA,
-    sy = e3([].slice),
+    s0 = e3([].slice),
     t3 = TypeError,
     Ai = function(A, e) {
         if (A < e) throw new t3("Not enough arguments");
@@ -2450,19 +2450,19 @@ var e3 = GA,
         return Ba("Bun/") ? "BUN" : Ba("Cloudflare-Workers") ? "CLOUDFLARE" : Ba("Deno/") ? "DENO" : Ba("Node.js/") ? "NODE" : Qi.Bun && typeof Bun.version == "string" ? "BUN" : Qi.Deno && typeof Deno.version == "object" ? "DENO" : a3(Qi.process) === "process" ? "NODE" : Qi.window && Qi.document ? "BROWSER" : "REST"
     }(),
     o3 = qB,
-    Iy = o3 === "NODE",
+    I0 = o3 === "NODE",
     ue = MA,
     g3 = mg,
     s3 = kB,
     YQ = XA,
     I3 = ne,
-    cy = JA,
+    c0 = JA,
     UQ = Fp,
-    c3 = sy,
+    c3 = s0,
     LQ = NB,
     B3 = Ai,
     C3 = i3,
-    E3 = Iy,
+    E3 = I0,
     Qc = ue.setImmediate,
     lc = ue.clearImmediate,
     Q3 = ue.process,
@@ -2474,7 +2474,7 @@ var e3 = GA,
     qi = {},
     OQ = "onreadystatechange",
     en, Jt, Ks, Ts;
-cy(function() {
+c0(function() {
     en = ue.location
 });
 var _B = function(A) {
@@ -2507,20 +2507,20 @@ var _B = function(A) {
     Q3.nextTick(qs(A))
 } : Os && Os.now ? Jt = function(A) {
     Os.now(qs(A))
-} : HQ && !C3 ? (Ks = new HQ, Ts = Ks.port2, Ks.port1.onmessage = JQ, Jt = s3(Ts.postMessage, Ts)) : ue.addEventListener && YQ(ue.postMessage) && !ue.importScripts && en && en.protocol !== "file:" && !cy(KQ) ? (Jt = KQ, ue.addEventListener("message", JQ, !1)) : OQ in LQ("script") ? Jt = function(A) {
+} : HQ && !C3 ? (Ks = new HQ, Ts = Ks.port2, Ks.port1.onmessage = JQ, Jt = s3(Ts.postMessage, Ts)) : ue.addEventListener && YQ(ue.postMessage) && !ue.importScripts && en && en.protocol !== "file:" && !c0(KQ) ? (Jt = KQ, ue.addEventListener("message", JQ, !1)) : OQ in LQ("script") ? Jt = function(A) {
     UQ.appendChild(LQ("script"))[OQ] = function() {
         UQ.removeChild(this), _B(A)
     }
 } : Jt = function(A) {
     setTimeout(qs(A), 0)
 });
-var By = {
+var B0 = {
         set: Qc,
         clear: lc
     },
     u3 = _A,
     h3 = MA,
-    TQ = By.clear;
+    TQ = B0.clear;
 u3({
     global: !0,
     bind: !0,
@@ -2529,16 +2529,16 @@ u3({
 }, {
     clearImmediate: TQ
 });
-var Cy = MA,
+var C0 = MA,
     f3 = mg,
     p3 = XA,
     y3 = qB,
     m3 = fg,
-    w3 = sy,
+    w3 = s0,
     D3 = Ai,
-    N3 = Cy.Function,
+    N3 = C0.Function,
     S3 = /MSIE .\./.test(m3) || y3 === "BUN" && function() {
-        var A = Cy.Bun.version.split(".");
+        var A = C0.Bun.version.split(".");
         return A.length < 3 || A[0] === "0" && (A[1] < 3 || A[1] === "3" && A[2] === "0")
     }(),
     b3 = function(A, e) {
@@ -2554,39 +2554,39 @@ var Cy = MA,
         } : A
     },
     v3 = _A,
-    Ey = MA,
-    qQ = By.set,
+    E0 = MA,
+    qQ = B0.set,
     G3 = b3,
-    _Q = Ey.setImmediate ? G3(qQ, !1) : qQ;
+    _Q = E0.setImmediate ? G3(qQ, !1) : qQ;
 v3({
     global: !0,
     bind: !0,
     enumerable: !0,
-    forced: Ey.setImmediate !== _Q
+    forced: E0.setImmediate !== _Q
 }, {
     setImmediate: _Q
 });
 var F3 = GA,
     R3 = JA,
-    Qy = XA,
+    Q0 = XA,
     M3 = Wr,
     k3 = At,
     x3 = sp,
-    ly = function() {},
-    dy = k3("Reflect", "construct"),
+    l0 = function() {},
+    d0 = k3("Reflect", "construct"),
     zB = /^\s*(?:class|function)\b/,
     Y3 = F3(zB.exec),
-    U3 = !zB.test(ly),
+    U3 = !zB.test(l0),
     li = function(e) {
-        if (!Qy(e)) return !1;
+        if (!Q0(e)) return !1;
         try {
-            return dy(ly, [], e), !0
+            return d0(l0, [], e), !0
         } catch {
             return !1
         }
     },
-    uy = function(e) {
-        if (!Qy(e)) return !1;
+    u0 = function(e) {
+        if (!Q0(e)) return !1;
         switch (M3(e)) {
             case "AsyncFunction":
             case "GeneratorFunction":
@@ -2599,13 +2599,13 @@ var F3 = GA,
             return !0
         }
     };
-uy.sham = !0;
-var L3 = !dy || R3(function() {
+u0.sham = !0;
+var L3 = !d0 || R3(function() {
         var A;
         return li(li.call) || !li(Object) || !li(function() {
             A = !0
         }) || A
-    }) ? uy : li,
+    }) ? u0 : li,
     H3 = Ze,
     O3 = ne,
     J3 = Rn,
@@ -2619,7 +2619,7 @@ var L3 = !dy || R3(function() {
     },
     _s = GA,
     Ca = Set.prototype,
-    hy = {
+    h0 = {
         Set,
         add: _s(Ca.add),
         has: _s(Ca.has),
@@ -2631,22 +2631,22 @@ var L3 = !dy || R3(function() {
         for (var r = t ? A : A.iterator, i = A.next, n, a; !(n = _3(i, r)).done;)
             if (a = e(n.value), a !== void 0) return a
     },
-    fy = GA,
+    f0 = GA,
     P3 = z3,
-    py = hy,
-    X3 = py.Set,
-    yy = py.proto,
-    j3 = fy(yy.forEach),
-    my = fy(yy.keys),
-    V3 = my(new X3).next,
+    p0 = h0,
+    X3 = p0.Set,
+    y0 = p0.proto,
+    j3 = f0(y0.forEach),
+    m0 = f0(y0.keys),
+    V3 = m0(new X3).next,
     W3 = function(A, e, t) {
         return t ? P3({
-            iterator: my(A),
+            iterator: m0(A),
             next: V3
         }, e) : j3(A, e)
     },
     Z3 = MA,
-    $3 = Iy,
+    $3 = I0,
     A1 = function(A) {
         if ($3) {
             try {
@@ -2662,7 +2662,7 @@ var L3 = !dy || R3(function() {
     zs = $f,
     Ps = qB,
     PQ = e1.structuredClone,
-    wy = !!PQ && !t1(function() {
+    w0 = !!PQ && !t1(function() {
         if (Ps === "DENO" && zs > 92 || Ps === "NODE" && zs > 94 || Ps === "BROWSER" && zs > 97) return !1;
         var A = new ArrayBuffer(8),
             e = PQ(A, {
@@ -2672,7 +2672,7 @@ var L3 = !dy || R3(function() {
     }),
     PB = MA,
     r1 = A1,
-    i1 = wy,
+    i1 = w0,
     n1 = PB.structuredClone,
     XQ = PB.ArrayBuffer,
     Ea = PB.MessageChannel,
@@ -2701,7 +2701,7 @@ var a1 = dc,
     vg = $e,
     c1 = fB,
     B1 = xB,
-    Dy = Et,
+    D0 = Et,
     uo = Wr,
     C1 = ne,
     E1 = Kp,
@@ -2710,35 +2710,35 @@ var a1 = dc,
     Q1 = Ai,
     l1 = q3,
     Gg = Op,
-    jB = hy,
+    jB = h0,
     d1 = W3,
     VQ = a1,
     u1 = Np,
-    VB = wy,
+    VB = w0,
     Ui = WA.Object,
     h1 = WA.Array,
-    Ny = WA.Date,
-    Sy = WA.Error,
+    N0 = WA.Date,
+    S0 = WA.Error,
     f1 = WA.TypeError,
     p1 = WA.PerformanceMark,
     Zt = _i("DOMException"),
     uc = Gg.Map,
     WB = Gg.has,
-    by = Gg.get,
+    b0 = Gg.get,
     ho = Gg.set,
-    vy = jB.Set,
-    Gy = jB.add,
+    v0 = jB.Set,
+    G0 = jB.add,
     y1 = jB.has,
     m1 = _i("Object", "keys"),
     w1 = Yn([].push),
     D1 = Yn((!0).valueOf),
     N1 = Yn(1.1.valueOf),
     S1 = Yn("".valueOf),
-    b1 = Yn(Ny.prototype.getTime),
+    b1 = Yn(N0.prototype.getTime),
     hc = g1("structuredClone"),
     tn = "DataCloneError",
     Za = "Transferring",
-    Fy = function(A) {
+    F0 = function(A) {
         return !XB(function() {
             var e = new WA.Set([7]),
                 t = A(e),
@@ -2765,13 +2765,13 @@ var a1 = dc,
         })
     },
     Rr = WA.structuredClone,
-    G1 = !WQ(Rr, Sy) || !WQ(Rr, Zt) || !v1(Rr),
-    F1 = !Rr && Fy(function(A) {
+    G1 = !WQ(Rr, S0) || !WQ(Rr, Zt) || !v1(Rr),
+    F1 = !Rr && F0(function(A) {
         return new p1(hc, {
             detail: A
         }).detail
     }),
-    st = Fy(Rr) || F1,
+    st = F0(Rr) || F1,
     Ws = function(A) {
         throw new Zt("Uncloneable type: " + A, tn)
     },
@@ -2792,8 +2792,8 @@ var a1 = dc,
         }
         return A && A.items && A.files ? A : null
     },
-    Ry = function(A, e, t) {
-        if (WB(e, A)) return by(e, A);
+    R0 = function(A, e, t) {
+        if (WB(e, A)) return b0(e, A);
         var r = t || uo(A),
             i, n, a, o, g, s;
         if (r === "SharedArrayBuffer") st ? i = st(A) : i = A;
@@ -2814,12 +2814,12 @@ var a1 = dc,
     },
     M1 = function(A, e, t, r, i) {
         var n = WA[e];
-        return vg(n) || ce(e), new n(Ry(A.buffer, i), t, r)
+        return vg(n) || ce(e), new n(R0(A.buffer, i), t, r)
     },
     VA = function(A, e) {
         if (c1(A) && Ws("Symbol"), !vg(A)) return A;
         if (e) {
-            if (WB(e, A)) return by(e, A)
+            if (WB(e, A)) return b0(e, A)
         } else e = new uc;
         var t = uo(A),
             r, i, n, a, o, g, s, I;
@@ -2834,7 +2834,7 @@ var a1 = dc,
                 n = new uc;
                 break;
             case "Set":
-                n = new vy;
+                n = new v0;
                 break;
             case "RegExp":
                 n = new RegExp(A.source, l1(A));
@@ -2859,7 +2859,7 @@ var a1 = dc,
                         n = new(_i("WebAssembly", i));
                         break;
                     default:
-                        n = new Sy
+                        n = new S0
                 }
                 break;
             case "DOMException":
@@ -2867,7 +2867,7 @@ var a1 = dc,
                 break;
             case "ArrayBuffer":
             case "SharedArrayBuffer":
-                n = Ry(A, e, t);
+                n = R0(A, e, t);
                 break;
             case "DataView":
             case "Int8Array":
@@ -2931,7 +2931,7 @@ var a1 = dc,
                         n = Ui(S1(A));
                         break;
                     case "Date":
-                        n = new Ny(b1(A));
+                        n = new N0(b1(A));
                         break;
                     case "Blob":
                         try {
@@ -3003,7 +3003,7 @@ var a1 = dc,
                 break;
             case "Set":
                 A.forEach(function(c) {
-                    Gy(n, VA(c, e))
+                    G0(n, VA(c, e))
                 });
                 break;
             case "Error":
@@ -3017,12 +3017,12 @@ var a1 = dc,
         if (!vg(A)) throw new f1("Transfer option cannot be converted to a sequence");
         var t = [];
         B1(A, function(B) {
-            w1(t, Dy(B))
+            w1(t, D0(B))
         });
-        for (var r = 0, i = Wa(t), n = new vy, a, o, g, s, I, c; r < i;) {
+        for (var r = 0, i = Wa(t), n = new v0, a, o, g, s, I, c; r < i;) {
             if (a = t[r++], o = uo(a), o === "ArrayBuffer" ? y1(n, a) : WB(e, a)) throw new Zt("Duplicate transferable", tn);
             if (o === "ArrayBuffer") {
-                Gy(n, a);
+                G0(n, a);
                 continue
             }
             if (VB) s = Rr(a, {
@@ -3073,7 +3073,7 @@ o1({
     forced: G1
 }, {
     structuredClone: function(e) {
-        var t = Q1(arguments.length, 1) > 1 && !I1(arguments[1]) ? Dy(arguments[1]) : void 0,
+        var t = Q1(arguments.length, 1) > 1 && !I1(arguments[1]) ? D0(arguments[1]) : void 0,
             r = t ? t.transfer : void 0,
             i, n;
         r !== void 0 && (i = new uc, n = k1(r, i));
@@ -3097,15 +3097,15 @@ var Y1 = JA,
     }),
     J1 = _A,
     K1 = At,
-    My = JA,
+    M0 = JA,
     T1 = Ai,
     $Q = gr,
     q1 = O1,
     ZB = K1("URL"),
-    _1 = q1 && My(function() {
+    _1 = q1 && M0(function() {
         ZB.canParse()
     }),
-    z1 = My(function() {
+    z1 = M0(function() {
         return ZB.canParse.length !== 1
     });
 J1({
@@ -3128,13 +3128,13 @@ var P1 = yg,
     Fg = GA,
     Al = gr,
     X1 = Ai,
-    ky = URLSearchParams,
-    Rg = ky.prototype,
+    k0 = URLSearchParams,
+    Rg = k0.prototype,
     j1 = Fg(Rg.append),
     el = Fg(Rg.delete),
     V1 = Fg(Rg.forEach),
     W1 = Fg([].push),
-    $B = new ky("a=1&a=2&b=3");
+    $B = new k0("a=1&a=2&b=3");
 $B.delete("a", 1);
 $B.delete("b", void 0);
 $B + "" != "a=2" && P1(Rg, "delete", function(A) {
@@ -3155,14 +3155,14 @@ $B + "" != "a=2" && P1(Rg, "delete", function(A) {
     unsafe: !0
 });
 var Z1 = yg,
-    xy = GA,
+    x0 = GA,
     $1 = gr,
     Ax = Ai,
-    Yy = URLSearchParams,
-    AC = Yy.prototype,
-    ex = xy(AC.getAll),
-    tx = xy(AC.has),
-    tl = new Yy("a=1");
+    Y0 = URLSearchParams,
+    AC = Y0.prototype,
+    ex = x0(AC.getAll),
+    tx = x0(AC.has),
+    tl = new Y0("a=1");
 (tl.has("a", 2) || !tl.has("a", void 0)) && Z1(AC, "has", function(e) {
     var t = arguments.length,
         r = t < 2 ? void 0 : arguments[1];
@@ -3216,14 +3216,14 @@ const ox = {},
         return g
     },
     gx = A => A ? rl(A) : rl;
-var Uy = {
+var U0 = {
         exports: {}
     },
-    Ly = {},
-    Hy = {
+    L0 = {},
+    H0 = {
         exports: {}
     },
-    Oy = {};
+    O0 = {};
 /**
  * @license React
  * use-sync-external-store-shim.production.js
@@ -3284,9 +3284,9 @@ function lx(A, e) {
     return e()
 }
 var dx = typeof window > "u" || typeof window.document > "u" || typeof window.document.createElement > "u" ? lx : Qx;
-Oy.useSyncExternalStore = Jr.useSyncExternalStore !== void 0 ? Jr.useSyncExternalStore : dx;
-Hy.exports = Oy;
-var ux = Hy.exports;
+O0.useSyncExternalStore = Jr.useSyncExternalStore !== void 0 ? Jr.useSyncExternalStore : dx;
+H0.exports = O0;
+var ux = H0.exports;
 /**
  * @license React
  * use-sync-external-store-shim/with-selector.production.js
@@ -3308,7 +3308,7 @@ var px = typeof Object.is == "function" ? Object.is : fx,
     wx = Mg.useEffect,
     Dx = Mg.useMemo,
     Nx = Mg.useDebugValue;
-Ly.useSyncExternalStoreWithSelector = function(A, e, t, r, i) {
+L0.useSyncExternalStoreWithSelector = function(A, e, t, r, i) {
     var n = mx(null);
     if (n.current === null) {
         var a = {
@@ -3343,10 +3343,10 @@ Ly.useSyncExternalStoreWithSelector = function(A, e, t, r, i) {
         a.hasValue = !0, a.value = o
     }, [o]), Nx(o), o
 };
-Uy.exports = Ly;
-var Sx = Uy.exports;
+U0.exports = L0;
+var Sx = U0.exports;
 const bx = Ce(Sx),
-    Jy = {},
+    J0 = {},
     {
         useDebugValue: vx
     } = Se,
@@ -3357,12 +3357,12 @@ let il = !1;
 const Fx = A => A;
 
 function Rx(A, e = Fx, t) {
-    (Jy ? "production" : void 0) !== "production" && t && !il && (console.warn("[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"), il = !0);
+    (J0 ? "production" : void 0) !== "production" && t && !il && (console.warn("[DEPRECATED] Use `createWithEqualityFn` instead of `create` or use `useStoreWithEqualityFn` instead of `useStore`. They can be imported from 'zustand/traditional'. https://github.com/pmndrs/zustand/discussions/1937"), il = !0);
     const r = Gx(A.subscribe, A.getState, A.getServerState || A.getInitialState, e, t);
     return vx(r), r
 }
 const nl = A => {
-        (Jy ? "production" : void 0) !== "production" && typeof A != "function" && console.warn("[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`.");
+        (J0 ? "production" : void 0) !== "production" && typeof A != "function" && console.warn("[DEPRECATED] Passing a vanilla store will be unsupported in a future version. Instead use `import { useStore } from 'zustand'`.");
         const e = typeof A == "function" ? gx(A) : A,
             t = (r, i) => Rx(e, r, i);
         return Object.assign(t, e), t
@@ -3583,7 +3583,7 @@ const rn = A => e => {
     },
     Ux = (A, e) => "getStorage" in e || "serialize" in e || "deserialize" in e ? ((Mx ? "production" : void 0) !== "production" && console.warn("[DEPRECATED] `getStorage`, `serialize` and `deserialize` options are deprecated. Use `storage` option instead."), xx(A, e)) : Yx(A, e),
     T$ = Ux;
-var Ky = Symbol.for("immer-nothing"),
+var K0 = Symbol.for("immer-nothing"),
     al = Symbol.for("immer-draftable"),
     fe = Symbol.for("immer-state");
 
@@ -3598,11 +3598,11 @@ function Tr(A) {
 
 function $t(A) {
     var e;
-    return A ? Ty(A) || Array.isArray(A) || !!A[al] || !!((e = A.constructor) != null && e[al]) || Un(A) || xg(A) : !1
+    return A ? T0(A) || Array.isArray(A) || !!A[al] || !!((e = A.constructor) != null && e[al]) || Un(A) || xg(A) : !1
 }
 var Lx = Object.prototype.constructor.toString();
 
-function Ty(A) {
+function T0(A) {
     if (!A || typeof A != "object") return !1;
     const e = Kr(A);
     if (e === null) return !0;
@@ -3625,7 +3625,7 @@ function pc(A, e) {
     return kg(A) === 2 ? A.has(e) : Object.prototype.hasOwnProperty.call(A, e)
 }
 
-function qy(A, e, t) {
+function q0(A, e, t) {
     const r = kg(A);
     r === 2 ? A.set(e, t) : r === 3 ? A.add(t) : A[e] = t
 }
@@ -3650,7 +3650,7 @@ function yc(A, e) {
     if (Un(A)) return new Map(A);
     if (xg(A)) return new Set(A);
     if (Array.isArray(A)) return Array.prototype.slice.call(A);
-    const t = Ty(A);
+    const t = T0(A);
     if (e === !0 || e === "class_only" && !t) {
         const r = Object.getOwnPropertyDescriptors(A);
         delete r[fe];
@@ -3708,7 +3708,7 @@ function Ar(A) {
 }
 var nn;
 
-function _y() {
+function _0() {
     return nn
 }
 
@@ -3746,7 +3746,7 @@ function Kx(A) {
 function sl(A, e) {
     e.unfinalizedDrafts_ = e.drafts_.length;
     const t = e.drafts_[0];
-    return A !== void 0 && A !== t ? (t[fe].modified_ && (mc(e), ke(4)), $t(A) && (A = po(e, A), e.parent_ || yo(e, A)), e.patches_ && Ar("Patches").generateReplacementPatches_(t[fe].base_, A, e.patches_, e.inversePatches_)) : A = po(e, t, []), mc(e), e.patches_ && e.patchListener_(e.patches_, e.inversePatches_), A !== Ky ? A : void 0
+    return A !== void 0 && A !== t ? (t[fe].modified_ && (mc(e), ke(4)), $t(A) && (A = po(e, A), e.parent_ || yo(e, A)), e.patches_ && Ar("Patches").generateReplacementPatches_(t[fe].base_, A, e.patches_, e.inversePatches_)) : A = po(e, t, []), mc(e), e.patches_ && e.patchListener_(e.patches_, e.inversePatches_), A !== K0 ? A : void 0
 }
 
 function po(A, e, t) {
@@ -3769,7 +3769,7 @@ function Il(A, e, t, r, i, n, a) {
     if (Tr(i)) {
         const o = n && e && e.type_ !== 3 && !pc(e.assigned_, r) ? n.concat(r) : void 0,
             g = po(A, i, o);
-        if (qy(t, r, g), Tr(g)) A.canAutoFreeze_ = !1;
+        if (q0(t, r, g), Tr(g)) A.canAutoFreeze_ = !1;
         else return
     } else a && t.add(i);
     if ($t(i) && !Yg(i)) {
@@ -3786,7 +3786,7 @@ function Tx(A, e) {
     const t = Array.isArray(A),
         r = {
             type_: t ? 1 : 0,
-            scope_: e ? e.scope_ : _y(),
+            scope_: e ? e.scope_ : _0(),
             modified_: !1,
             finalized_: !1,
             assigned_: {},
@@ -3821,7 +3821,7 @@ var tC = {
             return Reflect.ownKeys(qt(A))
         },
         set(A, e, t) {
-            const r = zy(qt(A), e);
+            const r = z0(qt(A), e);
             if (r != null && r.set) return r.set.call(A.draft_, t), !0;
             if (!A.modified_) {
                 const i = AI(qt(A), e),
@@ -3875,11 +3875,11 @@ function AI(A, e) {
 
 function qx(A, e, t) {
     var i;
-    const r = zy(e, t);
+    const r = z0(e, t);
     return r ? "value" in r ? r.value : (i = r.get) == null ? void 0 : i.call(A.draft_) : void 0
 }
 
-function zy(A, e) {
+function z0(A, e) {
     if (!(e in A)) return;
     let t = Kr(A);
     for (; t;) {
@@ -3920,7 +3920,7 @@ var _x = class {
                 }
                 return ol(n, r), sl(i, n)
             } else if (!e || typeof e != "object") {
-                if (i = t(e), i === void 0 && (i = e), i === Ky && (i = void 0), this.autoFreeze_ && eC(i, !0), r) {
+                if (i = t(e), i === void 0 && (i = e), i === K0 && (i = void 0), this.autoFreeze_ && eC(i, !0), r) {
                     const n = [],
                         a = [];
                     Ar("Patches").generateReplacementPatches_(e, i, n, a), r(n, a)
@@ -3972,14 +3972,14 @@ var _x = class {
 
 function Nc(A, e) {
     const t = Un(A) ? Ar("MapSet").proxyMap_(A, e) : xg(A) ? Ar("MapSet").proxySet_(A, e) : Tx(A, e);
-    return (e ? e.scope_ : _y()).drafts_.push(t), t
+    return (e ? e.scope_ : _0()).drafts_.push(t), t
 }
 
 function zx(A) {
-    return Tr(A) || ke(10, A), Py(A)
+    return Tr(A) || ke(10, A), P0(A)
 }
 
-function Py(A) {
+function P0(A) {
     if (!$t(A) || Yg(A)) return A;
     const e = A[fe];
     let t;
@@ -3988,7 +3988,7 @@ function Py(A) {
         e.finalized_ = !0, t = yc(A, e.scope_.immer_.useStrictShallowCopy_)
     } else t = yc(A, !0);
     return fo(t, (r, i) => {
-        qy(t, r, Py(i))
+        q0(t, r, P0(i))
     }), e && (e.finalized_ = !1), t
 }
 var Px = new _x,
@@ -4071,7 +4071,7 @@ function tI(A) {
     return Sc(A).replace(nY, "%3D")
 }
 
-function Xy(A = "") {
+function X0(A = "") {
     try {
         return decodeURIComponent("" + A)
     } catch {
@@ -4080,11 +4080,11 @@ function Xy(A = "") {
 }
 
 function cY(A) {
-    return Xy(A.replace(rC, " "))
+    return X0(A.replace(rC, " "))
 }
 
 function BY(A) {
-    return Xy(A.replace(rC, " "))
+    return X0(A.replace(rC, " "))
 }
 
 function CY(A = "") {
@@ -4113,7 +4113,7 @@ const lY = /^[\s\w\0+.-]{2,}:([/\\]{1,2})/,
     uY = /^([/\\]\s*){2,}[^/\\]/,
     hY = /^\.?\//;
 
-function jy(A, e = {}) {
+function j0(A, e = {}) {
     return typeof e == "boolean" && (e = {
         acceptRelative: e
     }), e.strict ? lY.test(A) : dY.test(A) || (e.acceptRelative ? uY.test(A) : !1)
@@ -4132,7 +4132,7 @@ function yY(A = "", e) {
 }
 
 function mY(A, e) {
-    if (DY(e) || jy(A)) return A;
+    if (DY(e) || j0(A)) return A;
     const t = pY(e);
     return A.startsWith(t) ? A : SY(t, A)
 }
@@ -4163,7 +4163,7 @@ function SY(A, ...e) {
         } else t = r;
     return t
 }
-const Vy = Symbol.for("ufo:protocolRelative");
+const V0 = Symbol.for("ufo:protocolRelative");
 
 function bY(A = "", e) {
     const t = A.match(/^[\s\0]*(blob:|data:|javascript:|vbscript:)(.*)/i);
@@ -4179,7 +4179,7 @@ function bY(A = "", e) {
             hash: ""
         }
     }
-    if (!jy(A, {
+    if (!j0(A, {
             acceptRelative: !0
         })) return cl(A);
     const [, r = "", i, n = ""] = A.replace(/\\/g, "/").match(/^[\s\0]*([\w+.-]{2,}:)?\/\/([^/@]+@)?(.*)/) || [];
@@ -4197,7 +4197,7 @@ function bY(A = "", e) {
         pathname: g,
         search: s,
         hash: I,
-        [Vy]: !r
+        [V0]: !r
     }
 }
 
@@ -4216,7 +4216,7 @@ function vY(A) {
         r = A.hash || "",
         i = A.auth ? A.auth + "@" : "",
         n = A.host || "";
-    return (A.protocol || A[Vy] ? (A.protocol || "") + "//" : "") + i + n + e + t + r
+    return (A.protocol || A[V0] ? (A.protocol || "") + "//" : "") + i + n + e + t + r
 }
 class GY extends Error {
     constructor(e, t) {
@@ -4306,7 +4306,7 @@ async function da(A, e) {
 const HY = new Set([408, 409, 425, 429, 500, 502, 503, 504]),
     OY = new Set([101, 204, 205, 304]);
 
-function Wy(A = {}) {
+function W0(A = {}) {
     const {
         fetch: e = globalThis.fetch,
         Headers: t = globalThis.Headers,
@@ -4373,7 +4373,7 @@ function Wy(A = {}) {
     }, a = async function(g, s) {
         return (await n(g, s))._data
     };
-    return a.raw = n, a.native = (...o) => e(...o), a.create = (o = {}, g = {}) => Wy({
+    return a.raw = n, a.native = (...o) => e(...o), a.create = (o = {}, g = {}) => W0({
         ...A,
         ...g,
         defaults: {
@@ -4393,7 +4393,7 @@ const mo = function() {
     JY = mo.fetch ? (...A) => mo.fetch(...A) : () => Promise.reject(new Error("[ofetch] global.fetch is not supported!")),
     KY = mo.Headers,
     TY = mo.AbortController,
-    _$ = Wy({
+    _$ = W0({
         fetch: JY,
         Headers: KY,
         AbortController: TY
@@ -4491,7 +4491,7 @@ var ZY = function(e, t, r, i) {
     return !0
 };
 const $Y = Ce(ZY);
-var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "html", A.LINK = "link", A.META = "meta", A.NOSCRIPT = "noscript", A.SCRIPT = "script", A.STYLE = "style", A.TITLE = "title", A.FRAGMENT = "Symbol(react.fragment)", A))(Zy || {}),
+var Z0 = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "html", A.LINK = "link", A.META = "meta", A.NOSCRIPT = "noscript", A.SCRIPT = "script", A.STYLE = "style", A.TITLE = "title", A.FRAGMENT = "Symbol(react.fragment)", A))(Z0 || {}),
     rI = {
         link: {
             rel: ["amphtml", "canonical", "alternate"]
@@ -4505,7 +4505,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
             property: ["og:type", "og:title", "og:url", "og:image", "og:image:alt", "og:description", "twitter:url", "twitter:title", "twitter:description", "twitter:image", "twitter:image:alt", "twitter:card", "twitter:site"]
         }
     },
-    El = Object.values(Zy),
+    El = Object.values(Z0),
     iC = {
         accesskey: "accessKey",
         charset: "charSet",
@@ -4607,7 +4607,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
         titleAttributes: iI("titleAttributes", A),
         prioritizeSeoTags: nU(A, Mr.PRIORITIZE_SEO_TAGS)
     }),
-    $y = A => Array.isArray(A) ? A.join("") : A,
+    $0 = A => Array.isArray(A) ? A.join("") : A,
     oU = (A, e) => {
         const t = Object.keys(A);
         for (let r = 0; r < t.length; r += 1)
@@ -4627,13 +4627,13 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
     }),
     gU = ["noscript", "script", "style"],
     bc = (A, e = !0) => e === !1 ? String(A) : String(A).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#x27;"),
-    A0 = A => Object.keys(A).reduce((e, t) => {
+    Ay = A => Object.keys(A).reduce((e, t) => {
         const r = typeof A[t] < "u" ? `${t}="${A[t]}"` : `${t}`;
         return e ? `${e} ${r}` : r
     }, ""),
     sU = (A, e, t, r) => {
-        const i = A0(t),
-            n = $y(e);
+        const i = Ay(t),
+            n = $0(e);
         return i ? `<${A} ${Ye}="true" ${i}>${bc(n,r)}</${A}>` : `<${A} ${Ye}="true">${bc(n,r)}</${A}>`
     },
     IU = (A, e, t = !0) => e.reduce((r, i) => {
@@ -4646,7 +4646,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
             g = gU.indexOf(A) === -1;
         return `${r}<${A} ${Ye}="true" ${a}${g?"/>":`>${o}</${A}>`}`
     }, ""),
-    e0 = (A, e = {}) => Object.keys(A).reduce((t, r) => {
+    ey = (A, e = {}) => Object.keys(A).reduce((t, r) => {
         const i = iC[r];
         return t[i || r] = A[r], t
     }, e),
@@ -4655,7 +4655,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
                 key: e,
                 [Ye]: !0
             },
-            i = e0(t, r);
+            i = ey(t, r);
         return [Se.createElement("title", i, e)]
     },
     Ao = (A, e) => e.map((t, r) => {
@@ -4682,7 +4682,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
             case "bodyAttributes":
             case "htmlAttributes":
                 return {
-                    toComponent: () => e0(e), toString: () => A0(e)
+                    toComponent: () => ey(e), toString: () => Ay(e)
                 };
             default:
                 return {
@@ -4752,11 +4752,11 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
     },
     vc = CU,
     ua = [],
-    t0 = !!(typeof window < "u" && window.document && window.document.createElement),
+    ty = !!(typeof window < "u" && window.document && window.document.createElement),
     Gc = class {
         constructor(A, e) {
             nt(this, "instances", []);
-            nt(this, "canUseDOM", t0);
+            nt(this, "canUseDOM", ty);
             nt(this, "context");
             nt(this, "value", {
                 setHelmet: A => {
@@ -4788,7 +4788,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
         }
     },
     EU = {},
-    r0 = Se.createContext(EU),
+    ry = Se.createContext(EU),
     Vt, QU = (Vt = class extends X.Component {
         constructor(t) {
             super(t);
@@ -4796,11 +4796,11 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
             this.helmetData = new Gc(this.props.context || {}, Vt.canUseDOM)
         }
         render() {
-            return Se.createElement(r0.Provider, {
+            return Se.createElement(ry.Provider, {
                 value: this.helmetData.value
             }, this.props.children)
         }
-    }, nt(Vt, "canUseDOM", t0), Vt),
+    }, nt(Vt, "canUseDOM", ty), Vt),
     pr = (A, e) => {
         const t = document.head || document.querySelector("head"),
             r = t.querySelectorAll(`${A}[${Ye}]`),
@@ -4844,7 +4844,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
         i.length === n.length ? t.removeAttribute(Ye) : t.getAttribute(Ye) !== a.join(",") && t.setAttribute(Ye, a.join(","))
     },
     lU = (A, e) => {
-        typeof A < "u" && document.title !== A && (document.title = $y(A)), Fc("title", e)
+        typeof A < "u" && document.title !== A && (document.title = $0(A)), Fc("title", e)
     },
     ll = (A, e) => {
         const {
@@ -5048,7 +5048,7 @@ var Zy = (A => (A.BASE = "base", A.BODY = "body", A.HEAD = "head", A.HTML = "htm
             return r ? Se.createElement(dl, {
                 ...t,
                 context: r.value
-            }) : Se.createElement(r0.Consumer, null, i => Se.createElement(dl, {
+            }) : Se.createElement(ry.Consumer, null, i => Se.createElement(dl, {
                 ...t,
                 context: i
             }))
@@ -5121,8 +5121,8 @@ const EA = A => typeof A == "string",
         const r = wo(A, t);
         return r !== void 0 ? r : wo(e, t)
     },
-    i0 = (A, e, t) => {
-        for (const r in e) r !== "__proto__" && r !== "constructor" && (r in A ? EA(A[r]) || A[r] instanceof String || EA(e[r]) || e[r] instanceof String ? t && (A[r] = e[r]) : i0(A[r], e[r], t) : A[r] = e[r]);
+    iy = (A, e, t) => {
+        for (const r in e) r !== "__proto__" && r !== "constructor" && (r in A ? EA(A[r]) || A[r] instanceof String || EA(e[r]) || e[r] instanceof String ? t && (A[r] = e[r]) : iy(A[r], e[r], t) : A[r] = e[r]);
         return A
     },
     yr = A => A.replace(/[\-\[\]\/\{\}\(\)\*\+\?\.\\\^\$\|]/g, "\\$&");
@@ -5313,7 +5313,7 @@ class yl extends Ug {
             o = [e, t];
         e.indexOf(".") > -1 && (o = e.split("."), i = r, r = t, t = o[1]), this.addNamespaces(t);
         let g = wo(this.data, o) || {};
-        a.skipCopy || (r = JSON.parse(JSON.stringify(r))), i ? i0(g, r, n) : g = {
+        a.skipCopy || (r = JSON.parse(JSON.stringify(r))), i ? iy(g, r, n) : g = {
             ...g,
             ...r
         }, pl(this.data, o, g), a.silent || this.emit("added", e, t, r)
@@ -5340,7 +5340,7 @@ class yl extends Ug {
         return this.data
     }
 }
-var n0 = {
+var ny = {
     processors: {},
     addPostProcessor(A) {
         this.processors[A.name] = A
@@ -5536,7 +5536,7 @@ class So extends Ug {
         }
         const o = r.postProcess || this.options.postProcess,
             g = EA(o) ? [o] : o;
-        return e != null && g && g.length && r.applyPostProcessor !== !1 && (e = n0.handle(g, e, t, this.options && this.options.postProcessPassResolved ? {
+        return e != null && g && g.length && r.applyPostProcessor !== !1 && (e = ny.handle(g, e, t, this.options && this.options.postProcessPassResolved ? {
             i18nResolved: {
                 ...i,
                 usedParams: this.getUsedParamsDetails(r)
@@ -6437,7 +6437,7 @@ class on extends Ug {
     use(e) {
         if (!e) throw new Error("You are passing an undefined module! Please check the object you are passing to i18next.use()");
         if (!e.type) throw new Error("You are passing a wrong module! Please check the object you are passing to i18next.use()");
-        return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && n0.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this
+        return e.type === "backend" && (this.modules.backend = e), (e.type === "logger" || e.log && e.warn && e.error) && (this.modules.logger = e), e.type === "languageDetector" && (this.modules.languageDetector = e), e.type === "i18nFormat" && (this.modules.i18nFormat = e), e.type === "postProcessor" && ny.addPostProcessor(e), e.type === "formatter" && (this.modules.formatter = e), e.type === "3rdParty" && this.modules.external.push(e), this
     }
     setResolvedLanguage(e) {
         if (!(!e || !this.languages) && !(["cimode", "dev"].indexOf(e) > -1))
@@ -6644,7 +6644,7 @@ var _U = /<[a-zA-Z0-9\-\!\/](?:"[^"]*"|'[^']*'|[^'">])*>/g,
     zU = /^\s*$/,
     PU = Object.create(null);
 
-function a0(A, e) {
+function ay(A, e) {
     switch (e.type) {
         case "text":
             return A + e.content;
@@ -6653,7 +6653,7 @@ function a0(A, e) {
                 var r = [];
                 for (var i in t) r.push(i + '="' + t[i] + '"');
                 return r.length ? " " + r.join(" ") : ""
-            }(e.attrs) : "") + (e.voidElement ? "/>" : ">"), e.voidElement ? A : A + e.children.reduce(a0, "") + "</" + e.name + ">";
+            }(e.attrs) : "") + (e.voidElement ? "/>" : ">"), e.voidElement ? A : A + e.children.reduce(ay, "") + "</" + e.name + ">";
         case "comment":
             return A + "<!--" + e.comment + "-->"
     }
@@ -6701,7 +6701,7 @@ var X$ = {
     },
     stringify: function(A) {
         return A.reduce(function(e, t) {
-            return e + a0("", t)
+            return e + ay("", t)
         }, "")
     }
 };
@@ -6900,7 +6900,7 @@ const V$ = {
     zho: "zh",
     zul: "zu"
 };
-var o0 = {
+var oy = {
     exports: {}
 };
 (function(A, e) {
@@ -6928,8 +6928,8 @@ var o0 = {
             Object.assign(t, n)
         }, i
     })
-})(o0);
-var jU = o0.exports;
+})(oy);
+var jU = oy.exports;
 const W$ = Ce(jU);
 class Li extends Error {}
 Li.prototype.name = "InvalidTokenError";
@@ -7047,7 +7047,7 @@ const tL = NA.Root,
     gL = NA.Tag,
     sL = NA.CDATA,
     IL = NA.Doctype;
-class g0 {
+class gy {
     constructor() {
         this.parent = null, this.prev = null, this.next = null, this.startIndex = null, this.endIndex = null
     }
@@ -7073,7 +7073,7 @@ class g0 {
         return vo(this, e)
     }
 }
-class aC extends g0 {
+class aC extends gy {
     constructor(e) {
         super(), this.data = e
     }
@@ -7092,7 +7092,7 @@ class bo extends aC {
         return 3
     }
 }
-class s0 extends aC {
+class sy extends aC {
     constructor() {
         super(...arguments), this.type = NA.Comment
     }
@@ -7100,7 +7100,7 @@ class s0 extends aC {
         return 8
     }
 }
-class I0 extends aC {
+class Iy extends aC {
     constructor(e, t) {
         super(t), this.name = e, this.type = NA.Directive
     }
@@ -7108,7 +7108,7 @@ class I0 extends aC {
         return 1
     }
 }
-class oC extends g0 {
+class oC extends gy {
     constructor(e) {
         super(), this.children = e
     }
@@ -7126,7 +7126,7 @@ class oC extends g0 {
         this.children = e
     }
 }
-class c0 extends oC {
+class cy extends oC {
     constructor() {
         super(...arguments), this.type = NA.CDATA
     }
@@ -7142,7 +7142,7 @@ let gn = class extends oC {
             return 9
         }
     },
-    B0 = class extends oC {
+    By = class extends oC {
         constructor(e, t, r = [], i = e === "script" ? NA.Script : e === "style" ? NA.Style : NA.Tag) {
             super(r), this.name = e, this.attribs = t, this.type = i
         }
@@ -7199,10 +7199,10 @@ function zA(A) {
 function vo(A, e = !1) {
     let t;
     if (er(A)) t = new bo(A.data);
-    else if (gC(A)) t = new s0(A.data);
+    else if (gC(A)) t = new sy(A.data);
     else if (QA(A)) {
         const r = e ? gI(A.children) : [],
-            i = new B0(A.name, {
+            i = new By(A.name, {
                 ...A.attribs
             }, r);
         r.forEach(n => n.parent = i), A.namespace != null && (i.namespace = A.namespace), A["x-attribsNamespace"] && (i["x-attribsNamespace"] = {
@@ -7212,14 +7212,14 @@ function vo(A, e = !1) {
         }), t = i
     } else if (Lg(A)) {
         const r = e ? gI(A.children) : [],
-            i = new c0(r);
+            i = new cy(r);
         r.forEach(n => n.parent = i), t = i
     } else if (ei(A)) {
         const r = e ? gI(A.children) : [],
             i = new gn(r);
         r.forEach(n => n.parent = i), A["x-mode"] && (i["x-mode"] = A["x-mode"]), t = i
     } else if (cL(A)) {
-        const r = new I0(A.name, A.data);
+        const r = new Iy(A.name, A.data);
         A["x-name"] != null && (r["x-name"] = A["x-name"], r["x-publicId"] = A["x-publicId"], r["x-systemId"] = A["x-systemId"]), t = r
     } else throw new Error(`Not implemented yet: ${A.type}`);
     return t.startIndex = A.startIndex, t.endIndex = A.endIndex, A.sourceCodeLocation != null && (t.sourceCodeLocation = A.sourceCodeLocation), t
@@ -7258,7 +7258,7 @@ class eAA {
     }
     onopentag(e, t) {
         const r = this.options.xmlMode ? NA.Tag : void 0,
-            i = new B0(e, t, void 0, r);
+            i = new By(e, t, void 0, r);
         this.addNode(i), this.tagStack.push(i)
     }
     ontext(e) {
@@ -7276,7 +7276,7 @@ class eAA {
             this.lastNode.data += e;
             return
         }
-        const t = new s0(e);
+        const t = new sy(e);
         this.addNode(t), this.lastNode = t
     }
     oncommentend() {
@@ -7284,14 +7284,14 @@ class eAA {
     }
     oncdatastart() {
         const e = new bo(""),
-            t = new c0([e]);
+            t = new cy([e]);
         this.addNode(t), e.parent = t, this.lastNode = e
     }
     oncdataend() {
         this.lastNode = null
     }
     onprocessinginstruction(e, t) {
-        const r = new I0(e, t);
+        const r = new Iy(e, t);
         this.addNode(r)
     }
     handleCallback(e) {
@@ -7385,12 +7385,12 @@ function wL(A) {
     return `<!--${A.data}-->`
 }
 
-function C0(A, e) {
+function Cy(A, e) {
     return Hg(A, e)
 }
 
 function DL(A, e) {
-    return zA(A) ? A.children.map(t => C0(t, e)).join("") : ""
+    return zA(A) ? A.children.map(t => Cy(t, e)).join("") : ""
 }
 
 function eo(A) {
@@ -7410,12 +7410,12 @@ function Og(A) {
     return zA(A) ? A.children : []
 }
 
-function E0(A) {
+function Ey(A) {
     return A.parent || null
 }
 
-function Q0(A) {
-    const e = E0(A);
+function Qy(A) {
+    const e = Ey(A);
     if (e != null) return Og(e);
     const t = [A];
     let {
@@ -7561,8 +7561,8 @@ function BC(A, e, t = !0) {
     return null
 }
 
-function l0(A, e) {
-    return (Array.isArray(e) ? e : [e]).some(t => QA(t) && A(t) || zA(t) && l0(A, t.children))
+function ly(A, e) {
+    return (Array.isArray(e) ? e : [e]).some(t => QA(t) && A(t) || zA(t) && ly(A, t.children))
 }
 
 function xL(A, e) {
@@ -7599,7 +7599,7 @@ function YL(A, e) {
     return t => A(t) || e(t)
 }
 
-function d0(A) {
+function dy(A) {
     const e = Object.keys(A).map(t => {
         const r = A[t];
         return Object.prototype.hasOwnProperty.call(Fo, t) ? Fo[t](r) : CC(t, r)
@@ -7608,12 +7608,12 @@ function d0(A) {
 }
 
 function UL(A, e) {
-    const t = d0(A);
+    const t = dy(A);
     return t ? t(e) : !0
 }
 
 function LL(A, e, t, r = 1 / 0) {
-    const i = d0(A);
+    const i = dy(A);
     return i ? Ln(i, e, t, r) : []
 }
 
@@ -7654,7 +7654,7 @@ var we;
     A[A.DISCONNECTED = 1] = "DISCONNECTED", A[A.PRECEDING = 2] = "PRECEDING", A[A.FOLLOWING = 4] = "FOLLOWING", A[A.CONTAINS = 8] = "CONTAINS", A[A.CONTAINED_BY = 16] = "CONTAINED_BY"
 })(we || (we = {}));
 
-function u0(A, e) {
+function uy(A, e) {
     const t = [],
         r = [];
     if (A === e) return 0;
@@ -7674,7 +7674,7 @@ function u0(A, e) {
 
 function ri(A) {
     return A = A.filter((e, t, r) => !r.includes(e, t + 1)), A.sort((e, t) => {
-        const r = u0(e, t);
+        const r = uy(e, t);
         return r & we.PRECEDING ? -1 : r & we.FOLLOWING ? 1 : 0
     }), A
 }
@@ -7694,7 +7694,7 @@ function qL(A) {
                 const {
                     children: g
                 } = a, s = {
-                    media: h0(g)
+                    media: hy(g)
                 };
                 Ie(s, "id", "id", g), Ie(s, "title", "title", g);
                 const I = (o = Ro("link", g)) === null || o === void 0 ? void 0 : o.attribs.href;
@@ -7722,7 +7722,7 @@ function _L(A) {
                 const {
                     children: o
                 } = a, g = {
-                    media: h0(o)
+                    media: hy(o)
                 };
                 Ie(g, "id", "guid", o), Ie(g, "title", "title", o), Ie(g, "link", "link", o), Ie(g, "description", "description", o);
                 const s = wt("pubDate", o) || wt("dc:date", o);
@@ -7736,7 +7736,7 @@ function _L(A) {
 const zL = ["url", "type", "lang"],
     PL = ["fileSize", "bitrate", "framerate", "samplingrate", "channels", "duration", "height", "width"];
 
-function h0(A) {
+function hy(A) {
     return ti("media:content", A).map(e => {
         const {
             attribs: t
@@ -7773,8 +7773,8 @@ const Jg = Object.freeze(Object.defineProperty({
     },
     append: FL,
     appendChild: GL,
-    compareDocumentPosition: u0,
-    existsOne: l0,
+    compareDocumentPosition: uy,
+    existsOne: ly,
     filter: Ln,
     find: cC,
     findAll: xL,
@@ -7790,9 +7790,9 @@ const Jg = Object.freeze(Object.defineProperty({
     getFeed: TL,
     getInnerHTML: DL,
     getName: bL,
-    getOuterHTML: C0,
-    getParent: E0,
-    getSiblings: Q0,
+    getOuterHTML: Cy,
+    getParent: Ey,
+    getSiblings: Qy,
     getText: eo,
     hasAttrib: SL,
     hasChildren: zA,
@@ -7816,7 +7816,7 @@ const Jg = Object.freeze(Object.defineProperty({
     value: "Module"
 }));
 
-function f0(A, e, t) {
+function fy(A, e, t) {
     return A ? A(e ?? A._root.children, null, void 0, t).toString() : ""
 }
 
@@ -7831,7 +7831,7 @@ function VL(A, e) {
             ...this === null || this === void 0 ? void 0 : this._options,
             ...Mc(e ?? {})
         };
-    return f0(this, t, r)
+    return fy(this, t, r)
 }
 
 function WL(A) {
@@ -7839,7 +7839,7 @@ function WL(A) {
         ...this._options,
         xmlMode: !0
     };
-    return f0(this, A, e)
+    return fy(this, A, e)
 }
 
 function sn(A) {
@@ -7860,7 +7860,7 @@ function $L() {
     return this(this._root)
 }
 
-function p0(A, e) {
+function py(A, e) {
     if (e === A) return !1;
     let t = e;
     for (; t && t !== t.parent;)
@@ -7885,7 +7885,7 @@ function kl(A) {
 }
 const eH = Object.freeze(Object.defineProperty({
     __proto__: null,
-    contains: p0,
+    contains: py,
     html: VL,
     merge: AH,
     parseHTML: ZL,
@@ -7954,7 +7954,7 @@ function Mo(A, e, t) {
 }
 
 function Yr(A, e, t) {
-    t === null ? y0(A, e) : A.attribs[e] = `${t}`
+    t === null ? yy(A, e) : A.attribs[e] = `${t}`
 }
 
 function nH(A, e) {
@@ -8090,7 +8090,7 @@ function gH(A) {
     }
 }
 
-function y0(A, e) {
+function yy(A, e) {
     !A.attribs || !xr.call(A.attribs, e) || delete A.attribs[e]
 }
 
@@ -8101,7 +8101,7 @@ function ko(A) {
 function sH(A) {
     const e = ko(A);
     for (let t = 0; t < e.length; t++) KA(this, r => {
-        QA(r) && y0(r, e[t])
+        QA(r) && yy(r, e[t])
     });
     return this
 }
@@ -8120,11 +8120,11 @@ function IH(A) {
     })
 }
 
-function m0(A) {
+function my(A) {
     if (typeof A == "function") return KA(this, (r, i) => {
         if (QA(r)) {
             const n = r.attribs.class || "";
-            m0.call([r], A.call(r, i, n))
+            my.call([r], A.call(r, i, n))
         }
     });
     if (!A || typeof A != "string") return this;
@@ -8147,9 +8147,9 @@ function m0(A) {
     return this
 }
 
-function w0(A) {
+function wy(A) {
     if (typeof A == "function") return KA(this, (i, n) => {
-        QA(i) && w0.call([i], A.call(i, n, i.attribs.class || ""))
+        QA(i) && wy.call([i], A.call(i, n, i.attribs.class || ""))
     });
     const e = ko(A),
         t = e.length,
@@ -8169,9 +8169,9 @@ function w0(A) {
     })
 }
 
-function D0(A, e) {
+function Dy(A, e) {
     if (typeof A == "function") return KA(this, (a, o) => {
-        QA(a) && D0.call([a], A.call(a, o, a.attribs.class || "", e), e)
+        QA(a) && Dy.call([a], A.call(a, o, a.attribs.class || "", e), e)
     });
     if (!A || typeof A != "string") return this;
     const t = A.split(In),
@@ -8192,14 +8192,14 @@ function D0(A, e) {
 }
 const cH = Object.freeze(Object.defineProperty({
     __proto__: null,
-    addClass: m0,
+    addClass: my,
     attr: nH,
     data: oH,
     hasClass: IH,
     prop: aH,
     removeAttr: sH,
-    removeClass: w0,
-    toggleClass: D0,
+    removeClass: wy,
+    toggleClass: Dy,
     val: gH
 }, Symbol.toStringTag, {
     value: "Module"
@@ -8258,12 +8258,12 @@ function Ol(A) {
 
 function Kg(A) {
     const e = [],
-        t = N0(e, `${A}`, 0);
+        t = Ny(e, `${A}`, 0);
     if (t < A.length) throw new Error(`Unmatched selector: ${A.slice(t)}`);
     return e
 }
 
-function N0(A, e, t) {
+function Ny(A, e, t) {
     let r = [];
 
     function i(B) {
@@ -8414,7 +8414,7 @@ function N0(A, e, t) {
                 if (e.charCodeAt(t) === 40)
                     if (EH.has(C)) {
                         if (cI(e.charCodeAt(t + 1))) throw new Error(`Pseudo-selector ${C} cannot be quoted`);
-                        if (Q = [], t = N0(Q, e, t + 1), e.charCodeAt(t) !== 41) throw new Error(`Missing closing parenthesis in :${C} (${e})`);
+                        if (Q = [], t = Ny(Q, e, t + 1), e.charCodeAt(t) !== 41) throw new Error(`Missing closing parenthesis in :${C} (${e})`);
                         t += 1
                     } else {
                         if (Q = a(), QH.has(C)) {
@@ -8472,7 +8472,7 @@ var xo = {
     }
 };
 const fA = Ce(xo),
-    S0 = new Map([
+    Sy = new Map([
         [BA.Universal, 50],
         [BA.Tag, 30],
         [BA.Attribute, 1],
@@ -8480,7 +8480,7 @@ const fA = Ce(xo),
     ]);
 
 function QC(A) {
-    return !S0.has(A.type)
+    return !Sy.has(A.type)
 }
 const dH = new Map([
     [PA.Exists, 10],
@@ -8492,7 +8492,7 @@ const dH = new Map([
 ]);
 
 function uH(A) {
-    const e = A.map(b0);
+    const e = A.map(by);
     for (let t = 1; t < A.length; t++) {
         const r = e[t];
         if (!(r < 0))
@@ -8503,10 +8503,10 @@ function uH(A) {
     }
 }
 
-function b0(A) {
+function by(A) {
     var e, t;
-    let r = (e = S0.get(A.type)) !== null && e !== void 0 ? e : -1;
-    return A.type === BA.Attribute ? (r = (t = dH.get(A.action)) !== null && t !== void 0 ? t : 4, A.action === PA.Equals && A.name === "id" && (r = 9), A.ignoreCase && (r >>= 1)) : A.type === BA.Pseudo && (A.data ? A.name === "has" || A.name === "contains" ? r = 0 : Array.isArray(A.data) ? (r = Math.min(...A.data.map(i => Math.min(...i.map(b0)))), r < 0 && (r = 0)) : r = 2 : r = 3), r
+    let r = (e = Sy.get(A.type)) !== null && e !== void 0 ? e : -1;
+    return A.type === BA.Attribute ? (r = (t = dH.get(A.action)) !== null && t !== void 0 ? t : 4, A.action === PA.Equals && A.name === "id" && (r = 9), A.ignoreCase && (r >>= 1)) : A.type === BA.Pseudo && (A.data ? A.name === "has" || A.name === "contains" ? r = 0 : Array.isArray(A.data) ? (r = Math.min(...A.data.map(i => Math.min(...i.map(by)))), r < 0 && (r = 0)) : r = 2 : r = 3), r
 }
 const hH = /[-[\]{}()*+?.,\\^$|#\s]/g;
 
@@ -8893,13 +8893,13 @@ const NH = {
         input: ":is(input, textarea, select, button)",
         text: "input:is(:not([type!='']), [type=text])"
     },
-    v0 = {};
+    vy = {};
 
 function SH(A, e) {
     return A === fA.falseFunc ? fA.falseFunc : t => e.isTag(t) && A(t)
 }
 
-function G0(A, e) {
+function Gy(A, e) {
     const t = e.getSiblings(A);
     if (t.length <= 1) return [];
     const r = t.indexOf(A);
@@ -8935,7 +8935,7 @@ const CI = (A, e, t, r, i) => {
                 adapter: n
             } = t, a = Uc(t);
             a.relativeSelector = !0;
-            const o = e.some(I => I.some(QC)) ? [v0] : void 0,
+            const o = e.some(I => I.some(QC)) ? [vy] : void 0,
                 g = i(e, a, o);
             if (g === fA.falseFunc) return fA.falseFunc;
             const s = SH(g, n);
@@ -8947,7 +8947,7 @@ const CI = (A, e, t, r, i) => {
                     if (!A(c)) return !1;
                     o[0] = c;
                     const B = n.getChildren(c),
-                        C = I ? [...B, ...G0(c, n)] : B;
+                        C = I ? [...B, ...Gy(c, n)] : B;
                     return n.existsOne(s, C)
                 }
             }
@@ -9076,8 +9076,8 @@ function vH(A, e, t, r, i) {
     }
 }
 
-function F0(A) {
-    return A.type === BA.Pseudo && (A.name === "scope" || Array.isArray(A.data) && A.data.some(e => e.some(F0)))
+function Fy(A) {
+    return A.type === BA.Pseudo && (A.name === "scope" || Array.isArray(A.data) && A.data.some(e => e.some(Fy)))
 }
 const GH = {
         type: BA.Descendant
@@ -9096,17 +9096,17 @@ function MH(A, {
 }, t) {
     const r = !!(t != null && t.every(i => {
         const n = e.isTag(i) && e.getParent(i);
-        return i === v0 || n && e.isTag(n)
+        return i === vy || n && e.isTag(n)
     }));
     for (const i of A) {
         if (!(i.length > 0 && QC(i[0]) && i[0].type !== BA.Descendant))
-            if (r && !i.some(F0)) i.unshift(GH);
+            if (r && !i.some(Fy)) i.unshift(GH);
             else continue;
         i.unshift(RH)
     }
 }
 
-function R0(A, e, t) {
+function Ry(A, e, t) {
     var r;
     A.forEach(uH), t = (r = e.context) !== null && r !== void 0 ? r : t;
     const i = Array.isArray(t),
@@ -9126,7 +9126,7 @@ function R0(A, e, t) {
 
 function kH(A, e, t) {
     var r;
-    return A.reduce((i, n) => i === fA.falseFunc ? fA.falseFunc : vH(i, n, e, t, R0), (r = e.rootFunc) !== null && r !== void 0 ? r : fA.trueFunc)
+    return A.reduce((i, n) => i === fA.falseFunc ? fA.falseFunc : vH(i, n, e, t, Ry), (r = e.rootFunc) !== null && r !== void 0 ? r : fA.trueFunc)
 }
 
 function xH(A, e) {
@@ -9134,16 +9134,16 @@ function xH(A, e) {
         return A(r) || e(r)
     }
 }
-const M0 = (A, e) => A === e,
+const My = (A, e) => A === e,
     YH = {
         adapter: Jg,
-        equals: M0
+        equals: My
     };
 
 function UH(A) {
     var e, t, r, i;
     const n = A ?? YH;
-    return (e = n.adapter) !== null && e !== void 0 || (n.adapter = Jg), (t = n.equals) !== null && t !== void 0 || (n.equals = (i = (r = n.adapter) === null || r === void 0 ? void 0 : r.equals) !== null && i !== void 0 ? i : M0), n
+    return (e = n.adapter) !== null && e !== void 0 || (n.adapter = Jg), (t = n.equals) !== null && t !== void 0 || (n.equals = (i = (r = n.adapter) === null || r === void 0 ? void 0 : r.equals) !== null && i !== void 0 ? i : My), n
 }
 
 function LH(A) {
@@ -9152,9 +9152,9 @@ function LH(A) {
         return A(t, n, i)
     }
 }
-const lC = LH(R0);
+const lC = LH(Ry);
 
-function k0(A, e, t = !1) {
+function ky(A, e, t = !1) {
     return t && (A = HH(A, e)), Array.isArray(A) ? e.removeSubsets(A) : e.getChildren(A)
 }
 
@@ -9162,7 +9162,7 @@ function HH(A, e) {
     const t = Array.isArray(A) ? A.slice(0) : [A],
         r = t.length;
     for (let i = 0; i < r; i++) {
-        const n = G0(t[i], e);
+        const n = Gy(t[i], e);
         t.push(...n)
     }
     return t
@@ -9216,14 +9216,14 @@ const TH = {
         data: null
     };
 
-function x0(A, e, t = {}) {
-    return Y0([A], e, t)
+function xy(A, e, t = {}) {
+    return Yy([A], e, t)
 }
 
-function Y0(A, e, t = {}) {
+function Yy(A, e, t = {}) {
     if (typeof e == "function") return A.some(e);
     const [r, i] = dC(Kg(e));
-    return r.length > 0 && A.some(lC(r, t)) || i.some(n => H0(n, A, t).length > 0)
+    return r.length > 0 && A.some(lC(r, t)) || i.some(n => Hy(n, A, t).length > 0)
 }
 
 function _H(A, e, t, r) {
@@ -9244,17 +9244,17 @@ function _H(A, e, t, r) {
         case "odd":
             return e.filter((n, a) => a % 2 === 1);
         case "not": {
-            const n = new Set(L0(t, e, r));
+            const n = new Set(Ly(t, e, r));
             return e.filter(a => !n.has(a))
         }
     }
 }
 
-function U0(A, e, t = {}) {
-    return L0(Kg(A), e, t)
+function Uy(A, e, t = {}) {
+    return Ly(Kg(A), e, t)
 }
 
-function L0(A, e, t) {
+function Ly(A, e, t) {
     if (e.length === 0) return [];
     const [r, i] = dC(A);
     let n;
@@ -9266,7 +9266,7 @@ function L0(A, e, t) {
     for (let a = 0; a < i.length && (n == null ? void 0 : n.size) !== e.length; a++) {
         const o = i[a];
         if ((n ? e.filter(I => QA(I) && !n.has(I)) : e).length === 0) break;
-        const s = H0(o, e, t);
+        const s = Hy(o, e, t);
         if (s.length)
             if (n) s.forEach(I => n.add(I));
             else {
@@ -9277,7 +9277,7 @@ function L0(A, e, t) {
     return typeof n < "u" ? n.size === e.length ? e : e.filter(a => n.has(a)) : []
 }
 
-function H0(A, e, t) {
+function Hy(A, e, t) {
     var r;
     if (A.some(Pi)) {
         const i = (r = t.root) !== null && r !== void 0 ? r : KH(e[0]),
@@ -9292,7 +9292,7 @@ function H0(A, e, t) {
 }
 
 function zH(A, e, t = {}, r = 1 / 0) {
-    if (typeof A == "function") return O0(e, A);
+    if (typeof A == "function") return Oy(e, A);
     const [i, n] = dC(Kg(A)), a = n.map(o => Uo(e, o, t, !0, r));
     return i.length && a.push(Lc(e, i, t, r)), a.length === 0 ? [] : a.length === 1 ? a[0] : ri(a.reduce((o, g) => [...o, ...g]))
 }
@@ -9314,7 +9314,7 @@ function Uo(A, e, t, r, i) {
             const {
                 type: E
             } = C[0];
-            (E === BA.Sibling || E === BA.Adjacent) && (B = k0(B, Jg, !0)), C.unshift(TH)
+            (E === BA.Sibling || E === BA.Adjacent) && (B = ky(B, Jg, !0)), C.unshift(TH)
         }
         t = {
             ...t,
@@ -9330,11 +9330,11 @@ function Uo(A, e, t, r, i) {
 
 function Lc(A, e, t, r) {
     const i = lC(e, t, A);
-    return O0(A, i, r)
+    return Oy(A, i, r)
 }
 
-function O0(A, e, t = 1 / 0) {
-    const r = k0(A, Jg, e.shouldTestNextSiblings);
+function Oy(A, e, t = 1 / 0) {
+    const r = ky(A, Jg, e.shouldTestNextSiblings);
     return cC(i => QA(i) && e(i), r, !0, t)
 }
 
@@ -9352,7 +9352,7 @@ function XH(A) {
     const t = this.toArray();
     if (typeof A != "string") {
         const n = Ve(A) ? A.toArray() : [A];
-        return this._make(n.filter(a => t.some(o => p0(o, a))))
+        return this._make(n.filter(a => t.some(o => py(o, a))))
     }
     const r = PH.test(A) ? t : this.children().toArray(),
         i = {
@@ -9403,7 +9403,7 @@ function fC(A, ...e) {
         }), a
     })(A, ...e);
     return function(i, n) {
-        t = typeof i == "string" ? o => x0(o, i, this.options) : i ? On(i) : null;
+        t = typeof i == "string" ? o => xy(o, i, this.options) : i ? On(i) : null;
         const a = r.call(this, n);
         return t = null, a
     }
@@ -9432,7 +9432,7 @@ function ZH(A) {
             xmlMode: this.options.xmlMode,
             root: (e = this._root) === null || e === void 0 ? void 0 : e[0]
         },
-        i = typeof A == "string" ? n => x0(n, A, r) : On(A);
+        i = typeof A == "string" ? n => xy(n, A, r) : On(A);
     return KA(this, n => {
         for (; n && QA(n);) {
             if (i(n, 0)) {
@@ -9457,7 +9457,7 @@ const $H = hC(A => sC(A)),
         return e
     }, ii),
     iO = fC(A => IC(A), ii),
-    nO = Hn(A => Q0(A).filter(e => QA(e) && e !== A), ri),
+    nO = Hn(A => Qy(A).filter(e => QA(e) && e !== A), ri),
     aO = Hn(A => Og(A).filter(QA), ii);
 
 function oO() {
@@ -9494,7 +9494,7 @@ function IO(A) {
 }
 
 function pC(A, e, t, r) {
-    return typeof e == "string" ? U0(e, A, {
+    return typeof e == "string" ? Uy(e, A, {
         xmlMode: t,
         root: r
     }) : A.filter(On(e))
@@ -9502,13 +9502,13 @@ function pC(A, e, t, r) {
 
 function cO(A) {
     const e = this.toArray();
-    return typeof A == "string" ? Y0(e.filter(QA), A, this.options) : A ? e.some(On(A)) : !1
+    return typeof A == "string" ? Yy(e.filter(QA), A, this.options) : A ? e.some(On(A)) : !1
 }
 
 function BO(A) {
     let e = this.toArray();
     if (typeof A == "string") {
-        const t = new Set(U0(A, e, this.options));
+        const t = new Set(Uy(A, e, this.options));
         e = e.filter(r => !t.has(r))
     } else {
         const t = On(A);
@@ -9626,7 +9626,7 @@ function NO(A, e) {
     return A == null ? [] : Ve(A) ? e ? kc(A.get()) : A.get() : Array.isArray(A) ? A.reduce((t, r) => t.concat(this._makeDomArray(r, e)), []) : typeof A == "string" ? this._parse(A, this.options, !1, null).children : e ? kc([A]) : [A]
 }
 
-function J0(A) {
+function Jy(A) {
     return function(...e) {
         const t = this.length - 1;
         return KA(this, (r, i) => {
@@ -9662,14 +9662,14 @@ function SO(A) {
 function bO(A) {
     return (Ve(A) ? A : this._make(A)).prepend(this), this
 }
-const vO = J0((A, e, t) => {
+const vO = Jy((A, e, t) => {
         Yt(e, e.length, 0, A, t)
     }),
-    GO = J0((A, e, t) => {
+    GO = Jy((A, e, t) => {
         Yt(e, 0, 0, A, t)
     });
 
-function K0(A) {
+function Ky(A) {
     return function(e) {
         const t = this.length - 1,
             r = this.parents().last();
@@ -9689,7 +9689,7 @@ function K0(A) {
         return this
     }
 }
-const FO = K0((A, e, t) => {
+const FO = Ky((A, e, t) => {
         const {
             parent: r
         } = A;
@@ -9698,7 +9698,7 @@ const FO = K0((A, e, t) => {
             n = i.indexOf(A);
         tr([A], e), Yt(i, n, 0, t, r)
     }),
-    RO = K0((A, e, t) => {
+    RO = Ky((A, e, t) => {
         zA(A) && (tr(A.children, e), tr(t, A))
     });
 
@@ -9878,22 +9878,22 @@ const zO = Object.freeze(Object.defineProperty({
 
 function PO(A, e) {
     if (A != null && e != null || typeof A == "object" && !Array.isArray(A)) return KA(this, (t, r) => {
-        QA(t) && T0(t, A, e, r)
+        QA(t) && Ty(t, A, e, r)
     });
-    if (this.length !== 0) return q0(this[0], A)
+    if (this.length !== 0) return qy(this[0], A)
 }
 
-function T0(A, e, t, r) {
+function Ty(A, e, t, r) {
     if (typeof e == "string") {
-        const i = q0(A),
+        const i = qy(A),
             n = typeof t == "function" ? t.call(A, r, i[e]) : t;
         n === "" ? delete i[e] : n != null && (i[e] = n), A.attribs.style = XO(i)
     } else typeof e == "object" && Object.keys(e).forEach((i, n) => {
-        T0(A, i, e[i], n)
+        Ty(A, i, e[i], n)
     })
 }
 
-function q0(A, e) {
+function qy(A, e) {
     if (!A || !QA(A)) return;
     const t = jO(A.attribs.style);
     if (typeof e == "string") return t[e];
@@ -10767,25 +10767,25 @@ const rJ = DO((A, e, t, r) => e.xmlMode || e._useHtmlParser2 ? fN(A, e) : pN(A, 
     };
 var aJ = nJ;
 const Xi = aJ,
-    _0 = {},
+    _y = {},
     Lo = {},
-    z0 = [],
-    P0 = [],
-    X0 = [];
+    zy = [],
+    Py = [],
+    Xy = [];
 for (const A in Xi) {
     const {
         name: e,
         nativeName: t
     } = Xi[A];
-    _0[A] = Lo[e.toLowerCase()] = Lo[t.toLowerCase()] = {
+    _y[A] = Lo[e.toLowerCase()] = Lo[t.toLowerCase()] = {
         code: A,
         name: e,
         nativeName: t
-    }, z0.push(A), P0.push(e), X0.push(t)
+    }, zy.push(A), Py.push(e), Xy.push(t)
 }
 var oJ = class to {
     static getLanguages(e = []) {
-        return e.map(t => to.validate(t) ? Object.assign({}, _0[t]) : {
+        return e.map(t => to.validate(t) ? Object.assign({}, _y[t]) : {
             code: t,
             name: "",
             nativeName: ""
@@ -10795,19 +10795,19 @@ var oJ = class to {
         return to.validate(e) ? Xi[e].name : ""
     }
     static getAllNames() {
-        return P0.slice()
+        return Py.slice()
     }
     static getNativeName(e) {
         return to.validate(e) ? Xi[e].nativeName : ""
     }
     static getAllNativeNames() {
-        return X0.slice()
+        return Xy.slice()
     }
     static getCode(e) {
         return e = e.toLowerCase(), Lo.hasOwnProperty(e) ? Lo[e].code : ""
     }
     static getAllCodes() {
-        return z0.slice()
+        return zy.slice()
     }
     static validate(e) {
         return Xi.hasOwnProperty(e)
@@ -11094,7 +11094,7 @@ function mJ(A) {
     }
 }
 
-function j0(A, e) {
+function jy(A, e) {
     if (e = e ? Object.assign({}, Ho, e) : Ho, !A) return e.map ? Jc() : [];
     if (A.headers)
         if (typeof A.headers.getSetCookie == "function") A = A.headers.getSetCookie();
@@ -11141,13 +11141,13 @@ function wJ(A) {
     }
     return e
 }
-Kn.exports = j0;
-Kn.exports.parse = j0;
+Kn.exports = jy;
+Kn.exports.parse = jy;
 Kn.exports.parseString = Tc;
 Kn.exports.splitCookiesString = wJ;
 var DJ = Kn.exports;
 const Pl = Ce(DJ);
-var V0 = {
+var Vy = {
     exports: {}
 }; /*! For license information please see hls-parser.min.js.LICENSE.txt */
 (function(A, e) {
@@ -13306,8 +13306,8 @@ In order to be iterable, non-array objects must have a [Symbol.iterator]() metho
             }(73);
         return i
     })())
-})(V0);
-var ma = V0.exports,
+})(Vy);
+var ma = Vy.exports,
     NJ = typeof self == "object" ? self.FormData : window.FormData;
 const SJ = Ce(NJ),
     pi = function() {
@@ -13323,23 +13323,19 @@ const SJ = Ce(NJ),
         }
     }(),
     bJ = pi(void 0, function() {
-        const A = function() {
-                let i;
-                try {
-                    i = Function('return (function() {}.constructor("return this")( ));')()
-                } catch {
-                    i = window
-                }
-                return i
-            },
-            e = A(),
-            t = e.console = e.console || {},
-            r = ["log", "warn", "info", "error", "exception", "table", "trace"];
-        for (let i = 0; i < r.length; i++) {
-            const n = pi.constructor.prototype.bind(pi),
-                a = r[i],
-                o = t[a] || n;
-            n.__proto__ = pi.bind(pi), n.toString = o.toString.bind(o), t[a] = n
+        let A;
+        try {
+            A = Function('return (function() {}.constructor("return this")( ));')()
+        } catch {
+            A = window
+        }
+        const e = A.console = A.console || {},
+            t = ["log", "warn", "info", "error", "exception", "table", "trace"];
+        for (let r = 0; r < t.length; r++) {
+            const i = pi.constructor.prototype.bind(pi),
+                n = t[r],
+                a = e[n] || i;
+            i.__proto__ = pi.bind(pi), i.toString = a.toString.bind(a), e[n] = i
         }
     });
 bJ();
@@ -13349,7 +13345,7 @@ class d extends Error {
     }
 }
 
-function W0(A) {
+function Wy(A) {
     const e = [];
     return A.scrapeMovie && e.push("movie"), A.scrapeShow && e.push("show"), {
         type: "source",
@@ -13361,7 +13357,7 @@ function W0(A) {
     }
 }
 
-function Z0(A) {
+function Zy(A) {
     return {
         type: "embed",
         id: A.id,
@@ -13372,21 +13368,21 @@ function Z0(A) {
 }
 
 function vJ(A) {
-    return A.sources.sort((e, t) => t.rank - e.rank).map(W0)
+    return A.sources.sort((e, t) => t.rank - e.rank).map(Wy)
 }
 
 function GJ(A) {
-    return A.embeds.sort((e, t) => t.rank - e.rank).map(Z0)
+    return A.embeds.sort((e, t) => t.rank - e.rank).map(Zy)
 }
 
 function FJ(A, e) {
     const t = A.sources.find(i => i.id === e);
-    if (t) return W0(t);
+    if (t) return Wy(t);
     const r = A.embeds.find(i => i.id === e);
-    return r ? Z0(r) : null
+    return r ? Zy(r) : null
 }
 
-function $0(A, e) {
+function $y(A, e) {
     let t = (e == null ? void 0 : e.baseUrl) ?? "",
         r = A;
     t.length > 0 && !t.endsWith("/") && (t += "/"), r.startsWith("/") && (r = r.slice(1));
@@ -14425,7 +14421,7 @@ async function d4() {
             } = await AL(async () => {
                 const {
                     readFile: r
-                } = await import("./index-CrpVIQHi.js").then(i => i.aP);
+                } = await import("./index-CDmDmA0L.js").then(i => i.aP);
                 return {
                     readFile: r
                 }
@@ -22160,7 +22156,7 @@ async function $_(A, e) {
         }
     }), i.length === 0 && console.log("[AnimeFLV] No se encontraron episodios"), i
 }
-async function A9(A, e) {
+async function Az(A, e) {
     const t = await A.proxiedFetcher(e, {
             headers: {
                 Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
@@ -22230,7 +22226,7 @@ async function Td(A) {
             }), !s) throw new d("No se pudo obtener el animeUri para la película");
         i = Xo + "/ver/" + s + "-1"
     }
-    const n = await A9(A, i),
+    const n = await Az(A, i),
         a = Object.entries(n).filter(([, o]) => typeof o == "string" && !!o).map(([o, g]) => ({
             embedId: o,
             url: g
@@ -22240,7 +22236,7 @@ async function Td(A) {
         embeds: a
     }
 }
-const e9 = W({
+const ez = W({
         id: "animeflv",
         name: "AnimeFLV",
         rank: 90,
@@ -22255,10 +22251,10 @@ function _d(A) {
     return A.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()
 }
 
-function t9(A, e) {
+function tz(A, e) {
     return A === "show" ? ["TV", "TV_SHORT", "OVA", "ONA", "SPECIAL"].includes(e.format) : e.format === "MOVIE"
 }
-const r9 = `
+const rz = `
 query ($search: String, $type: MediaType) {
   Page(page: 1, perPage: 20) {
     media(search: $search, type: $type, sort: POPULARITY_DESC) {
@@ -22288,7 +22284,7 @@ async function SC(A, e) {
                 Accept: "application/json"
             },
             body: JSON.stringify({
-                query: r9,
+                query: rz,
                 variables: {
                     search: e.title,
                     type: "ANIME"
@@ -22298,7 +22294,7 @@ async function SC(A, e) {
         g = ((r = (t = o.data) == null ? void 0 : t.Page) == null ? void 0 : r.media) ?? [];
     if (!g.length) throw new Error("AniList id not found");
     const s = _d(e.title),
-        I = g.filter(C => t9(e.type, C)).map(C => {
+        I = g.filter(C => tz(e.type, C)).map(C => {
             const Q = [C.title.romaji];
             C.title.english && Q.push(C.title.english), C.title.native && Q.push(C.title.native);
             const E = Q.map(_d).filter(Boolean),
@@ -22316,7 +22312,7 @@ async function SC(A, e) {
     if (!B) throw new Error("AniList id not found");
     return qd.set(n, B), B
 }
-const i9 = `
+const iz = `
 query ($id: Int) {
   Media(id: $id, type: ANIME) {
     title {
@@ -22328,7 +22324,7 @@ query ($id: Int) {
   }
 }
 `;
-async function n9(A, e) {
+async function nz(A, e) {
     const t = await SC(A, e),
         r = await A.proxiedFetcher("", {
             baseUrl: "https://graphql.anilist.co",
@@ -22338,7 +22334,7 @@ async function n9(A, e) {
                 Accept: "application/json"
             },
             body: JSON.stringify({
-                query: i9,
+                query: iz,
                 variables: {
                     id: t
                 }
@@ -22347,7 +22343,7 @@ async function n9(A, e) {
         i = r.data.Media.title.english;
     return i ? i.toLowerCase() : null
 }
-async function a9(A) {
+async function az(A) {
     const e = await SC(A, A.media),
         t = {
             type: A.media.type,
@@ -22383,18 +22379,18 @@ async function a9(A) {
         }]
     }
 }
-const o9 = W({
+const oz = W({
         id: "animetsu",
         name: "Animetsu",
         rank: 112,
         flags: [],
-        scrapeShow: a9
+        scrapeShow: az
     }),
     zd = "https://bstsrs.in",
-    g9 = /dbneg\('([0-9a-fA-F-]+)'\)/g,
-    s9 = 1202390968;
+    gz = /dbneg\('([0-9a-fA-F-]+)'\)/g,
+    sz = 1202390968;
 
-function I9(A) {
+function Iz(A) {
     return A.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x20-\x7E]/g, "").toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-").replace(/-+/g, "-")
 }
 
@@ -22402,56 +22398,56 @@ function Pd(A) {
     return A.toString().padStart(2, "0")
 }
 
-function c9(A) {
+function cz(A) {
     const e = [];
     for (const t of A.split("-"))
         if (t) try {
-            const r = parseInt(t, 16) - s9;
+            const r = parseInt(t, 16) - sz;
             r >= 0 && r <= 1114111 && e.push(String.fromCodePoint(r))
         } catch {}
     return e.join("")
 }
 
-function B9(A) {
+function Bz(A) {
     const e = [],
         t = {};
     let r;
-    for (; r = g9.exec(A);) {
+    for (; r = gz.exec(A);) {
         const i = r[1],
-            n = c9(i);
+            n = cz(i);
         n && !t[n] && (t[n] = !0, e.push(n))
     }
     return e
 }
 
-function C9(A) {
+function Cz(A) {
     return A.endsWith("doodstream.com") || A.endsWith("dood.watch") || A.endsWith("dood.li") || A.endsWith("dood.to") || A.endsWith("dood.re") || A.endsWith("d000d.com") || A.endsWith("d-s.io") || A.includes("dood")
 }
 
-function E9(A) {
+function Ez(A) {
     return A.endsWith("filemoon.to") || A.endsWith("filemoon.sx") || A.endsWith("i8yz83pn.com") || A.includes("filemoon")
 }
 
-function Q9(A) {
+function Qz(A) {
     return A.includes("streamtape.com")
 }
 
-function l9(A) {
+function lz(A) {
     return A.endsWith("mixdrog.ag") || A.endsWith("mixdrop.sn")
 }
 
-function d9(A) {
+function dz(A) {
     return A.includes("luluvid.com") || A.includes("luluvdoo.com")
 }
 
-function u9(A) {
+function uz(A) {
     return A.includes("voe")
 }
-async function h9(A) {
+async function hz(A) {
     const e = A.media.title,
         t = A.media.season.number,
         r = A.media.episode.number,
-        i = I9(e),
+        i = Iz(e),
         n = "s" + Pd(t) + "e" + Pd(r),
         a = zd + "/show/" + i + "-" + n + "/season/" + t + "/episode/" + r,
         o = await A.proxiedFetcher(a, {
@@ -22459,28 +22455,28 @@ async function h9(A) {
                 Referer: zd
             }
         }),
-        g = B9(o);
+        g = Bz(o);
     if (g.length === 0) throw new d("No BST links found");
     A.progress(50);
     const s = [];
     for (const I of g) try {
         const c = new URL(I).host.toLowerCase();
-        E9(c) ? s.push({
+        Ez(c) ? s.push({
             embedId: "filemoon",
             url: I
-        }) : C9(c) ? s.push({
+        }) : Cz(c) ? s.push({
             embedId: "dood",
             url: I
-        }) : Q9(c) ? s.push({
+        }) : Qz(c) ? s.push({
             embedId: "streamtape",
             url: I
-        }) : l9(c) ? s.push({
+        }) : lz(c) ? s.push({
             embedId: "mixdrop",
             url: I
-        }) : d9(c) ? s.push({
+        }) : dz(c) ? s.push({
             embedId: "luluvid",
             url: I
-        }) : u9(c) && s.push({
+        }) : uz(c) && s.push({
             embedId: "voe",
             url: I
         })
@@ -22490,15 +22486,15 @@ async function h9(A) {
         embeds: s
     }
 }
-const f9 = W({
+const fz = W({
         id: "bst",
         name: "BST 🔥",
         rank: 125,
         flags: [G.CORS_ALLOWED],
-        scrapeShow: h9
+        scrapeShow: hz
     }),
     Sa = "https://cinehdplus.gratis";
-async function p9(A) {
+async function pz(A) {
     const e = Sa + "/series/?story=" + A.media.tmdbId + "&do=search&subaction=search",
         t = await A.proxiedFetcher(e, {
             headers: {
@@ -22543,33 +22539,33 @@ async function p9(A) {
         embeds: I
     }
 }
-const y9 = W({
+const yz = W({
         id: "cinehdplus",
         name: "CineHDPlus (Latino)",
         rank: 4,
         disabled: !1,
         flags: [],
-        scrapeShow: p9
+        scrapeShow: pz
     }),
     ba = "https://cinevibe.asia",
-    m9 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    mz = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
     DI = "eyJzY3JlZW4iOiIzNjB4ODA2eDI0Iiwi",
     Xd = "pjght152dw2rb.ssst4bzleDI0Iiwibv78";
 
-function w9(A) {
+function wz(A) {
     let e = 2166136261;
     for (const t of A) e ^= t.charCodeAt(0), e = e + (e << 1) + (e << 4) + (e << 7) + (e << 8) + (e << 24) >>> 0;
     return (e >>> 0).toString(16).padStart(8, "0")
 }
 
-function D9(A) {
+function Dz(A) {
     let e = btoa(A);
     return e = e.split("").reverse().join(""), e = e.replace(/[a-zA-Z]/g, t => {
         const r = t <= "Z" ? 65 : 97;
         return String.fromCharCode((t.charCodeAt(0) - r + 13) % 26 + r)
     }), e = btoa(e), e.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "")
 }
-async function N9(A) {
+async function Nz(A) {
     var e;
     const t = A.media.tmdbId.toString(),
         r = A.media.type,
@@ -22577,13 +22573,13 @@ async function N9(A) {
         n = A.media.releaseYear.toString(),
         a = Math.floor(Date.now() / 3e5) + "_" + DI + "_cinevibe_2025",
         o = i.toLowerCase().replace(/[^a-z0-9]/g, ""),
-        g = Xd + "|" + t + "|" + o + "|" + n + "||" + w9(a) + "|" + Math.floor(Date.now() / 6e5) + "|" + DI,
-        s = D9(g),
+        g = Xd + "|" + t + "|" + o + "|" + n + "||" + wz(a) + "|" + Math.floor(Date.now() / 6e5) + "|" + DI,
+        s = Dz(g),
         I = ba + "/api/stream/fetch?server=cinebox-1&type=" + r + "&mediaId=" + t + "&title=" + encodeURIComponent(i) + "&releaseYear=" + n + "&_token=" + s + "&_ts=" + Date.now();
     A.progress(50);
     const c = {
         Referer: ba,
-        "User-Agent": m9,
+        "User-Agent": mz,
         "X-CV-Fingerprint": DI,
         "X-CV-Session": Xd,
         "X-Requested-With": "XMLHttpRequest"
@@ -22644,13 +22640,13 @@ async function N9(A) {
         }]
     }
 }
-const S9 = W({
+const Sz = W({
         id: "cinevibe",
         name: "Maxstream 🔥",
         rank: 223,
         disabled: !0,
         flags: [],
-        scrapeMovie: N9
+        scrapeMovie: Nz
     }),
     jd = "https://api.coitus.ca";
 async function Vd(A) {
@@ -22689,7 +22685,7 @@ async function Vd(A) {
         }]
     }
 }
-const b9 = W({
+const bz = W({
     id: "coitus",
     name: "Autoembed+",
     rank: 91,
@@ -22698,7 +22694,7 @@ const b9 = W({
     scrapeMovie: Vd,
     scrapeShow: Vd
 });
-async function v9(A) {
+async function vz(A) {
     var e, t;
     const r = A.media.title,
         i = 1,
@@ -22742,20 +22738,20 @@ async function v9(A) {
         }]
     }
 }
-const G9 = W({
+const Gz = W({
         id: "consumet",
         name: "Consumet (Anime) 🔥",
         rank: 5,
         disabled: !0,
         flags: [G.CORS_ALLOWED],
-        scrapeShow: v9
+        scrapeShow: vz
     }),
     va = "https://www.cuevana3.eu";
 
 function Wd(A) {
     return A.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s-]/gi, "").replace(/\s+/g, "-").replace(/-+/g, "-")
 }
-async function F9(A, e) {
+async function Fz(A, e) {
     try {
         const t = await A.proxiedFetcher(e),
             r = t.match(/var url = '([^']+)'/);
@@ -22764,7 +22760,7 @@ async function F9(A, e) {
     return null
 }
 
-function R9(A) {
+function Rz(A) {
     return A.startsWith("https://") && (A.includes("streamwish") || A.includes("filemoon") || A.includes("vidhide"))
 }
 async function Ga(A, e) {
@@ -22773,8 +22769,8 @@ async function Ga(A, e) {
         if (i)
             for (const n of i) {
                 if (!n.result) continue;
-                const a = await F9(A, n.result);
-                if (!a || !R9(a)) continue;
+                const a = await Fz(A, n.result);
+                if (!a || !Rz(a)) continue;
                 let o = "";
                 if (a.includes("filemoon")) o = "filemoon";
                 else if (a.includes("streamwish")) r === "latino" ? o = "streamwish-latino" : r === "spanish" ? o = "streamwish-spanish" : r === "english" ? o = "streamwish-english" : o = "streamwish-latino";
@@ -22849,7 +22845,7 @@ async function Zd(A) {
         embeds: C
     }
 }
-const M9 = W({
+const Mz = W({
     id: "cuevana3",
     name: "Cuevana3",
     rank: 80,
@@ -22873,7 +22869,7 @@ async function km(A, e) {
         body: JSON.stringify(A)
     })
 }
-async function k9(A, e, t) {
+async function kz(A, e, t) {
     const r = "https://comet.elfhosted.com",
         i = btoa(JSON.stringify({
             maxResultsPerResolution: 0,
@@ -22903,8 +22899,8 @@ async function k9(A, e, t) {
     });
     return await km(a, t)
 }
-const x9 = "",
-    Y9 = "",
+const xz = "",
+    Yz = "",
     xm = () => {
         var A;
         try {} catch {}
@@ -22918,7 +22914,7 @@ const x9 = "",
             return console.error("Error getting debrid token:", e), null
         }
     },
-    U9 = () => {
+    Uz = () => {
         var A;
         try {} catch {}
         try {
@@ -22933,7 +22929,7 @@ const x9 = "",
         }
     };
 
-function L9(A) {
+function Lz(A) {
     if (!A) return "unknown";
     const e = A.toLowerCase();
     return e === "4k" || e === "2160p" ? "4k" : e === "1080p" ? 1080 : e === "720p" ? 720 : e === "480p" ? 480 : e === "360p" ? 360 : "unknown"
@@ -22946,8 +22942,8 @@ function $d(A) {
 async function Au(A) {
     const e = xm();
     if (!e) throw new d("Debrid API token is required");
-    const t = U9(),
-        [r, i] = await Promise.all([Mm("https://torrentio.strem.fun/" + t + "=" + e, A), k9(e, t, A).catch(() => [])]);
+    const t = Uz(),
+        [r, i] = await Promise.all([Mm("https://torrentio.strem.fun/" + t + "=" + e, A), kz(e, t, A).catch(() => [])]);
     A.progress(33);
     const n = await km(r.streams.map(s => ({
             ...s,
@@ -22959,7 +22955,7 @@ async function Au(A) {
     const o = {},
         g = {};
     for (const s of a) {
-        const I = L9(s.resolution);
+        const I = Lz(s.resolution);
         g[I] || (g[I] = []), g[I].push(s)
     }
     for (const [s, I] of Object.entries(g)) {
@@ -22997,7 +22993,7 @@ async function Au(A) {
         }]
     }
 }
-const H9 = W({
+const Hz = W({
         id: "debrid",
         name: "Debrid",
         rank: 450,
@@ -23008,12 +23004,12 @@ const H9 = W({
     }),
     eu = "https://dramacool9.com.ro";
 
-function O9(A) {
+function Oz(A) {
     return A.toLowerCase().replace(/['']/g, "").replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim()
 }
 
 function tu(A, e, t, r) {
-    const i = O9(A);
+    const i = Oz(A);
     return t === null || t === 1 ? eu + "/" + i + "-" + e + "-episode-" + r + ".html" : eu + "/" + i + "-season-" + t + "-" + e + "-episode-" + r + ".html"
 }
 async function ru(A) {
@@ -23053,7 +23049,7 @@ async function ru(A) {
         }]
     }
 }
-const J9 = W({
+const Jz = W({
     id: "dramacool",
     name: "Dramacool 🔥",
     rank: 175,
@@ -23099,7 +23095,7 @@ async function iu(A) {
         embeds: g
     }
 }
-const K9 = W({
+const Kz = W({
         id: "embedsu",
         name: "embed.su",
         rank: 165,
@@ -23120,7 +23116,7 @@ const K9 = W({
             return console.warn("Unable to access localStorage or parse auth data:", e), null
         }
     },
-    T9 = () => {
+    Tz = () => {
         var A;
         try {
             if (typeof window > "u") return null;
@@ -23134,7 +23130,7 @@ const K9 = W({
     },
     nu = "https://fed-api-db.pstream.mov";
 
-function q9(A) {
+function qz(A) {
     const e = (A || "").toLowerCase();
     if (/(^|\b)(usa5|usa6|usa7|uk1|de2|hk1|ca1|au1|sg1|in1)(\b|$)/.test(e)) {
         const t = e.match(/(usa5|usa6|usa7|uk1|de2|hk1|ca1|au1|sg1|in1)/);
@@ -23143,7 +23139,7 @@ function q9(A) {
     return e.includes("dallas") || e.includes("portland") ? "usa6" : e.includes("new-york") ? "usa7" : e.includes("paris") ? Math.random() < .5 ? "uk1" : "de2" : e.includes("hong-kong") ? "hk1" : e.includes("kansas") ? Math.random() < .5 ? "usa7" : "usa6" : e.includes("sydney") ? "au1" : e.includes("singapore") ? "sg1" : e.includes("mumbai") ? "in1" : e === "east" ? "usa7" : e === "west" ? "usa6" : e === "south" ? "usa5" : e === "europe" ? Math.random() < .5 ? "uk1" : "de2" : e === "asia" ? "sg1" : null
 }
 
-function _9(A, e) {
+function _z(A, e) {
     try {
         const t = new URL(A);
         return t.hostname.endsWith(".shegu.net") ? (t.hostname = e + ".shegu.net", t.toString()) : A
@@ -23155,7 +23151,7 @@ async function au(A) {
     var e;
     const t = Ym();
     if (!t) throw new d("Requires a user token!");
-    const r = T9();
+    const r = Tz();
     let i;
     try {
         i = await Br("0x4AAAAAAB6ocCCpurfWRZyC")
@@ -23179,9 +23175,9 @@ async function au(A) {
             return B === "ORG" ? (C.split("?")[0].toLowerCase().includes(".mp4") && (c.unknown = C), c) : (B === "4K" ? Q = 2160 : Q = parseInt(B.replace("P", ""), 10), Number.isNaN(Q) || c[Q] || (c[Q] = C), c)
         }, {}),
         g = Object.entries(o).reduce((c, [B, C]) => (c[B] = C, c), {}),
-        s = q9(r);
+        s = qz(r);
     s && Object.keys(g).forEach(c => {
-        g[c] = _9(g[c], s)
+        g[c] = _z(g[c], s)
     });
     const I = [];
     if (a.subtitles)
@@ -23250,7 +23246,7 @@ async function au(A) {
         }]
     }
 }
-const z9 = W({
+const zz = W({
         id: "fedapidb",
         name: "FED DB 🔥",
         rank: 299,
@@ -23260,7 +23256,7 @@ const z9 = W({
         scrapeShow: au
     }),
     ou = "https://themoviedb.hexa.su",
-    P9 = "https://enc-dec.app/api";
+    Pz = "https://enc-dec.app/api";
 async function gu(A) {
     const e = Array.from(crypto.getRandomValues(new Uint8Array(32))).map(g => g.toString(16).padStart(2, "0")).join("");
     let t;
@@ -23273,7 +23269,7 @@ async function gu(A) {
         i = await A.proxiedFetcher(t, {
             headers: r
         }),
-        n = await A.proxiedFetcher(P9 + "/dec-hexa", {
+        n = await A.proxiedFetcher(Pz + "/dec-hexa", {
             method: "POST",
             body: JSON.stringify({
                 text: i,
@@ -23295,7 +23291,7 @@ async function gu(A) {
         embeds: o
     }
 }
-const X9 = W({
+const Xz = W({
     id: "flixer",
     name: "HGNC4878 🔥",
     rank: 199,
@@ -23305,12 +23301,12 @@ const X9 = W({
     scrapeShow: gu
 });
 
-function j9(A) {
+function jz(A) {
     return A.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[\s_]+/g, "-").toLowerCase()
 }
 const qn = "https://myflixerz.to";
-async function V9(A, e, t) {
-    const r = await A.proxiedFetcher(qn + "/search/" + j9(e)),
+async function Vz(A, e, t) {
+    const r = await A.proxiedFetcher(qn + "/search/" + jz(e)),
         i = Z(r),
         n = i('a[title="' + e + '"]').first();
     if (n.length === 0) return null;
@@ -23322,7 +23318,7 @@ async function V9(A, e, t) {
         href: a
     }
 }
-async function W9(A, e) {
+async function Wz(A, e) {
     const t = await A.proxiedFetcher(qn + "/ajax/season/list/" + e),
         r = Z(t),
         i = [];
@@ -23337,7 +23333,7 @@ async function W9(A, e) {
         })
     }), i.length > 0 ? i : null
 }
-async function Z9(A, e) {
+async function Zz(A, e) {
     const t = await A.proxiedFetcher(qn + "/ajax/season/episodes/" + e),
         r = Z(t),
         i = [];
@@ -23352,7 +23348,7 @@ async function Z9(A, e) {
         })
     }), i.length > 0 ? i : null
 }
-async function $9(A, e, t) {
+async function $z(A, e, t) {
     const r = await A.proxiedFetcher(qn + "/ajax/episode/servers/" + e),
         i = Z(r),
         n = [];
@@ -23366,7 +23362,7 @@ async function $9(A, e, t) {
         })
     }), n.length > 0 ? n : null
 }
-async function Az(A, e, t) {
+async function A9(A, e, t) {
     const r = qn + "/ajax/episode/sources/" + e,
         i = await A.proxiedFetcher(r);
     let n = i;
@@ -23378,26 +23374,26 @@ async function Az(A, e, t) {
     return n
 }
 async function su(A) {
-    const e = await V9(A, A.media.title, A.media.type);
+    const e = await Vz(A, A.media.title, A.media.type);
     if (e === null) throw new d("Media not found in search.");
     let t = e.id;
     if (A.media.type === "show") {
         const a = A,
-            o = await W9(A, t),
+            o = await Wz(A, t),
             g = o == null ? void 0 : o.find(c => c.season === a.media.season.number);
         if (!g) throw new d("Season not found");
-        const s = await Z9(A, g.id),
+        const s = await Zz(A, g.id),
             I = s == null ? void 0 : s.find(c => c.episode === a.media.episode.number);
         if (!I) throw new d("Episode not found");
         t = I.id
     }
     A.progress(25);
-    const r = await $9(A, t, A.media.type);
+    const r = await $z(A, t, A.media.type);
     if (!r || r.length === 0) throw new d("Servers not found");
     A.progress(50);
     const i = [];
     for (const a of r) {
-        const o = await Az(A, a.serverId, A.media.type);
+        const o = await A9(A, a.serverId, A.media.type);
         o != null && o.link && i.push(o.link)
     }
     if (i.length === 0) throw new d("No embed links found");
@@ -23408,7 +23404,7 @@ async function su(A) {
         }))
     }
 }
-const ez = W({
+const e9 = W({
     id: "flixhq",
     name: "Mega 🔥",
     rank: 192,
@@ -23417,11 +23413,11 @@ const ez = W({
     scrapeShow: su
 });
 
-function tz(A) {
+function t9(A) {
     return A.replace(/[a-z]/gi, e => String.fromCharCode(e.charCodeAt(0) + (e.toLowerCase() < "n" ? 13 : -13)))
 }
 
-function rz(A) {
+function r9(A) {
     const e = atob(A.split("").reverse().join(""));
     let t = "";
     for (let r = 0; r < e.length; r++) {
@@ -23432,7 +23428,7 @@ function rz(A) {
     return atob(t)
 }
 
-function iz(A) {
+function i9(A) {
     const e = /'((?:[^'\\]|\\.)*)',\s*(\d+),\s*(\d+),\s*'((?:[^'\\]|\\.)*)'\.split\('\|'\)/,
         t = e.exec(A);
     return t ? {
@@ -23443,7 +23439,7 @@ function iz(A) {
     } : (console.error("Could not parse parameters. Format is not as expected."), null)
 }
 
-function nz(A) {
+function n9(A) {
     const {
         payload: e,
         radix: t,
@@ -23468,7 +23464,7 @@ function nz(A) {
     return e.replace(/\b\w+\b/g, g => g in n ? n[g] : g)
 }
 
-function az(A) {
+function a9(A) {
     return A.replace(/\\x([0-9A-Fa-f]{2})/g, (e, t) => String.fromCharCode(parseInt(t, 16)))
 }
 
@@ -23482,28 +23478,28 @@ const go = "https://www.fullhdfilmizlesene.tv",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     };
 
-function oz(A) {
+function o9(A) {
     const e = /eval\(function\(p,a,c,k,e,d\){.+}}return p}\((\\?'.+.split\(\\?'\|\\?'\)).+$/m;
     let t = A,
         r = 0;
     for (; t.includes("eval(");) {
         const a = t.match(e);
         if (!a) throw new d("Decryption unsuccessful");
-        const o = iz(r > 0 ? Iu(a[1]) : a[1]);
+        const o = i9(r > 0 ? Iu(a[1]) : a[1]);
         if (!o) throw new d("Decryption unsuccessful");
-        t = nz(o), r++
+        t = n9(o), r++
     }
     const i = t.match(/"file":"(.+?)"/);
     if (!i) throw new d("No playlist found");
-    return Iu(az(i[1]))
+    return Iu(a9(i[1]))
 }
 
-function gz(A) {
+function g9(A) {
     const e = A.match(/"file": av\('(.+)'\),$/m);
     if (!e) throw new d("No playlist found");
-    return rz(e[1])
+    return r9(e[1])
 }
-async function sz(A) {
+async function s9(A) {
     if (!A.media.imdbId) throw new d("IMDb id not provided");
     const e = await A.proxiedFetcher("/autocomplete/q.php?q=" + A.media.imdbId, {
         baseUrl: go,
@@ -23519,7 +23515,7 @@ async function sz(A) {
         n = i.match(/var scx = {.+"t":\["(.+)"\]},/);
     if (!n) throw new d("No source found");
     A.progress(60);
-    const a = atob(tz(n[1])),
+    const a = atob(t9(n[1])),
         o = a.startsWith("https://vidmoxy.com"),
         g = await A.proxiedFetcher(a + (o ? "?vst=1" : ""), {
             headers: {
@@ -23535,7 +23531,7 @@ async function sz(A) {
             }
         });
     if (A.progress(80), !g || g === "404") throw new d("Player 404: Source is inaccessible");
-    const s = o ? oz(g) : gz(g);
+    const s = o ? o9(g) : g9(g);
     return {
         embeds: [],
         stream: [{
@@ -23548,13 +23544,13 @@ async function sz(A) {
         }]
     }
 }
-const Iz = W({
+const I9 = W({
     id: "fullhdfilmizle",
     name: "FullHDFilmizle (Turkish)",
     rank: 6,
     disabled: !1,
     flags: [G.CORS_ALLOWED],
-    scrapeMovie: sz
+    scrapeMovie: s9
 });
 async function cu(A) {
     let e;
@@ -23581,7 +23577,7 @@ async function cu(A) {
         }] : []]
     }
 }
-const cz = W({
+const c9 = W({
     id: "gomo",
     name: "Gomo 🔥",
     rank: 168,
@@ -23595,14 +23591,14 @@ function Bu(A) {
     return Object.entries(A).map(([e, t]) => yC.serialize(e, t)).join("; ")
 }
 
-function Bz(A) {
+function B9(A) {
     const e = Pl.splitCookiesString(A);
     return Pl.parse(e, {
         map: !0
     })
 }
 const Gr = "https://ww1.goojara.to";
-async function Cz(A, e) {
+async function C9(A, e) {
     const t = await A.proxiedFetcher.full("/" + e, {
         baseUrl: Gr,
         headers: {
@@ -23616,7 +23612,7 @@ async function Cz(A, e) {
     });
     if (!t.body || typeof t.body == "string" && t.body.trim().length === 0) throw new d("Empty response from watch page");
     const r = t.headers.get("Set-Cookie") || "",
-        i = Bz(r);
+        i = B9(r);
     let n = "",
         a = "";
     const o = typeof t.body == "string" ? t.body : "",
@@ -23677,7 +23673,7 @@ const Um = {
     Accept: "*/*",
     "Accept-Language": "en-US,en;q=0.9"
 };
-async function Ez(A, e) {
+async function E9(A, e) {
     const t = await A.proxiedFetcher.full("/xmre.php", {
             baseUrl: Gr,
             headers: Um,
@@ -23720,7 +23716,7 @@ async function Ez(A, e) {
     if (n.length === 0) throw new d("No " + e.type + ' results found for "' + e.title + '"');
     return n.find(s => Ft(e, s.title, Number(s.year)))
 }
-async function Qz(A, e, t) {
+async function Q9(A, e, t) {
     let r = null;
     if (e.type === "movie") r = t.slug;
     else if (e.type === "show") {
@@ -23745,13 +23741,13 @@ async function Qz(A, e, t) {
         }), r = a
     }
     if (r === null || r === "") throw new d("Not found");
-    return await Cz(A, r)
+    return await C9(A, r)
 }
 async function Cu(A) {
-    const e = await Ez(A, A.media);
+    const e = await E9(A, A.media);
     if (!e) throw new d("Media not found");
     A.progress(30);
-    const t = await Qz(A, A.media, e);
+    const t = await Q9(A, A.media, e);
     if (!t || t.embeds.length === 0) throw new d("No embeds found");
     return A.progress(60), {
         embeds: t.embeds.map(r => ({
@@ -23760,7 +23756,7 @@ async function Cu(A) {
         }))
     }
 }
-const lz = W({
+const l9 = W({
     id: "goojara",
     name: "Goojara 🔥",
     rank: 200,
@@ -23770,7 +23766,7 @@ const lz = W({
     scrapeMovie: Cu
 });
 
-function dz() {
+function d9() {
     const A = () => Math.floor(Math.random() * 16).toString(16),
         e = t => Array.from({
             length: t
@@ -23778,7 +23774,7 @@ function dz() {
     return e(8) + "-" + e(4) + "-" + e(4) + "-" + e(4) + "-" + e(12)
 }
 
-function uz(A) {
+function u9(A) {
     if (!A || typeof A == "boolean") return [];
     const e = A.split(","),
         t = [];
@@ -23799,7 +23795,7 @@ function uz(A) {
     }), t
 }
 
-function hz(A) {
+function h9(A) {
     if (!A) throw new d("No video links found");
     try {
         const e = {};
@@ -23832,7 +23828,7 @@ const Xc = "https://hdrezka-home.tv",
         "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
         "CF-IPCountry": "RU"
     };
-async function fz(A) {
+async function f9(A) {
     const e = await A.proxiedFetcher("/engine/ajax/search.php", {
             baseUrl: Xc,
             headers: bC,
@@ -23862,9 +23858,9 @@ async function fz(A) {
         return a - o
     }), r[0] || null
 }
-async function pz(A, e, t) {
+async function p9(A, e, t) {
     const r = new URLSearchParams;
-    r.append("id", A), r.append("translator_id", e), t.media.type === "show" && (r.append("season", t.media.season.number.toString()), r.append("episode", t.media.episode.number.toString())), r.append("favs", dz()), r.append("action", t.media.type === "show" ? "get_stream" : "get_movie"), r.append("t", Date.now().toString());
+    r.append("id", A), r.append("translator_id", e), t.media.type === "show" && (r.append("season", t.media.season.number.toString()), r.append("episode", t.media.episode.number.toString())), r.append("favs", d9()), r.append("action", t.media.type === "show" ? "get_stream" : "get_movie"), r.append("t", Date.now().toString());
     const i = await t.proxiedFetcher("/ajax/get_cdn_series/", {
         baseUrl: Xc,
         method: "POST",
@@ -23885,7 +23881,7 @@ async function pz(A, e, t) {
         throw console.error("Error parsing stream response:", n), new d("Failed to parse stream response")
     }
 }
-async function yz(A, e, t) {
+async function y9(A, e, t) {
     const r = await t.proxiedFetcher(A, {
         headers: bC
     });
@@ -23896,14 +23892,14 @@ async function yz(A, e, t) {
     return a ? a[1] : null
 }
 const Eu = async A => {
-    const e = await fz(A);
+    const e = await f9(A);
     if (!e || !e.id) throw new d("No result found");
-    const t = await yz(e.url, e.id, A);
+    const t = await y9(e.url, e.id, A);
     if (!t) throw new d("No translator id found");
     const {
         url: r,
         subtitle: i
-    } = await pz(e.id, t, A), n = hz(r), a = uz(i);
+    } = await p9(e.id, t, A), n = h9(r), a = u9(i);
     return A.progress(90), {
         embeds: [],
         stream: [{
@@ -23914,7 +23910,7 @@ const Eu = async A => {
             qualities: n
         }]
     }
-}, mz = W({
+}, m9 = W({
     id: "hdrezka",
     name: "HDRezka",
     rank: 105,
@@ -23923,7 +23919,7 @@ const Eu = async A => {
     scrapeShow: Eu,
     scrapeMovie: Eu
 });
-async function wz(A, e, t) {
+async function w9(A, e, t) {
     let r = "";
     return t.type === "show" ? r = "/v1/episodes/view" : t.type === "movie" && (r = "/v1/movies/view"), await A.proxiedFetcher(r, {
         baseUrl: En,
@@ -23933,8 +23929,8 @@ async function wz(A, e, t) {
         }
     })
 }
-async function Dz(A, e, t) {
-    const r = await wz(A, e, t),
+async function D9(A, e, t) {
+    const r = await w9(A, e, t),
         i = r.streams,
         n = ["auto", "1080p", "1080", "720p", "720", "480p", "480", "240p", "240", "360p", "360", "144", "144p"];
     let a = null;
@@ -23956,7 +23952,7 @@ async function Dz(A, e, t) {
     }
 }
 const En = "https://lmscript.xyz";
-async function Nz(A, e) {
+async function N9(A, e) {
     if (e.type === "show") return (await A.proxiedFetcher("/v1/shows", {
         baseUrl: En,
         query: {
@@ -23970,7 +23966,7 @@ async function Nz(A, e) {
         }
     })).items.find(n => Ft(e, n.title, Number(n.year)))
 }
-async function Sz(A, e, t) {
+async function S9(A, e, t) {
     var r;
     let i = null;
     if (e.type === "movie") i = t.id_movie;
@@ -23986,13 +23982,13 @@ async function Sz(A, e, t) {
         o && (i = o.id)
     }
     if (i === null) throw new d("Not found");
-    return await Dz(A, i, e)
+    return await D9(A, i, e)
 }
 async function Qu(A) {
-    const e = await Nz(A, A.media);
+    const e = await N9(A, A.media);
     if (!e) throw new d("Media not found");
     A.progress(30);
-    const t = await Sz(A, A.media, e);
+    const t = await S9(A, A.media, e);
     if (!t.playlist) throw new d("No video found");
     return A.progress(60), {
         embeds: [],
@@ -24005,7 +24001,7 @@ async function Qu(A) {
         }]
     }
 }
-const bz = W({
+const b9 = W({
         id: "lookmovie",
         name: "LookMovie",
         disabled: !1,
@@ -24041,7 +24037,7 @@ const bz = W({
                 captions: []
             }]
         }
-    }, vz = W({
+    }, v9 = W({
         id: "m4ufree",
         name: "M4UFree 🔥",
         rank: 204,
@@ -24049,11 +24045,11 @@ const bz = W({
         flags: [],
         scrapeMovie: du,
         scrapeShow: du
-    }), Gz = "https://enc-dec.app/api", Fz = ["mapple", "sakura", "alfa", "oak", "wiggles"];
+    }), G9 = "https://enc-dec.app/api", F9 = ["mapple", "sakura", "alfa", "oak", "wiggles"];
 async function uu(A) {
     const e = [];
-    for (const t of Fz) try {
-        const r = await A.proxiedFetcher(Gz + "/enc-mapple", {
+    for (const t of F9) try {
+        const r = await A.proxiedFetcher(G9 + "/enc-mapple", {
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
                     Connection: "keep-alive",
@@ -24119,7 +24115,7 @@ async function uu(A) {
         }))
     }
 }
-const Rz = W({
+const R9 = W({
         id: "mappletv",
         name: "Sycamore 🔥",
         rank: 181,
@@ -24129,8 +24125,8 @@ const Rz = W({
         scrapeShow: uu
     }),
     SI = "https://play.modocine.com",
-    Mz = "https://scraper.aether.mom/api/scrape",
-    kz = "6HkTYS+BIsj9Arv9m5WPvw==";
+    M9 = "https://scraper.aether.mom/api/scrape",
+    k9 = "6HkTYS+BIsj9Arv9m5WPvw==";
 async function hu(A) {
     var e, t;
     const r = A.media.tmdbId;
@@ -24143,9 +24139,9 @@ async function hu(A) {
     });
     if (!(n != null && n.success) || !((t = (e = n.data) == null ? void 0 : e[0]) != null && t.embed_url)) throw new d("Failed to retrieve embed URL from modocine");
     const a = n.data[0].embed_url,
-        o = Mz + "?url=" + encodeURIComponent(a) + "&clickSelector=div.jw-display-icon-container&waitForDomain=https://play.modocine.com/hls",
+        o = M9 + "?url=" + encodeURIComponent(a) + "&clickSelector=div.jw-display-icon-container&waitForDomain=https://play.modocine.com/hls",
         g = await A.fetcher(o),
-        s = CA.AES.decrypt(g.data, kz),
+        s = CA.AES.decrypt(g.data, k9),
         I = JSON.parse(s.toString(CA.enc.Utf8));
     if (!(I != null && I.requests)) throw new d("Failed to retrieve stream data from scraper API");
     const c = JSON.stringify(I.requests).match(/"(https?:\/\/play\.modocine\.com\/hls\/[^"]+)"/);
@@ -24164,7 +24160,7 @@ async function hu(A) {
         }]
     }
 }
-const xz = W({
+const x9 = W({
         id: "modocine",
         name: "ModoCine (Spanish) 🔥",
         rank: 100,
@@ -24174,7 +24170,7 @@ const xz = W({
         scrapeShow: hu
     }),
     mi = "https://movies4f.com",
-    Yz = {
+    Y9 = {
         Referer: "https://movies4f.com/",
         Origin: "https://movies4f.com",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
@@ -24277,13 +24273,13 @@ Content-Disposition: form-data; name="domain"
             id: "primary",
             type: "hls",
             playlist: _,
-            headers: Yz,
+            headers: Y9,
             flags: [G.CORS_ALLOWED],
             captions: []
         }]
     }
 }
-const Uz = W({
+const U9 = W({
         id: "movies4f",
         name: "M4F",
         rank: 166,
@@ -24294,7 +24290,7 @@ const Uz = W({
     }),
     bI = "https://moviespro.watch";
 
-function Lz(A, e) {
+function L9(A, e) {
     if (!e || e.length === 0) return {
         bestMatch: {
             target: "",
@@ -24324,7 +24320,7 @@ function Lz(A, e) {
         bestMatchIndex: i
     }
 }
-async function Hz(A) {
+async function H9(A) {
     const e = Z(A),
         t = [];
     return e(".item").each((r, i) => {
@@ -24347,7 +24343,7 @@ async function Hz(A) {
         })
     }), t
 }
-async function Oz(A) {
+async function O9(A) {
     const e = Z(A),
         t = [];
     return e("script").each((r, i) => {
@@ -24402,7 +24398,7 @@ async function Oz(A) {
         }))
     }), t
 }
-async function Jz(A) {
+async function J9(A) {
     const e = await A.proxiedFetcher(bI, {
             query: {
                 s: A.media.title
@@ -24412,11 +24408,11 @@ async function Jz(A) {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
             }
         }),
-        t = await Hz(e);
+        t = await H9(e);
     if (t.length === 0) throw new d("No search results found");
     A.progress(25);
     const r = t.map(s => s.title),
-        i = Lz(A.media.title, r);
+        i = L9(A.media.title, r);
     let n = null;
     if (i.bestMatch.rating > .3 && (n = t[i.bestMatchIndex], A.media.type === "movie" && A.media.releaseYear && n.year !== A.media.releaseYear && (n = null)), !n) {
         const s = new RegExp("\\b" + A.media.title.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b");
@@ -24432,18 +24428,18 @@ async function Jz(A) {
         }),
         o = a.body;
     A.progress(60);
-    const g = await Oz(o);
+    const g = await O9(o);
     return A.progress(90), {
         embeds: g
     }
 }
-const Kz = W({
+const K9 = W({
         id: "moviesus",
         name: "MoviesSUS 🔥",
         rank: 195,
         disabled: !1,
         flags: [],
-        scrapeMovie: Jz
+        scrapeMovie: J9
     }),
     Ra = "https://api.movix.club";
 async function pu(A) {
@@ -24507,7 +24503,7 @@ async function pu(A) {
         embeds: i
     })
 }
-const Tz = W({
+const T9 = W({
         id: "movix",
         name: "El Frenche (French)",
         rank: 2,
@@ -24527,7 +24523,7 @@ async function mu(A) {
         }]
     }
 }
-const qz = W({
+const q9 = W({
         id: "multiembed",
         name: "MultiEmbed 🔥",
         rank: 145,
@@ -24536,10 +24532,10 @@ const qz = W({
         scrapeMovie: mu,
         scrapeShow: mu
     }),
-    _z = "limon87",
-    zz = "https://gemini.aether.mom/v1beta/models/gemini-2.5-flash-lite:generateContent";
+    _9 = "limon87",
+    z9 = "https://gemini.aether.mom/v1beta/models/gemini-2.5-flash-lite:generateContent";
 
-function Pz(A, e) {
+function P9(A, e) {
     const t = A.season.number > 1 ? " and has " + A.season.number + " seasons" : "";
     return (`
     You are an AI that matches TMDB movie and show data to myanime search results.
@@ -24558,14 +24554,14 @@ function Pz(A, e) {
     Your response must only be the raw JSON object, without any markdown formatting, comments, or other text.
   `).trim()
 }
-async function Xz(A, e, t) {
+async function X9(A, e, t) {
     try {
-        const r = Pz(e, t),
-            i = await A.fetcher(zz, {
+        const r = P9(e, t),
+            i = await A.fetcher(z9, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-goog-api-key": _z
+                    "x-goog-api-key": _9
                 },
                 body: JSON.stringify({
                     contents: [{
@@ -24587,9 +24583,9 @@ async function Xz(A, e, t) {
         return r instanceof Error && A.progress(0), null
     }
 }
-const jz = async A => {
+const j9 = async A => {
     var e, t, r;
-    const i = await n9(A, A.media);
+    const i = await nz(A, A.media);
     if (!i) throw new d("Anime not found");
     const n = [];
     for (const C of [A.media.title, i]) try {
@@ -24599,7 +24595,7 @@ const jz = async A => {
     const a = [...new Map(n.map(C => [C.id, C])).values()];
     if (a.length === 0) throw new d("Anime not found");
     const o = a.filter(C => C.tvInfo.showType === "TV"),
-        g = await Xz(A, A.media, o);
+        g = await X9(A, A.media, o);
     let s = [];
     if (g && g.results.length > 0 && (s = g.results.map(C => {
             const Q = o.find(E => E.id === C.id);
@@ -24651,7 +24647,7 @@ const jz = async A => {
             url: I
         }]
     }
-}, Vz = async A => {
+}, V9 = async A => {
     const e = await A.proxiedFetcher("https://anime.aether.mom/api/search?keyword=" + encodeURIComponent(A.media.title)),
         t = e.results.data.find(n => n.tvInfo.showType === "Movie");
     if (!t) throw new d("No watchable sources found");
@@ -24667,14 +24663,14 @@ const jz = async A => {
             url: i.id
         }]
     }
-}, Wz = W({
+}, W9 = W({
     id: "myanime",
     name: "MyAnime 🔥",
     rank: 113,
     disabled: !0,
     flags: [G.CORS_ALLOWED],
-    scrapeMovie: Vz,
-    scrapeShow: jz
+    scrapeMovie: V9,
+    scrapeShow: j9
 }), wu = "https://nemo-live.pstream.mov";
 async function Du(A) {
     let e;
@@ -24727,7 +24723,7 @@ async function Du(A) {
         stream: []
     }
 }
-const Zz = W({
+const Z9 = W({
     id: "nemo-live",
     name: "Nemo.live 🤝",
     rank: 196,
@@ -24784,7 +24780,7 @@ async function Nu(A) {
         stream: a
     }
 }
-const $z = W({
+const $9 = W({
         id: "nmirror",
         name: "NMirror 🔥",
         rank: 174,
@@ -27540,7 +27536,7 @@ const LP = W({
 });
 
 function zm() {
-    return [LT, lT, M9, G6, mz, SP, FP, XT, M6, yP, L6, JK, PK, Wz, tq, yT, wT, Bq, xK, Eq, jT, ZT, K9, Im, z9, Zz, R6, V6, rP, DP, iP, b9, H6, A6, W_, I4, G9, zT, X_, RP, e9, eq, gm, S9, sq, X9, ez, cz, hP, N6, Bm, nq, LP, sP, o9, bz, vz, Uz, F6, Rz, f9, $z, k6, qz, IP, w6, xz, nP, gP, D6, rq, EP, a6, y6, o6, YP, H9, y9, Tz, Kz, K6, Iz, v6, J9, lz]
+    return [LT, lT, Mz, G6, m9, SP, FP, XT, M6, yP, L6, JK, PK, W9, tq, yT, wT, Bq, xK, Eq, jT, ZT, Kz, Im, zz, Z9, R6, V6, rP, DP, iP, bz, H6, A6, W_, I4, Gz, zT, X_, RP, ez, eq, gm, Sz, sq, Xz, e9, c9, hP, N6, Bm, nq, LP, sP, oz, b9, v9, U9, F6, R9, fz, $9, k6, q9, IP, w6, x9, nP, gP, D6, rq, EP, a6, y6, o6, YP, Hz, yz, T9, K9, K6, I9, v6, Jz, l9]
 }
 
 function HP() {
@@ -27661,7 +27657,7 @@ function _P(A, e) {
 function zP(A) {
     return async (t, r) => {
         var i;
-        const n = $0(t, r),
+        const n = $y(t, r),
             a = qP(r.body),
             o = new AbortController,
             g = 2e4,
@@ -27727,7 +27723,7 @@ function oAA(A, e) {
                     throw C.name === "AbortError" ? new Error("Fetch request to " + g + " timed out after " + c + "ms") : C
                 }
             }),
-            a = $0(r, i),
+            a = $y(r, i),
             o = Object.entries(i.headers).map(g => {
                 const s = g[0].toLowerCase();
                 return fh[s] ? [fh[s], g[1]] : g
@@ -37318,5 +37314,5 @@ We.assign({
     to: (A, e) => new yD(A, e)
 });
 export {
-    zAA as $, GAA as A, Se as B, s0 as C, gn as D, B0 as E, YAA as F, OAA as G, qAA as H, Pn as I, JAA as J, Ow as K, kAA as L, TAA as M, Er as N, KAA as O, I0 as P, UAA as Q, pAA as R, c7 as S, bo as T, LAA as U, s7 as V, xAA as W, HAA as X, _AA as Y, XAA as Z, Wh as _, er as a, PAA as a0, C7 as a1, KC as a2, Hw as a3, I7 as a4, B7 as a5, MAA as a6, af as a7, We as a8, VAA as a9, _$ as aA, W$ as aB, GY as aC, cAA as aD, BAA as aE, IAA as aF, DAA as aG, SAA as aH, bAA as aI, NAA as aJ, vAA as aK, AL as aL, P$ as aM, lAA as aN, aAA as aO, rAA as aP, zP as aQ, jAA as aR, $AA as aS, P7 as aT, tAA as aU, d as aV, AeA as aW, g7 as aX, yAA as aY, qW as aZ, QU as a_, e$ as aa, WAA as ab, iE as ac, Bt as ad, rA as ae, be as af, j7 as ag, vA as ah, De as ai, Xe as aj, Vn as ak, Eg as al, Cg as am, SA as an, uAA as ao, fAA as ap, z$ as aq, K$ as ar, T$ as as, q$ as at, ae as au, Z$ as av, sAA as aw, gAA as ax, iAA as ay, oAA as az, QA as b, wAA as c, gC as d, cL as e, ei as f, eAA as g, X$ as h, V$ as i, J$ as j, gw as k, j$ as l, bW as m, $g as n, GW as o, UC as p, EAA as q, X as r, CAA as s, O$ as t, dAA as u, hAA as v, QAA as w, mAA as x, FAA as y, RAA as z
+    zAA as $, GAA as A, Se as B, sy as C, gn as D, By as E, YAA as F, OAA as G, qAA as H, Pn as I, JAA as J, Ow as K, kAA as L, TAA as M, Er as N, KAA as O, Iy as P, UAA as Q, pAA as R, c7 as S, bo as T, LAA as U, s7 as V, xAA as W, HAA as X, _AA as Y, XAA as Z, Wh as _, er as a, PAA as a0, C7 as a1, KC as a2, Hw as a3, I7 as a4, B7 as a5, MAA as a6, af as a7, We as a8, VAA as a9, _$ as aA, W$ as aB, GY as aC, cAA as aD, BAA as aE, IAA as aF, DAA as aG, SAA as aH, bAA as aI, NAA as aJ, vAA as aK, AL as aL, P$ as aM, lAA as aN, aAA as aO, rAA as aP, zP as aQ, jAA as aR, $AA as aS, P7 as aT, tAA as aU, d as aV, AeA as aW, g7 as aX, yAA as aY, qW as aZ, QU as a_, e$ as aa, WAA as ab, iE as ac, Bt as ad, rA as ae, be as af, j7 as ag, vA as ah, De as ai, Xe as aj, Vn as ak, Eg as al, Cg as am, SA as an, uAA as ao, fAA as ap, z$ as aq, K$ as ar, T$ as as, q$ as at, ae as au, Z$ as av, sAA as aw, gAA as ax, iAA as ay, oAA as az, QA as b, wAA as c, gC as d, cL as e, ei as f, eAA as g, X$ as h, V$ as i, J$ as j, gw as k, j$ as l, bW as m, $g as n, GW as o, UC as p, EAA as q, X as r, CAA as s, O$ as t, dAA as u, hAA as v, QAA as w, mAA as x, FAA as y, RAA as z
 };
