@@ -1,4 +1,4 @@
-const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-DNkl1DER.js", "assets/locales-BbqYBiZD.js", "assets/Icons-__pNLvD4.js", "assets/language-db-B-vM_L8_.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-Co1bSSZQ.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-DmGC9jAi.js", "assets/index-epOzqW-n.css"]))) => i.map(i => d[i]);
+const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-Z14Oc1BV.js", "assets/locales-BbqYBiZD.js", "assets/Icons-BCj9hKJV.js", "assets/language-db-BnHHG4zL.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-DDyOBjF0.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-cpNH4Cje.js", "assets/index-HIasUypH.css"]))) => i.map(i => d[i]);
 var QN = Object.defineProperty;
 var lN = (A, e, t) => e in A ? QN(A, e, {
     enumerable: !0,
@@ -21,7 +21,7 @@ import {
     p as fN,
     c as pN,
     F as yN
-} from "./caption-parsing-DmGC9jAi.js";
+} from "./caption-parsing-cpNH4Cje.js";
 
 function mN(A, e) {
     for (var t = 0; t < e.length; t++) {
@@ -13323,23 +13323,19 @@ const SJ = Ce(NJ),
         }
     }(),
     bJ = pi(void 0, function() {
-        const A = function() {
-                let i;
-                try {
-                    i = Function('return (function() {}.constructor("return this")( ));')()
-                } catch {
-                    i = window
-                }
-                return i
-            },
-            e = A(),
-            t = e.console = e.console || {},
-            r = ["log", "warn", "info", "error", "exception", "table", "trace"];
-        for (let i = 0; i < r.length; i++) {
-            const n = pi.constructor.prototype.bind(pi),
-                a = r[i],
-                o = t[a] || n;
-            n.__proto__ = pi.bind(pi), n.toString = o.toString.bind(o), t[a] = n
+        let A;
+        try {
+            A = Function('return (function() {}.constructor("return this")( ));')()
+        } catch {
+            A = window
+        }
+        const e = A.console = A.console || {},
+            t = ["log", "warn", "info", "error", "exception", "table", "trace"];
+        for (let r = 0; r < t.length; r++) {
+            const i = pi.constructor.prototype.bind(pi),
+                n = t[r],
+                a = e[n] || i;
+            i.__proto__ = pi.bind(pi), i.toString = a.toString.bind(a), e[n] = i
         }
     });
 bJ();
@@ -14425,7 +14421,7 @@ async function d4() {
             } = await AL(async () => {
                 const {
                     readFile: r
-                } = await import("./index-DNkl1DER.js").then(i => i.aP);
+                } = await import("./index-Z14Oc1BV.js").then(i => i.aS);
                 return {
                     readFile: r
                 }
@@ -18944,7 +18940,7 @@ const $q = eA({
             }
         }
     }),
-    A8 = [{
+    A5 = [{
         id: "consumet-vidcloud",
         rank: 405,
         name: "VidCloud",
@@ -18969,7 +18965,7 @@ const $q = eA({
         disabled: !0
     }];
 
-function e8(A) {
+function e5(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -19013,9 +19009,9 @@ function e8(A) {
         }
     })
 }
-const [t8, r8, i8, n8] = A8.map(e8), a8 = /\{file:"([^"]+)",kind:"thumbnails"\}/g;
+const [t5, r5, i5, n5] = A5.map(e5), a5 = /\{file:"([^"]+)",kind:"thumbnails"\}/g;
 
-function o8(A, e) {
+function o5(A, e) {
     const t = Z(A),
         r = t("script").filter((i, n) => {
             const a = t(n).html();
@@ -19034,7 +19030,7 @@ function o8(A, e) {
     throw new d("Failed to find file URL in packed code")
 }
 
-function g8(A) {
+function g5(A) {
     const e = Z(A),
         t = e("script").filter((r, i) => {
             const n = e(i).html();
@@ -19043,13 +19039,13 @@ function g8(A) {
     if (!t) return null;
     try {
         const r = lt(t),
-            i = a8.exec(r);
+            i = a5.exec(r);
         return (i == null ? void 0 : i[1]) || null
     } catch {
         return null
     }
 }
-const s8 = eA({
+const s5 = eA({
         id: "dropload",
         name: "Dropload",
         rank: 120,
@@ -19062,9 +19058,9 @@ const s8 = eA({
                     headers: e
                 });
             if (t.includes("File Not Found") || t.includes("Pending in queue")) throw new d;
-            const r = o8(t, [/sources:\[{file:"(.*?)"/]),
+            const r = o5(t, [/sources:\[{file:"(.*?)"/]),
                 i = new URL(A.url),
-                n = g8(t);
+                n = g5(t);
             return {
                 stream: [{
                     id: "primary",
@@ -19082,7 +19078,7 @@ const s8 = eA({
             }
         }
     }),
-    I8 = eA({
+    I5 = eA({
         id: "filelions",
         name: "Filelions",
         rank: 115,
@@ -19137,7 +19133,7 @@ const s8 = eA({
             }
         }
     }),
-    c8 = [{
+    c5 = [{
         id: "flixer-alpha",
         name: "GENE Alpha",
         rank: 57
@@ -19191,7 +19187,7 @@ const s8 = eA({
         Origin: "https://flixer.sh"
     };
 
-function B8(A) {
+function B5(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -19226,8 +19222,8 @@ function B8(A) {
         }
     })
 }
-const C8 = c8.map(B8),
-    E8 = eA({
+const C5 = c5.map(B5),
+    E5 = eA({
         id: "kisskh",
         name: "KissKH",
         rank: 317,
@@ -19288,7 +19284,7 @@ const C8 = c8.map(B8),
             }
         }
     }),
-    Q8 = eA({
+    Q5 = eA({
         id: "kisskh-space",
         name: "KissKH Space",
         rank: 318,
@@ -19370,7 +19366,7 @@ const C8 = c8.map(B8),
             }
         }
     }),
-    l8 = eA({
+    l5 = eA({
         id: "luluvdo",
         name: "LuluVdo",
         rank: 61,
@@ -19399,7 +19395,7 @@ const C8 = c8.map(B8),
             }
         }
     }),
-    d8 = eA({
+    d5 = eA({
         id: "luluvid",
         name: "LuluVid",
         rank: 150,
@@ -19463,10 +19459,10 @@ const C8 = c8.map(B8),
             }
         }
     }),
-    u8 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36",
-    h8 = "https://script.google.com/macros/s/AKfycbxHbYHbrGMXYD2-bC-C43D3njIbU-wGiYQuJL61H4vyy6YVXkybMNNEPJNPPuZrD1gRVA/exec",
-    f8 = "https://raw.githubusercontent.com/yogesh-hacker/MegacloudKeys/refs/heads/main/keys.json",
-    p8 = eA({
+    u5 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36",
+    h5 = "https://script.google.com/macros/s/AKfycbxHbYHbrGMXYD2-bC-C43D3njIbU-wGiYQuJL61H4vyy6YVXkybMNNEPJNPPuZrD1gRVA/exec",
+    f5 = "https://raw.githubusercontent.com/yogesh-hacker/MegacloudKeys/refs/heads/main/keys.json",
+    p5 = eA({
         id: "megacloud",
         name: "MegaCloud",
         rank: 100,
@@ -19480,7 +19476,7 @@ const C8 = c8.map(B8),
                     "X-Requested-With": "XMLHttpRequest",
                     Referer: r,
                     Origin: "https://videosrt.net",
-                    "User-Agent": u8
+                    "User-Agent": u5
                 },
                 n = await A.proxiedFetcher(e, {
                     headers: i
@@ -19492,7 +19488,7 @@ const C8 = c8.map(B8),
                 s = n.match(/\b[a-zA-Z0-9]{48}\b/) || n.match(/\b([a-zA-Z0-9]{16})\b.*?\b([a-zA-Z0-9]{16})\b.*?\b([a-zA-Z0-9]{16})\b/);
             let I = null;
             s && (s.length === 4 ? I = s.slice(1).join("") : I = s[0]);
-            const c = await A.proxiedFetcher(f8),
+            const c = await A.proxiedFetcher(f5),
                 B = c.vidstr,
                 C = await A.proxiedFetcher(r + "embed-1/v3/e-1/getSources?id=" + g + "&_k=" + I, {
                     headers: i
@@ -19504,7 +19500,7 @@ const C8 = c8.map(B8),
                 const l = encodeURIComponent(Q),
                     u = encodeURIComponent(I),
                     h = encodeURIComponent(B),
-                    R = h8 + "?encrypted_data=" + l + "&nonce=" + u + "&secret=" + h,
+                    R = h5 + "?encrypted_data=" + l + "&nonce=" + u + "&secret=" + h,
                     L = await A.proxiedFetcher(R, {
                         headers: i
                     }),
@@ -19525,7 +19521,7 @@ const C8 = c8.map(B8),
         }
     });
 
-function y8(A) {
+function y5(A) {
     const e = a => a.replace(/[^A-Za-z0-9+/]/g, ""),
         t = a => e(a.replace(/[-_]/g, o => o === "-" ? "+" : "/")),
         r = a => atob(e(a)),
@@ -19544,8 +19540,8 @@ function y8(A) {
         });
     return (a => i(r(a)))(t(A))
 }
-async function m8(A, e) {
-    const t = y8(A),
+async function m5(A, e) {
+    const t = y5(A),
         r = new TextEncoder().encode(e),
         i = await crypto.subtle.digest("SHA-256", r),
         n = atob(t).slice(0, 12),
@@ -19572,7 +19568,7 @@ function Nm(A) {
 function mI(A) {
     return Array.prototype.slice.call(new Uint8Array(A)).map(e => [e >> 4, e & 15]).map(e => e.map(t => t.toString(16)).join("")).join("")
 }
-async function w8(A, e) {
+async function w5(A, e) {
     const t = crypto.getRandomValues(new Uint8Array(8)),
         r = {
             name: "PBKDF2",
@@ -19587,20 +19583,20 @@ async function w8(A, e) {
     return crypto.subtle.importKey("raw", Nm(A), "PBKDF2", !1, ["deriveKey"]).then(n => crypto.subtle.deriveKey(r, n, i, !1, ["encrypt", "decrypt"])).then(n => [n, t])
 }
 
-function D8(A, e) {
+function D5(A, e) {
     const t = crypto.getRandomValues(new Uint8Array(12)),
         r = Nm(e),
         i = {
             name: "AES-GCM",
             iv: t
         };
-    return w8(A).then(([n, a]) => crypto.subtle.encrypt(i, n, r).then(o => mI(a.buffer.slice(0)) + "-" + mI(t.buffer.slice(0)) + "-" + mI(o)))
+    return w5(A).then(([n, a]) => crypto.subtle.encrypt(i, n, r).then(o => mI(a.buffer.slice(0)) + "-" + mI(t.buffer.slice(0)) + "-" + mI(o)))
 }
-async function N8(A) {
+async function N5(A) {
     const [e, t, r] = A.split("+"), i = Math.floor(Date.now() / 1e3), n = e + "+" + t + "+" + r + "+" + i;
-    return "/get/" + await D8("player", n)
+    return "/get/" + await D5("player", n)
 }
-const S8 = eA({
+const S5 = eA({
         id: "movuna",
         name: "Movuna",
         rank: 201,
@@ -19611,9 +19607,9 @@ const S8 = eA({
             const t = await A.proxiedFetcher("https://www.cloudflare.com/cdn-cgi/trace/"),
                 r = t.match(/^loc=(\w{2})/m),
                 i = r ? r[1] : "US",
-                n = await m8(e, i);
+                n = await m5(e, i);
             if (n.trim().split("+").length < 2) throw new d("Decryption failed or invalid data");
-            const o = await N8(n),
+            const o = await N5(n),
                 g = "https://movuna.xyz" + o,
                 s = await A.proxiedFetcher(g);
             if (!(s != null && s.info)) throw new d("No info field in Movuna API response");
@@ -19634,7 +19630,7 @@ const S8 = eA({
             }
         }
     }),
-    b8 = [{
+    b5 = [{
         id: "mp4hydra-1",
         name: "MP4Hydra Server 1",
         rank: 36
@@ -19645,7 +19641,7 @@ const S8 = eA({
         disabled: !0
     }];
 
-function v8(A) {
+function v5(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -19671,7 +19667,7 @@ function v8(A) {
         }
     })
 }
-const [G8, F8] = b8.map(v8), R8 = eA({
+const [G5, F5] = b5.map(v5), R5 = eA({
     id: "myanimedub",
     name: "MyAnime (Dub)",
     rank: 205,
@@ -19718,7 +19714,7 @@ const [G8, F8] = b8.map(v8), R8 = eA({
             }]
         }
     }
-}), M8 = eA({
+}), M5 = eA({
     id: "myanimesub",
     name: "MyAnime (Sub)",
     rank: 204,
@@ -19765,7 +19761,7 @@ const [G8, F8] = b8.map(v8), R8 = eA({
             }]
         }
     }
-}), k8 = [{
+}), k5 = [{
     id: "rgshows-english",
     name: "RGShows (English)",
     rank: 175
@@ -19775,7 +19771,7 @@ const [G8, F8] = b8.map(v8), R8 = eA({
     rank: 174
 }];
 
-function x8(A) {
+function x5(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -19800,10 +19796,10 @@ function x8(A) {
         }
     })
 }
-const [Y8, U8] = k8.map(x8), L8 = "https://ridomovies.tv/", H8 = {
+const [Y5, U5] = k5.map(x5), L5 = "https://ridomovies.tv/", H5 = {
     referer: "https://ridoo.net/",
     origin: "https://ridoo.net"
-}, O8 = eA({
+}, O5 = eA({
     id: "ridoo",
     name: "Ridoo",
     rank: 121,
@@ -19812,7 +19808,7 @@ const [Y8, U8] = k8.map(x8), L8 = "https://ridomovies.tv/", H8 = {
         var e;
         const t = await A.proxiedFetcher(A.url, {
                 headers: {
-                    referer: L8
+                    referer: L5
                 }
             }),
             r = /file:"([^"]+)"/g,
@@ -19823,13 +19819,13 @@ const [Y8, U8] = k8.map(x8), L8 = "https://ridomovies.tv/", H8 = {
                 id: "primary",
                 type: "hls",
                 playlist: i,
-                headers: H8,
+                headers: H5,
                 captions: [],
                 flags: [G.CORS_ALLOWED]
             }]
         }
     }
-}), J8 = "rivestream.org", K8 = {
+}), J5 = "rivestream.org", K5 = {
     referer: "https://rivestream.org/",
     origin: "https://rivestream.org",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -19838,7 +19834,7 @@ const [Y8, U8] = k8.map(x8), L8 = "https://ridomovies.tv/", H8 = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 };
 
-function T8(A, e = 100) {
+function T5(A, e = 100) {
     return eA({
         id: "rivestream-" + A,
         name: "River " + (A.charAt(0).toUpperCase() + A.slice(1)),
@@ -19853,12 +19849,12 @@ function T8(A, e = 100) {
                     season: o,
                     episode: g
                 } = i;
-            let s = "https://" + J8 + "/";
+            let s = "https://" + J5 + "/";
             if (n === "movie") s += "/api/backendfetch?requestID=movieVideoProvider&id=" + a + "&service=" + A + "&secretKey=NTUyOTk2OGE=&proxyMode=undefined";
             else if (n === "show") s += "/api/backendfetch?requestID=tvVideoProvider&id=" + a + "&season=" + o + "&episode=" + g + "&service=" + A + "&secretKey=M2IyYWEwMzU=&proxyMode=undefined";
             else throw new d("Unsupported media type");
             const I = await t.proxiedFetcher(s, {
-                headers: K8
+                headers: K5
             });
             if (!I.data || !I.data.sources || !Array.isArray(I.data.sources)) throw new d("No sources found");
             t.progress(50);
@@ -19918,9 +19914,9 @@ function T8(A, e = 100) {
         }
     })
 }
-const q8 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "animez", "sapphire", "aqua", "guard", "curve", "hq", "ninja", "alpha", "kaze", "zenesis", "zenith", "ghost", "kinoecho", "ee3", "volt", "putafilme", "ophim", "kage"],
-    _8 = q8.map((A, e) => T8(A, 400 - e)),
-    z8 = eA({
+const q5 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "animez", "sapphire", "aqua", "guard", "curve", "hq", "ninja", "alpha", "kaze", "zenesis", "zenith", "ghost", "kinoecho", "ee3", "volt", "putafilme", "ophim", "kage"],
+    _5 = q5.map((A, e) => T5(A, 400 - e)),
+    z5 = eA({
         id: "streambucket",
         name: "Streambucket",
         rank: 220,
@@ -20034,7 +20030,7 @@ const q8 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "an
             }
         }
     }),
-    P8 = eA({
+    P5 = eA({
         id: "streamplay",
         name: "StreamPlay",
         rank: 60,
@@ -20103,19 +20099,19 @@ const q8 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "an
             }
         }
     }),
-    X8 = /(eval\(function\(p,a,c,k,e,d\).*\)\)\))/,
-    j8 = /src:"(https:\/\/[^"]+)"/,
-    V8 = eA({
+    X5 = /(eval\(function\(p,a,c,k,e,d\).*\)\)\))/,
+    j5 = /src:"(https:\/\/[^"]+)"/,
+    V5 = eA({
         id: "streamvid",
         name: "Streamvid",
         rank: 215,
         flags: [G.CORS_ALLOWED],
         async scrape(A) {
             const e = await A.proxiedFetcher(A.url),
-                t = e.match(X8);
+                t = e.match(X5);
             if (!t) throw new Error("streamvid packed not found");
             const r = lt(t[1]),
-                i = r.match(j8);
+                i = r.match(j5);
             if (!i) throw new Error("streamvid link not found");
             return {
                 stream: [{
@@ -20128,7 +20124,7 @@ const q8 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "an
             }
         }
     });
-let W8 = class {
+let W5 = class {
     constructor(e) {
         if (this.ALPHABET = {
                 62: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -20153,7 +20149,7 @@ let W8 = class {
     }
 };
 
-function Z8(A) {
+function Z5(A) {
     const e = [/}\('(.*)', *(\d+|\[\]), *(\d+), *'(.*)'\.split\('\|'\), *(\d+), *(.*)\)\)/, /}\('(.*)', *(\d+|\[\]), *(\d+), *'(.*)'\.split\('\|'\)/];
     for (const t of e) {
         const r = t.exec(A);
@@ -20171,17 +20167,17 @@ function Z8(A) {
     throw new Error("Could not make sense of p.a.c.k.e.r data (unexpected code structure)")
 }
 
-function $8(A) {
+function $5(A) {
     const {
         payload: e,
         symtab: t,
         radix: r,
         count: i
-    } = Z8(A);
+    } = Z5(A);
     if (i !== t.length) throw new Error("Malformed p.a.c.k.e.r. symtab.");
     let n;
     try {
-        n = new W8(r)
+        n = new W5(r)
     } catch {
         throw new Error("Unknown p.a.c.k.e.r. encoding.")
     }
@@ -20192,7 +20188,7 @@ function $8(A) {
         o = e.replace(/\b\w+\b/g, a);
     return o
 }
-const A5 = [{
+const A8 = [{
     id: "streamwish-japanese",
     name: "StreamWish (Japanese Sub Español)",
     rank: 171
@@ -20210,7 +20206,7 @@ const A5 = [{
     rank: 168
 }];
 
-function e5(A) {
+function e8(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -20248,7 +20244,7 @@ function e5(A) {
             };
             let a;
             try {
-                a = $8(n[1])
+                a = $5(n[1])
             } catch {
                 return {
                     stream: [],
@@ -20324,9 +20320,9 @@ function e5(A) {
         }
     })
 }
-const [t5, r5, i5, n5] = A5.map(e5);
+const [t8, r8, i8, n8] = A8.map(e8);
 
-function a5(A, e) {
+function a8(A, e) {
     const t = Z(A),
         r = t("script").filter((i, n) => {
             const a = t(n).html();
@@ -20344,7 +20340,7 @@ function a5(A, e) {
     }
     throw new d("Failed to find file URL in packed code")
 }
-const o5 = eA({
+const o8 = eA({
         id: "supervideo",
         name: "SuperVideo",
         rank: 130,
@@ -20372,7 +20368,7 @@ const o5 = eA({
                 stream: [{
                     id: "primary",
                     type: "hls",
-                    playlist: a5(r, [/sources:\[{file:"(.*?)"/]),
+                    playlist: a8(r, [/sources:\[{file:"(.*?)"/]),
                     flags: [G.CORS_ALLOWED],
                     captions: []
                 }]
@@ -20380,7 +20376,7 @@ const o5 = eA({
         }
     }),
     Yd = "https://pasmells.uira.live",
-    g5 = () => {
+    g8 = () => {
         try {
             if (typeof window > "u") return;
             document.cookie = "uiralive-turnstile-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/", console.warn("Turnstile token cleared due to verification failure")
@@ -20388,13 +20384,13 @@ const o5 = eA({
             console.warn("Failed to clear turnstile token:", A)
         }
     },
-    s5 = [{
-        altName: "mav",
-        name: "Mav",
-        disabled: !1
-    }, {
+    s8 = [{
         altName: "rift",
         name: "Rift",
+        disabled: !1
+    }, {
+        altName: "mav",
+        name: "Mav",
         disabled: !1
     }, {
         altName: "pas",
@@ -20462,7 +20458,7 @@ const o5 = eA({
         disabled: !0
     }];
 
-function I5(A, e) {
+function I8(A, e) {
     return eA({
         id: "uira-" + A.altName,
         name: "Uira " + A.name,
@@ -20500,7 +20496,7 @@ function I5(A, e) {
             } catch (u) {
                 throw u instanceof d ? new d("" + u.message) : u
             }
-            if (c.error === "Invalid turnstile token") throw g5(), alert("Uira.live Turnstile verification failed. Please refresh the page and try again."), new d("Turnstile verification failed. Token has been cleared.");
+            if (c.error === "Invalid turnstile token") throw g8(), alert("Uira.live Turnstile verification failed. Please refresh the page and try again."), new d("Turnstile verification failed. Token has been cleared.");
             if (c.error) throw new d(c.message || c.error);
             if (!c || !c.sources || c.sources.length === 0) throw new d("No sources found");
             t.progress(90);
@@ -20562,7 +20558,7 @@ function I5(A, e) {
         }
     })
 }
-const c5 = s5.map((A, e) => I5(A, 500 - e)),
+const c8 = s8.map((A, e) => I8(A, 500 - e)),
     Sm = [{
         locale: "en-US",
         name: "English",
@@ -20628,13 +20624,13 @@ function bm(A, e, t) {
         }
     })
 }
-const B5 = Sm.map(A => bm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Dub)", A.dubRank)),
-    C5 = Sm.map(A => bm("uniquestream-" + A.locale + "-sub", "AnimeU " + A.name + " (Sub)", A.subRank)),
-    [E5, Q5, l5, d5, u5, h5, f5, p5] = B5,
-    [y5, m5, w5, D5, N5, S5, b5, v5] = C5,
-    G5 = "https://uqload.cx",
-    F5 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
-    R5 = eA({
+const B8 = Sm.map(A => bm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Dub)", A.dubRank)),
+    C8 = Sm.map(A => bm("uniquestream-" + A.locale + "-sub", "AnimeU " + A.name + " (Sub)", A.subRank)),
+    [E8, Q8, l8, d8, u8, h8, f8, p8] = B8,
+    [y8, m8, w8, D8, N8, S8, b8, v8] = C8,
+    G8 = "https://uqload.cx",
+    F8 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    R8 = eA({
         id: "uqload",
         name: "Uqload",
         disabled: !1,
@@ -20642,8 +20638,8 @@ const B5 = Sm.map(A => bm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Du
         flags: [],
         async scrape(A) {
             const e = {
-                    Referer: G5 + "/",
-                    "User-Agent": F5
+                    Referer: G8 + "/",
+                    "User-Agent": F8
                 },
                 t = await A.proxiedFetcher(A.url, {
                     headers: e
@@ -20667,20 +20663,20 @@ const B5 = Sm.map(A => bm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Du
             }
         }
     }),
-    M5 = "https://streameeeeee.site",
+    M8 = "https://streameeeeee.site",
     Ud = {
         Referer: "https://streameeeeee.site/"
     },
-    k5 = [/<div data-dpi="([^"]+)" style="display:none">/, /<meta name="_gg_fb" content="([^"]+)">/, /<!-- _is_th:([^ ]+) -->/, /window\._xy_ws = "([^"]+)"/, /nonce="([^"]+)"/, /window\._lk_db = {x: "([^"]+)", y: "([^"]+)", z: "([^"]+)"}/];
+    k8 = [/<div data-dpi="([^"]+)" style="display:none">/, /<meta name="_gg_fb" content="([^"]+)">/, /<!-- _is_th:([^ ]+) -->/, /window\._xy_ws = "([^"]+)"/, /nonce="([^"]+)"/, /window\._lk_db = {x: "([^"]+)", y: "([^"]+)", z: "([^"]+)"}/];
 
-function x5(A) {
-    for (const e of k5) {
+function x8(A) {
+    for (const e of k8) {
         const t = A.match(e);
         if (t) return t.length === 4 ? "" + t[1] + t[2] + t[3] : t[1]
     }
     return null
 }
-const Y5 = eA({
+const Y8 = eA({
     id: "vidcloud",
     name: "VidCloud",
     rank: 200,
@@ -20694,9 +20690,9 @@ const Y5 = eA({
             t = Z(e),
             r = t("#vidcloud-player").attr("data-id");
         if (!r) throw new d("Could not find data-id");
-        const i = x5(e);
+        const i = x8(e);
         if (!i) throw new d("Could not find k-value");
-        const n = M5 + "/embed-1/v3/e-1/getSources?id=" + r + "&_k=" + i,
+        const n = M8 + "/embed-1/v3/e-1/getSources?id=" + r + "&_k=" + i,
             a = await A.proxiedFetcher(n, {
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
@@ -20729,7 +20725,7 @@ const Y5 = eA({
         }
     }
 });
-class U5 {
+class U8 {
     constructor(e) {
         if (this.ALPHABET = {
                 62: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -20754,7 +20750,7 @@ class U5 {
     }
 }
 
-function L5(A) {
+function L8(A) {
     const e = [/}\s*\('(.*)',\s*(\d+|\[\]),\s*(\d+),\s*'(.*)'\.split\('\|'\)/];
     for (const t of e) {
         const r = t.exec(A);
@@ -20772,17 +20768,17 @@ function L5(A) {
     throw new Error("Could not make sense of p.a.c.k.e.r data (unexpected code structure)")
 }
 
-function H5(A) {
+function H8(A) {
     const {
         payload: e,
         symtab: t,
         radix: r,
         count: i
-    } = L5(A);
+    } = L8(A);
     if (i !== t.length) throw new Error("Malformed p.a.c.k.e.r. symtab.");
     let n;
     try {
-        n = new U5(r)
+        n = new U8(r)
     } catch {
         throw new Error("Unknown p.a.c.k.e.r. encoding.")
     }
@@ -20792,9 +20788,9 @@ function H5(A) {
     };
     return e.replace(/\b\w+\b/g, a)
 }
-const O5 = ["https://vidhidepro.com", "https://vidhidefast.com", "https://dinisglows.com"];
+const O8 = ["https://vidhidepro.com", "https://vidhidefast.com", "https://dinisglows.com"];
 
-function J5(A, e) {
+function J8(A, e) {
     try {
         const t = new URL(A);
         return "" + e + t.pathname + t.search + t.hash
@@ -20802,9 +20798,9 @@ function J5(A, e) {
         return A
     }
 }
-async function K5(A, e) {
-    for (const t of O5) {
-        const r = J5(A.url, t);
+async function K8(A, e) {
+    for (const t of O8) {
+        const r = J8(A.url, t);
         try {
             const i = await A.proxiedFetcher(r, {
                 headers: e
@@ -20821,7 +20817,7 @@ async function K5(A, e) {
     }
     throw new Error("Could not get valid HTML from any official domain")
 }
-const T5 = [{
+const T8 = [{
     id: "vidhide-latino",
     name: "VidHide (Latino)",
     rank: 13
@@ -20835,7 +20831,7 @@ const T5 = [{
     rank: 15
 }];
 
-function q5(A) {
+function q8(A) {
     const e = /{file:"([^"]+)",label:"([^"]+)"}/g,
         t = [],
         r = A.matchAll(e);
@@ -20846,7 +20842,7 @@ function q5(A) {
     return t
 }
 
-function _5(A) {
+function _8(A) {
     return eA({
         id: A.id,
         name: A.name,
@@ -20862,7 +20858,7 @@ function _5(A) {
                 {
                     html: r,
                     usedUrl: i
-                } = await K5(e, t),
+                } = await K8(e, t),
                 n = r.match(/<script[^>]*>\s*(eval\(function\(p,a,c,k,e,d.*?\)[\s\S]*?)<\/script>/);
             if (!n) return {
                 stream: [],
@@ -20873,7 +20869,7 @@ function _5(A) {
             };
             let a;
             try {
-                a = H5(n[1])
+                a = H8(n[1])
             } catch {
                 return {
                     stream: [],
@@ -20893,7 +20889,7 @@ function _5(A) {
                 }]
             };
             let s = g;
-            const I = q5(a);
+            const I = q8(a);
             try {
                 const B = await e.proxiedFetcher(s, {
                         headers: {
@@ -20932,26 +20928,26 @@ function _5(A) {
         }
     })
 }
-const [z5, P5, X5] = T5.map(_5), j5 = "HpobLp2wBesBkA8rU9HJQcYTBxdrs8XO", V5 = {
+const [z8, P8, X8] = T8.map(_8), j8 = "HpobLp2wBesBkA8rU9HJQcYTBxdrs8XO", V8 = {
     "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0",
     accept: "application/json, text/plain, */*",
     "content-type": "application/json",
     origin: "https://player.vidify.top",
     referer: "https://player.vidify.top/"
-}, W5 = {
+}, W8 = {
     "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0",
     Referer: "https://player.vidify.top/",
     Origin: "https://player.vidify.top"
 };
 
-function Z5(A) {
+function Z8(A) {
     const e = A.toString(CA.enc.Latin1),
         t = e.charCodeAt(e.length - 1);
     return t <= e.length ? e.slice(0, -t) : e
 }
 
-function $5(A) {
-    const e = new Uint8Array(j5.split("").map(I => I.charCodeAt(0))),
+function $8(A) {
+    const e = new Uint8Array(j8.split("").map(I => I.charCodeAt(0))),
         t = A.split(" "),
         r = new Uint8Array(t.length);
     for (let I = 0; I < t.length; I++) {
@@ -20973,7 +20969,7 @@ function $5(A) {
             iv: a,
             mode: CA.mode.CBC
         });
-    return Z5(s)
+    return Z8(s)
 }
 
 function A_(A, e, t = 100) {
@@ -21003,11 +20999,11 @@ function A_(A, e, t = 100) {
                 I = "https://apiv2.vidify.top/api?token=1212",
                 c = await r.proxiedFetcher(I, {
                     method: "POST",
-                    headers: V5,
+                    headers: V8,
                     body: JSON.stringify(s)
                 });
             if (!c.snoopdog) throw new d("No snoopdog data found in response");
-            const B = $5(c.snoopdog),
+            const B = $8(c.snoopdog),
                 C = B.substring(0, B.lastIndexOf("}") + 1);
             let Q;
             try {
@@ -21016,7 +21012,7 @@ function A_(A, e, t = 100) {
                 throw new d("Failed to parse decrypted response")
             }
             let E, l = {
-                ...W5
+                ...W8
             };
             if (typeof Q == "object" && Q !== null) {
                 if (Q.url) E = Q.url;
@@ -27544,7 +27540,7 @@ function zm() {
 }
 
 function HP() {
-    return [...HT, ...dT, bK, od, lm, O8, Vq, $q, hK, V8, z8, Y8, U8, tm, vm, wC, Gm, Oq, Jq, Kq, Tq, qq, E5, y5, Q5, m5, l5, w5, d5, D5, u5, N5, h5, S5, f5, b5, p5, v5, FK, ...OK, G8, F8, C_, E_, Q_, l_, d_, u_, h_, f_, p_, y_, m_, w_, D_, G_, t8, r8, i8, n8, yK, mK, wK, DK, uq, hq, fq, pq, yq, mq, Nq, Sq, bq, n5, t5, r5, i5, OJ, ...C8, ...t_, ...P_, ...Yq, ..._8, Y5, R_, Am, em, ...I_, M8, R8, _J, zJ, PJ, XJ, rm, p8, od, Rq, v_, fK, z5, P5, X5, I8, s8, o5, S8, R5, U_, d8, l8, ...c5, ...J_, r_, E8, Q8, Uq, T_, P8]
+    return [...HT, ...dT, bK, od, lm, O5, Vq, $q, hK, V5, z5, Y5, U5, tm, vm, wC, Gm, Oq, Jq, Kq, Tq, qq, E8, y8, Q8, m8, l8, w8, d8, D8, u8, N8, h8, S8, f8, b8, p8, v8, FK, ...OK, G5, F5, C_, E_, Q_, l_, d_, u_, h_, f_, p_, y_, m_, w_, D_, G_, t5, r5, i5, n5, yK, mK, wK, DK, uq, hq, fq, pq, yq, mq, Nq, Sq, bq, n8, t8, r8, i8, OJ, ...C5, ...t_, ...P_, ...Yq, ..._5, Y8, R_, Am, em, ...I_, M5, R5, _J, zJ, PJ, XJ, rm, p5, od, Rq, v_, fK, z8, P8, X8, I5, s5, o8, S5, R8, U_, d5, l5, ...c8, ...J_, r_, E5, Q5, Uq, T_, P5]
 }
 
 function OP() {
@@ -31267,6 +31263,37 @@ function jW(A, e) {
 }
 var VW = jW;
 const mAA = Ce(VW);
+
+function wAA(A, e, t, r) {
+    var i, n = !1,
+        a = 0;
+
+    function o() {
+        i && clearTimeout(i)
+    }
+
+    function g() {
+        o(), n = !0
+    }
+    typeof e != "boolean" && (r = t, t = e, e = void 0);
+
+    function s() {
+        for (var I = arguments.length, c = new Array(I), B = 0; B < I; B++) c[B] = arguments[B];
+        var C = this,
+            Q = Date.now() - a;
+        if (n) return;
+
+        function E() {
+            a = Date.now(), t.apply(C, c)
+        }
+
+        function l() {
+            i = void 0
+        }
+        r && !i && E(), o(), r === void 0 && Q > A ? E() : e !== !0 && (i = setTimeout(r ? l : E, r === void 0 ? A - Q : A))
+    }
+    return s.cancel = g, s
+}
 var Qw = {
     exports: {}
 };
@@ -31304,7 +31331,7 @@ var Qw = {
     })()
 })(Qw);
 var WW = Qw.exports;
-const wAA = Ce(WW),
+const DAA = Ce(WW),
     Dr = typeof globalThis == "object" && "crypto" in globalThis ? globalThis.crypto : void 0; /*! noble-hashes - MIT License (c) 2022 Paul Miller (paulmillr.com) */
 function ZW(A) {
     return A instanceof Uint8Array || ArrayBuffer.isView(A) && A.constructor.name === "Uint8Array"
@@ -31462,7 +31489,7 @@ function nZ(A, e, t, r) {
 function aZ(A, e, t, r, i) {
     return A.destroy(), e.destroy(), r && r.destroy(), un(i), t
 }
-async function DAA(A, e, t, r) {
+async function NAA(A, e, t, r) {
     const {
         c: i,
         dkLen: n,
@@ -31630,7 +31657,7 @@ class BZ extends IZ {
     }
 }
 const pw = rZ(() => new BZ),
-    NAA = pw; /*! scure-base - MIT License (c) 2022 Paul Miller (paulmillr.com) */
+    SAA = pw; /*! scure-base - MIT License (c) 2022 Paul Miller (paulmillr.com) */
 function eg(A) {
     return A instanceof Uint8Array || ArrayBuffer.isView(A) && A.constructor.name === "Uint8Array"
 }
@@ -31855,7 +31882,7 @@ function Dw(A) {
     oi(A, 16, 20, 24, 28, 32)
 }
 
-function SAA(A, e = 128) {
+function bAA(A, e = 128) {
     if (Ur(e), e % 32 !== 0 || e > 256) throw new TypeError("Invalid entropy");
     return NZ(iZ(e / 8), A)
 }
@@ -31882,7 +31909,7 @@ function NZ(A, e) {
     return Dw(A), Nw(e).encode(A).join(pZ(e) ? "　" : " ")
 }
 
-function bAA(A, e) {
+function vAA(A, e) {
     try {
         DZ(A, e)
     } catch {
@@ -31890,7 +31917,7 @@ function bAA(A, e) {
     }
     return !0
 }
-const vAA = `abandon
+const GAA = `abandon
 ability
 able
 about
@@ -33988,7 +34015,7 @@ var GZ = function() {
     return t.PropTypes = t, t
 };
 Sw.exports = GZ();
-var GAA = Sw.exports;
+var FAA = Sw.exports;
 /*!
  * tabbable 6.2.0
  * @license MIT, https://github.com/focus-trap/tabbable/blob/master/LICENSE
@@ -34692,8 +34719,8 @@ const o7 = Object.freeze(Object.defineProperty({
     }, Symbol.toStringTag, {
         value: "Module"
     })),
-    FAA = Rf(o7),
-    RAA = Rf(zZ);
+    RAA = Rf(o7),
+    MAA = Rf(zZ);
 var As = {};
 Object.defineProperty(As, "__esModule", {
     value: !0
@@ -34719,7 +34746,7 @@ function Lw(A) {
 g7 = As.lazyWithPreload = Lw;
 As.default = Lw;
 
-function MAA() {
+function kAA() {
     for (var A = arguments.length, e = new Array(A), t = 0; t < A; t++) e[t] = arguments[t];
     return X.useMemo(() => r => {
         e.forEach(i => i(r))
@@ -34756,7 +34783,7 @@ function B7(A) {
     return A instanceof Pn(A).SVGElement
 }
 
-function kAA(A) {
+function xAA(A) {
     return A ? KC(A) ? A.document : Hw(A) ? I7(A) ? A : c7(A) || B7(A) ? A.ownerDocument : document : document : document
 }
 const Ow = s7 ? X.useLayoutEffect : X.useEffect;
@@ -34771,7 +34798,7 @@ function C7(A) {
     }, [])
 }
 
-function xAA() {
+function YAA() {
     const A = X.useRef(null),
         e = X.useCallback((r, i) => {
             A.current = setInterval(r, i)
@@ -34782,7 +34809,7 @@ function xAA() {
     return [e, t]
 }
 
-function YAA(A, e) {
+function UAA(A, e) {
     e === void 0 && (e = [A]);
     const t = X.useRef(A);
     return Ow(() => {
@@ -34790,7 +34817,7 @@ function YAA(A, e) {
     }, e), t
 }
 
-function UAA(A, e) {
+function LAA(A, e) {
     const t = X.useRef();
     return X.useMemo(() => {
         const r = A(t.current);
@@ -34798,7 +34825,7 @@ function UAA(A, e) {
     }, [...e])
 }
 
-function LAA(A) {
+function HAA(A) {
     const e = C7(A),
         t = X.useRef(null),
         r = X.useCallback(i => {
@@ -34807,7 +34834,7 @@ function LAA(A) {
     return [t, r]
 }
 
-function HAA(A) {
+function OAA(A) {
     const e = X.useRef();
     return X.useEffect(() => {
         e.current = A
@@ -34815,7 +34842,7 @@ function HAA(A) {
 }
 let JI = {};
 
-function OAA(A, e) {
+function JAA(A, e) {
     return X.useMemo(() => {
         if (e) return e;
         const t = JI[A] == null ? 0 : JI[A] + 1;
@@ -34838,14 +34865,14 @@ function Jw(A) {
         })
     }
 }
-const JAA = Jw(1),
-    KAA = Jw(-1);
+const KAA = Jw(1),
+    TAA = Jw(-1);
 
 function E7(A) {
     return "clientX" in A && "clientY" in A
 }
 
-function TAA(A) {
+function qAA(A) {
     if (!A) return !1;
     const {
         KeyboardEvent: e
@@ -34861,7 +34888,7 @@ function Q7(A) {
     return e && A instanceof e
 }
 
-function qAA(A) {
+function _AA(A) {
     if (Q7(A)) {
         if (A.touches && A.touches.length) {
             const {
@@ -34927,14 +34954,14 @@ const af = Object.freeze({
     }),
     of = "a,frame,iframe,input:not([type=hidden]):not(:disabled),select:not(:disabled),textarea:not(:disabled),button:not(:disabled),*[tabindex]";
 
-function _AA(A) {
+function zAA(A) {
     return A.matches(of) ? A : A.querySelector(of)
 }
 const l7 = {
     display: "none"
 };
 
-function zAA(A) {
+function PAA(A) {
     let {
         id: e,
         value: t
@@ -34945,7 +34972,7 @@ function zAA(A) {
     }, t)
 }
 
-function PAA(A) {
+function XAA(A) {
     let {
         id: e,
         announcement: t,
@@ -34974,7 +35001,7 @@ function PAA(A) {
     }, t)
 }
 
-function XAA() {
+function jAA() {
     const [A, e] = X.useState("");
     return {
         announce: X.useCallback(r => {
@@ -35376,7 +35403,7 @@ function b7(A, e = {}) {
     })
 }
 
-function jAA(A) {
+function VAA(A) {
     const [e, t] = X.useState(), r = X.useMemo(() => A, []), i = X.useCallback(a => {
         a instanceof HTMLElement ? t(b7(a, r)) : t(void 0)
     }, [r]), n = X.useCallback(a => {
@@ -35616,7 +35643,7 @@ function x7(A, e) {
     const t = A.findIndex(e);
     return t < 0 ? A.length : t
 }
-var VAA = {
+var WAA = {
         transparent: 0,
         aliceblue: 4042850303,
         antiquewhite: 4209760255,
@@ -36194,7 +36221,7 @@ function E$(A, e) {
     return A && (rA.fun(A) ? A(e) : A.current = e), e
 }
 var uf = Symbol.for("AnimatedComponent"),
-    WAA = (A, {
+    ZAA = (A, {
         applyAnimatedValues: e = () => !1,
         createAnimatedStyle: t = i => new iE(i),
         getComponentProps: r = i => i
@@ -37252,7 +37279,7 @@ function x$(A, e, t) {
     return i ? [l, i] : l
 }
 
-function $AA(A, e) {
+function AeA(A, e) {
     const t = rA.fun(A),
         [
             [r], i
@@ -37312,11 +37339,11 @@ function XI(A) {
         parent: A
     }))
 }
-var AeA = (A, ...e) => new yD(A, e);
+var eeA = (A, ...e) => new yD(A, e);
 We.assign({
     createStringInterpolator: e$,
     to: (A, e) => new yD(A, e)
 });
 export {
-    zAA as $, GAA as A, Se as B, sy as C, gn as D, By as E, YAA as F, OAA as G, qAA as H, Pn as I, JAA as J, Ow as K, kAA as L, TAA as M, Er as N, KAA as O, Iy as P, UAA as Q, pAA as R, c7 as S, bo as T, LAA as U, s7 as V, xAA as W, HAA as X, _AA as Y, XAA as Z, Wh as _, er as a, PAA as a0, C7 as a1, KC as a2, Hw as a3, I7 as a4, B7 as a5, MAA as a6, af as a7, We as a8, VAA as a9, _$ as aA, W$ as aB, GY as aC, cAA as aD, BAA as aE, IAA as aF, DAA as aG, SAA as aH, bAA as aI, NAA as aJ, vAA as aK, AL as aL, P$ as aM, lAA as aN, aAA as aO, rAA as aP, zP as aQ, jAA as aR, $AA as aS, P7 as aT, tAA as aU, d as aV, AeA as aW, g7 as aX, yAA as aY, qW as aZ, QU as a_, e$ as aa, WAA as ab, iE as ac, Bt as ad, rA as ae, be as af, j7 as ag, vA as ah, De as ai, Xe as aj, Vn as ak, Eg as al, Cg as am, SA as an, uAA as ao, fAA as ap, z$ as aq, K$ as ar, T$ as as, q$ as at, ae as au, Z$ as av, sAA as aw, gAA as ax, iAA as ay, oAA as az, QA as b, wAA as c, gC as d, cL as e, ei as f, eAA as g, X$ as h, V$ as i, J$ as j, gw as k, j$ as l, bW as m, $g as n, GW as o, UC as p, EAA as q, X as r, CAA as s, O$ as t, dAA as u, hAA as v, QAA as w, mAA as x, FAA as y, RAA as z
+    jAA as $, MAA as A, FAA as B, sy as C, gn as D, By as E, Se as F, UAA as G, JAA as H, _AA as I, Pn as J, KAA as K, Ow as L, xAA as M, Er as N, qAA as O, Iy as P, TAA as Q, pAA as R, LAA as S, bo as T, c7 as U, HAA as V, s7 as W, YAA as X, OAA as Y, zAA as Z, Wh as _, er as a, QU as a$, PAA as a0, XAA as a1, C7 as a2, KC as a3, Hw as a4, I7 as a5, B7 as a6, kAA as a7, af as a8, We as a9, oAA as aA, _$ as aB, W$ as aC, GY as aD, cAA as aE, BAA as aF, IAA as aG, NAA as aH, bAA as aI, vAA as aJ, SAA as aK, GAA as aL, AL as aM, P$ as aN, lAA as aO, aAA as aP, rAA as aQ, zP as aR, VAA as aS, AeA as aT, P7 as aU, tAA as aV, d as aW, eeA as aX, g7 as aY, yAA as aZ, qW as a_, WAA as aa, e$ as ab, ZAA as ac, iE as ad, Bt as ae, rA as af, be as ag, j7 as ah, vA as ai, De as aj, Xe as ak, Vn as al, Eg as am, Cg as an, SA as ao, uAA as ap, fAA as aq, z$ as ar, K$ as as, T$ as at, q$ as au, ae as av, Z$ as aw, sAA as ax, gAA as ay, iAA as az, QA as b, DAA as c, gC as d, cL as e, ei as f, eAA as g, X$ as h, V$ as i, J$ as j, gw as k, j$ as l, bW as m, $g as n, GW as o, UC as p, EAA as q, X as r, CAA as s, O$ as t, dAA as u, hAA as v, QAA as w, mAA as x, wAA as y, RAA as z
 };
