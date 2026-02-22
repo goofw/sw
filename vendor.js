@@ -1,4 +1,4 @@
-const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-Z14Oc1BV.js", "assets/locales-BbqYBiZD.js", "assets/Icons-BCj9hKJV.js", "assets/language-db-BnHHG4zL.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-DDyOBjF0.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-cpNH4Cje.js", "assets/index-HIasUypH.css"]))) => i.map(i => d[i]);
+const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-CuQey9jW.js", "assets/locales-DfTBhf8l.js", "assets/Icons-BeZBNNR8.js", "assets/language-db-Bta2RYf-.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-DUdVQ6I1.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-FjTEGGFS.js", "assets/index-CHr8Wku2.css"]))) => i.map(i => d[i]);
 var QN = Object.defineProperty;
 var lN = (A, e, t) => e in A ? QN(A, e, {
     enumerable: !0,
@@ -21,7 +21,7 @@ import {
     p as fN,
     c as pN,
     F as yN
-} from "./caption-parsing-cpNH4Cje.js";
+} from "./caption-parsing-FjTEGGFS.js";
 
 function mN(A, e) {
     for (var t = 0; t < e.length; t++) {
@@ -14421,7 +14421,7 @@ async function d4() {
             } = await AL(async () => {
                 const {
                     readFile: r
-                } = await import("./index-Z14Oc1BV.js").then(i => i.aS);
+                } = await import("./index-CuQey9jW.js").then(i => i.aS);
                 return {
                     readFile: r
                 }
@@ -15350,7 +15350,7 @@ async function td(A) {
 }
 const Im = W({
         id: "fedapi",
-        name: "FED API (4K) 🔥",
+        name: "FED API 🔥",
         rank: 300,
         disabled: !sm(),
         flags: [G.CORS_ALLOWED],
@@ -22156,7 +22156,7 @@ async function $_(A, e) {
         }
     }), i.length === 0 && console.log("[AnimeFLV] No se encontraron episodios"), i
 }
-async function Az(A, e) {
+async function A9(A, e) {
     const t = await A.proxiedFetcher(e, {
             headers: {
                 Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8"
@@ -22226,7 +22226,7 @@ async function Td(A) {
             }), !s) throw new d("No se pudo obtener el animeUri para la película");
         i = Xo + "/ver/" + s + "-1"
     }
-    const n = await Az(A, i),
+    const n = await A9(A, i),
         a = Object.entries(n).filter(([, o]) => typeof o == "string" && !!o).map(([o, g]) => ({
             embedId: o,
             url: g
@@ -22236,7 +22236,7 @@ async function Td(A) {
         embeds: a
     }
 }
-const ez = W({
+const e9 = W({
         id: "animeflv",
         name: "AnimeFLV",
         rank: 90,
@@ -22251,10 +22251,10 @@ function _d(A) {
     return A.toLowerCase().replace(/[^a-z0-9]+/g, " ").trim()
 }
 
-function tz(A, e) {
+function t9(A, e) {
     return A === "show" ? ["TV", "TV_SHORT", "OVA", "ONA", "SPECIAL"].includes(e.format) : e.format === "MOVIE"
 }
-const rz = `
+const r9 = `
 query ($search: String, $type: MediaType) {
   Page(page: 1, perPage: 20) {
     media(search: $search, type: $type, sort: POPULARITY_DESC) {
@@ -22284,7 +22284,7 @@ async function SC(A, e) {
                 Accept: "application/json"
             },
             body: JSON.stringify({
-                query: rz,
+                query: r9,
                 variables: {
                     search: e.title,
                     type: "ANIME"
@@ -22294,7 +22294,7 @@ async function SC(A, e) {
         g = ((r = (t = o.data) == null ? void 0 : t.Page) == null ? void 0 : r.media) ?? [];
     if (!g.length) throw new Error("AniList id not found");
     const s = _d(e.title),
-        I = g.filter(C => tz(e.type, C)).map(C => {
+        I = g.filter(C => t9(e.type, C)).map(C => {
             const Q = [C.title.romaji];
             C.title.english && Q.push(C.title.english), C.title.native && Q.push(C.title.native);
             const E = Q.map(_d).filter(Boolean),
@@ -22312,7 +22312,7 @@ async function SC(A, e) {
     if (!B) throw new Error("AniList id not found");
     return qd.set(n, B), B
 }
-const iz = `
+const i9 = `
 query ($id: Int) {
   Media(id: $id, type: ANIME) {
     title {
@@ -22324,7 +22324,7 @@ query ($id: Int) {
   }
 }
 `;
-async function nz(A, e) {
+async function n9(A, e) {
     const t = await SC(A, e),
         r = await A.proxiedFetcher("", {
             baseUrl: "https://graphql.anilist.co",
@@ -22334,7 +22334,7 @@ async function nz(A, e) {
                 Accept: "application/json"
             },
             body: JSON.stringify({
-                query: iz,
+                query: i9,
                 variables: {
                     id: t
                 }
@@ -22343,7 +22343,7 @@ async function nz(A, e) {
         i = r.data.Media.title.english;
     return i ? i.toLowerCase() : null
 }
-async function az(A) {
+async function a9(A) {
     const e = await SC(A, A.media),
         t = {
             type: A.media.type,
@@ -22379,18 +22379,18 @@ async function az(A) {
         }]
     }
 }
-const oz = W({
+const o9 = W({
         id: "animetsu",
         name: "Animetsu",
         rank: 112,
         flags: [],
-        scrapeShow: az
+        scrapeShow: a9
     }),
     zd = "https://bstsrs.in",
-    gz = /dbneg\('([0-9a-fA-F-]+)'\)/g,
-    sz = 1202390968;
+    g9 = /dbneg\('([0-9a-fA-F-]+)'\)/g,
+    s9 = 1202390968;
 
-function Iz(A) {
+function I9(A) {
     return A.normalize("NFKD").replace(/[\u0300-\u036f]/g, "").replace(/[^\x20-\x7E]/g, "").toLowerCase().replace(/[^a-z0-9\s-]/g, "").trim().replace(/\s+/g, "-").replace(/-+/g, "-")
 }
 
@@ -22398,56 +22398,56 @@ function Pd(A) {
     return A.toString().padStart(2, "0")
 }
 
-function cz(A) {
+function c9(A) {
     const e = [];
     for (const t of A.split("-"))
         if (t) try {
-            const r = parseInt(t, 16) - sz;
+            const r = parseInt(t, 16) - s9;
             r >= 0 && r <= 1114111 && e.push(String.fromCodePoint(r))
         } catch {}
     return e.join("")
 }
 
-function Bz(A) {
+function B9(A) {
     const e = [],
         t = {};
     let r;
-    for (; r = gz.exec(A);) {
+    for (; r = g9.exec(A);) {
         const i = r[1],
-            n = cz(i);
+            n = c9(i);
         n && !t[n] && (t[n] = !0, e.push(n))
     }
     return e
 }
 
-function Cz(A) {
+function C9(A) {
     return A.endsWith("doodstream.com") || A.endsWith("dood.watch") || A.endsWith("dood.li") || A.endsWith("dood.to") || A.endsWith("dood.re") || A.endsWith("d000d.com") || A.endsWith("d-s.io") || A.includes("dood")
 }
 
-function Ez(A) {
+function E9(A) {
     return A.endsWith("filemoon.to") || A.endsWith("filemoon.sx") || A.endsWith("i8yz83pn.com") || A.includes("filemoon")
 }
 
-function Qz(A) {
+function Q9(A) {
     return A.includes("streamtape.com")
 }
 
-function lz(A) {
+function l9(A) {
     return A.endsWith("mixdrog.ag") || A.endsWith("mixdrop.sn")
 }
 
-function dz(A) {
+function d9(A) {
     return A.includes("luluvid.com") || A.includes("luluvdoo.com")
 }
 
-function uz(A) {
+function u9(A) {
     return A.includes("voe")
 }
-async function hz(A) {
+async function h9(A) {
     const e = A.media.title,
         t = A.media.season.number,
         r = A.media.episode.number,
-        i = Iz(e),
+        i = I9(e),
         n = "s" + Pd(t) + "e" + Pd(r),
         a = zd + "/show/" + i + "-" + n + "/season/" + t + "/episode/" + r,
         o = await A.proxiedFetcher(a, {
@@ -22455,28 +22455,28 @@ async function hz(A) {
                 Referer: zd
             }
         }),
-        g = Bz(o);
+        g = B9(o);
     if (g.length === 0) throw new d("No BST links found");
     A.progress(50);
     const s = [];
     for (const I of g) try {
         const c = new URL(I).host.toLowerCase();
-        Ez(c) ? s.push({
+        E9(c) ? s.push({
             embedId: "filemoon",
             url: I
-        }) : Cz(c) ? s.push({
+        }) : C9(c) ? s.push({
             embedId: "dood",
             url: I
-        }) : Qz(c) ? s.push({
+        }) : Q9(c) ? s.push({
             embedId: "streamtape",
             url: I
-        }) : lz(c) ? s.push({
+        }) : l9(c) ? s.push({
             embedId: "mixdrop",
             url: I
-        }) : dz(c) ? s.push({
+        }) : d9(c) ? s.push({
             embedId: "luluvid",
             url: I
-        }) : uz(c) && s.push({
+        }) : u9(c) && s.push({
             embedId: "voe",
             url: I
         })
@@ -22486,15 +22486,15 @@ async function hz(A) {
         embeds: s
     }
 }
-const fz = W({
+const f9 = W({
         id: "bst",
         name: "BST 🔥",
         rank: 125,
         flags: [G.CORS_ALLOWED],
-        scrapeShow: hz
+        scrapeShow: h9
     }),
     Sa = "https://cinehdplus.gratis";
-async function pz(A) {
+async function p9(A) {
     const e = Sa + "/series/?story=" + A.media.tmdbId + "&do=search&subaction=search",
         t = await A.proxiedFetcher(e, {
             headers: {
@@ -22539,33 +22539,33 @@ async function pz(A) {
         embeds: I
     }
 }
-const yz = W({
+const y9 = W({
         id: "cinehdplus",
         name: "CineHDPlus (Latino)",
         rank: 4,
         disabled: !1,
         flags: [],
-        scrapeShow: pz
+        scrapeShow: p9
     }),
     ba = "https://cinevibe.asia",
-    mz = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    m9 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
     DI = "eyJzY3JlZW4iOiIzNjB4ODA2eDI0Iiwi",
     Xd = "pjght152dw2rb.ssst4bzleDI0Iiwibv78";
 
-function wz(A) {
+function w9(A) {
     let e = 2166136261;
     for (const t of A) e ^= t.charCodeAt(0), e = e + (e << 1) + (e << 4) + (e << 7) + (e << 8) + (e << 24) >>> 0;
     return (e >>> 0).toString(16).padStart(8, "0")
 }
 
-function Dz(A) {
+function D9(A) {
     let e = btoa(A);
     return e = e.split("").reverse().join(""), e = e.replace(/[a-zA-Z]/g, t => {
         const r = t <= "Z" ? 65 : 97;
         return String.fromCharCode((t.charCodeAt(0) - r + 13) % 26 + r)
     }), e = btoa(e), e.replace(/\+/g, "-").replace(/\//g, "_").replace(/=/g, "")
 }
-async function Nz(A) {
+async function N9(A) {
     var e;
     const t = A.media.tmdbId.toString(),
         r = A.media.type,
@@ -22573,13 +22573,13 @@ async function Nz(A) {
         n = A.media.releaseYear.toString(),
         a = Math.floor(Date.now() / 3e5) + "_" + DI + "_cinevibe_2025",
         o = i.toLowerCase().replace(/[^a-z0-9]/g, ""),
-        g = Xd + "|" + t + "|" + o + "|" + n + "||" + wz(a) + "|" + Math.floor(Date.now() / 6e5) + "|" + DI,
-        s = Dz(g),
+        g = Xd + "|" + t + "|" + o + "|" + n + "||" + w9(a) + "|" + Math.floor(Date.now() / 6e5) + "|" + DI,
+        s = D9(g),
         I = ba + "/api/stream/fetch?server=cinebox-1&type=" + r + "&mediaId=" + t + "&title=" + encodeURIComponent(i) + "&releaseYear=" + n + "&_token=" + s + "&_ts=" + Date.now();
     A.progress(50);
     const c = {
         Referer: ba,
-        "User-Agent": mz,
+        "User-Agent": m9,
         "X-CV-Fingerprint": DI,
         "X-CV-Session": Xd,
         "X-Requested-With": "XMLHttpRequest"
@@ -22640,13 +22640,13 @@ async function Nz(A) {
         }]
     }
 }
-const Sz = W({
+const S9 = W({
         id: "cinevibe",
         name: "Maxstream 🔥",
         rank: 223,
         disabled: !0,
         flags: [],
-        scrapeMovie: Nz
+        scrapeMovie: N9
     }),
     jd = "https://api.coitus.ca";
 async function Vd(A) {
@@ -22685,7 +22685,7 @@ async function Vd(A) {
         }]
     }
 }
-const bz = W({
+const b9 = W({
     id: "coitus",
     name: "Autoembed+",
     rank: 91,
@@ -22694,7 +22694,7 @@ const bz = W({
     scrapeMovie: Vd,
     scrapeShow: Vd
 });
-async function vz(A) {
+async function v9(A) {
     var e, t;
     const r = A.media.title,
         i = 1,
@@ -22738,20 +22738,20 @@ async function vz(A) {
         }]
     }
 }
-const Gz = W({
+const G9 = W({
         id: "consumet",
         name: "Consumet (Anime) 🔥",
         rank: 5,
         disabled: !0,
         flags: [G.CORS_ALLOWED],
-        scrapeShow: vz
+        scrapeShow: v9
     }),
     va = "https://www.cuevana3.eu";
 
 function Wd(A) {
     return A.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s-]/gi, "").replace(/\s+/g, "-").replace(/-+/g, "-")
 }
-async function Fz(A, e) {
+async function F9(A, e) {
     try {
         const t = await A.proxiedFetcher(e),
             r = t.match(/var url = '([^']+)'/);
@@ -22760,7 +22760,7 @@ async function Fz(A, e) {
     return null
 }
 
-function Rz(A) {
+function R9(A) {
     return A.startsWith("https://") && (A.includes("streamwish") || A.includes("filemoon") || A.includes("vidhide"))
 }
 async function Ga(A, e) {
@@ -22769,8 +22769,8 @@ async function Ga(A, e) {
         if (i)
             for (const n of i) {
                 if (!n.result) continue;
-                const a = await Fz(A, n.result);
-                if (!a || !Rz(a)) continue;
+                const a = await F9(A, n.result);
+                if (!a || !R9(a)) continue;
                 let o = "";
                 if (a.includes("filemoon")) o = "filemoon";
                 else if (a.includes("streamwish")) r === "latino" ? o = "streamwish-latino" : r === "spanish" ? o = "streamwish-spanish" : r === "english" ? o = "streamwish-english" : o = "streamwish-latino";
@@ -22845,7 +22845,7 @@ async function Zd(A) {
         embeds: C
     }
 }
-const Mz = W({
+const M9 = W({
     id: "cuevana3",
     name: "Cuevana3",
     rank: 80,
@@ -22869,7 +22869,7 @@ async function km(A, e) {
         body: JSON.stringify(A)
     })
 }
-async function kz(A, e, t) {
+async function k9(A, e, t) {
     const r = "https://comet.elfhosted.com",
         i = btoa(JSON.stringify({
             maxResultsPerResolution: 0,
@@ -22899,8 +22899,8 @@ async function kz(A, e, t) {
     });
     return await km(a, t)
 }
-const xz = "",
-    Yz = "",
+const x9 = "",
+    Y9 = "",
     xm = () => {
         var A;
         try {} catch {}
@@ -22914,7 +22914,7 @@ const xz = "",
             return console.error("Error getting debrid token:", e), null
         }
     },
-    Uz = () => {
+    U9 = () => {
         var A;
         try {} catch {}
         try {
@@ -22929,7 +22929,7 @@ const xz = "",
         }
     };
 
-function Lz(A) {
+function L9(A) {
     if (!A) return "unknown";
     const e = A.toLowerCase();
     return e === "4k" || e === "2160p" ? "4k" : e === "1080p" ? 1080 : e === "720p" ? 720 : e === "480p" ? 480 : e === "360p" ? 360 : "unknown"
@@ -22942,8 +22942,8 @@ function $d(A) {
 async function Au(A) {
     const e = xm();
     if (!e) throw new d("Debrid API token is required");
-    const t = Uz(),
-        [r, i] = await Promise.all([Mm("https://torrentio.strem.fun/" + t + "=" + e, A), kz(e, t, A).catch(() => [])]);
+    const t = U9(),
+        [r, i] = await Promise.all([Mm("https://torrentio.strem.fun/" + t + "=" + e, A), k9(e, t, A).catch(() => [])]);
     A.progress(33);
     const n = await km(r.streams.map(s => ({
             ...s,
@@ -22955,7 +22955,7 @@ async function Au(A) {
     const o = {},
         g = {};
     for (const s of a) {
-        const I = Lz(s.resolution);
+        const I = L9(s.resolution);
         g[I] || (g[I] = []), g[I].push(s)
     }
     for (const [s, I] of Object.entries(g)) {
@@ -22993,7 +22993,7 @@ async function Au(A) {
         }]
     }
 }
-const Hz = W({
+const H9 = W({
         id: "debrid",
         name: "Debrid",
         rank: 450,
@@ -23004,12 +23004,12 @@ const Hz = W({
     }),
     eu = "https://dramacool9.com.ro";
 
-function Oz(A) {
+function O9(A) {
     return A.toLowerCase().replace(/['']/g, "").replace(/[^a-z0-9\s-]/g, "").replace(/\s+/g, "-").replace(/-+/g, "-").trim()
 }
 
 function tu(A, e, t, r) {
-    const i = Oz(A);
+    const i = O9(A);
     return t === null || t === 1 ? eu + "/" + i + "-" + e + "-episode-" + r + ".html" : eu + "/" + i + "-season-" + t + "-" + e + "-episode-" + r + ".html"
 }
 async function ru(A) {
@@ -23049,7 +23049,7 @@ async function ru(A) {
         }]
     }
 }
-const Jz = W({
+const J9 = W({
     id: "dramacool",
     name: "Dramacool 🔥",
     rank: 174,
@@ -23095,7 +23095,7 @@ async function iu(A) {
         embeds: g
     }
 }
-const Kz = W({
+const K9 = W({
         id: "embedsu",
         name: "embed.su",
         rank: 165,
@@ -23116,7 +23116,7 @@ const Kz = W({
             return console.warn("Unable to access localStorage or parse auth data:", e), null
         }
     },
-    Tz = () => {
+    T9 = () => {
         var A;
         try {
             if (typeof window > "u") return null;
@@ -23130,7 +23130,7 @@ const Kz = W({
     },
     nu = "https://fed-api-db.pstream.mov";
 
-function qz(A) {
+function q9(A) {
     const e = (A || "").toLowerCase();
     if (/(^|\b)(usa5|usa6|usa7|uk1|de2|hk1|ca1|au1|sg1|in1)(\b|$)/.test(e)) {
         const t = e.match(/(usa5|usa6|usa7|uk1|de2|hk1|ca1|au1|sg1|in1)/);
@@ -23139,7 +23139,7 @@ function qz(A) {
     return e.includes("dallas") || e.includes("portland") ? "usa6" : e.includes("new-york") ? "usa7" : e.includes("paris") ? Math.random() < .5 ? "uk1" : "de2" : e.includes("hong-kong") ? "hk1" : e.includes("kansas") ? Math.random() < .5 ? "usa7" : "usa6" : e.includes("sydney") ? "au1" : e.includes("singapore") ? "sg1" : e.includes("mumbai") ? "in1" : e === "east" ? "usa7" : e === "west" ? "usa6" : e === "south" ? "usa5" : e === "europe" ? Math.random() < .5 ? "uk1" : "de2" : e === "asia" ? "sg1" : null
 }
 
-function _z(A, e) {
+function _9(A, e) {
     try {
         const t = new URL(A);
         return t.hostname.endsWith(".shegu.net") ? (t.hostname = e + ".shegu.net", t.toString()) : A
@@ -23151,7 +23151,7 @@ async function au(A) {
     var e;
     const t = Ym();
     if (!t) throw new d("Requires a user token!");
-    const r = Tz();
+    const r = T9();
     let i;
     try {
         i = await Br("0x4AAAAAAB6ocCCpurfWRZyC")
@@ -23175,9 +23175,9 @@ async function au(A) {
             return B === "ORG" ? (C.split("?")[0].toLowerCase().includes(".mp4") && (c.unknown = C), c) : (B === "4K" ? Q = 2160 : Q = parseInt(B.replace("P", ""), 10), Number.isNaN(Q) || c[Q] || (c[Q] = C), c)
         }, {}),
         g = Object.entries(o).reduce((c, [B, C]) => (c[B] = C, c), {}),
-        s = qz(r);
+        s = q9(r);
     s && Object.keys(g).forEach(c => {
-        g[c] = _z(g[c], s)
+        g[c] = _9(g[c], s)
     });
     const I = [];
     if (a.subtitles)
@@ -23246,7 +23246,7 @@ async function au(A) {
         }]
     }
 }
-const zz = W({
+const z9 = W({
         id: "fedapidb",
         name: "FED DB 🔥",
         rank: 299,
@@ -23256,7 +23256,7 @@ const zz = W({
         scrapeShow: au
     }),
     ou = "https://themoviedb.hexa.su",
-    Pz = "https://enc-dec.app/api";
+    P9 = "https://enc-dec.app/api";
 async function gu(A) {
     const e = Array.from(crypto.getRandomValues(new Uint8Array(32))).map(g => g.toString(16).padStart(2, "0")).join("");
     let t;
@@ -23269,7 +23269,7 @@ async function gu(A) {
         i = await A.proxiedFetcher(t, {
             headers: r
         }),
-        n = await A.proxiedFetcher(Pz + "/dec-hexa", {
+        n = await A.proxiedFetcher(P9 + "/dec-hexa", {
             method: "POST",
             body: JSON.stringify({
                 text: i,
@@ -23291,7 +23291,7 @@ async function gu(A) {
         embeds: o
     }
 }
-const Xz = W({
+const X9 = W({
     id: "flixer",
     name: "HGNC4878 🔥",
     rank: 200,
@@ -23301,12 +23301,12 @@ const Xz = W({
     scrapeShow: gu
 });
 
-function jz(A) {
+function j9(A) {
     return A.replace(/([a-z])([A-Z])/g, "$1-$2").replace(/[\s_]+/g, "-").toLowerCase()
 }
 const qn = "https://myflixerz.to";
-async function Vz(A, e, t) {
-    const r = await A.proxiedFetcher(qn + "/search/" + jz(e)),
+async function V9(A, e, t) {
+    const r = await A.proxiedFetcher(qn + "/search/" + j9(e)),
         i = Z(r),
         n = i('a[title="' + e + '"]').first();
     if (n.length === 0) return null;
@@ -23318,7 +23318,7 @@ async function Vz(A, e, t) {
         href: a
     }
 }
-async function Wz(A, e) {
+async function W9(A, e) {
     const t = await A.proxiedFetcher(qn + "/ajax/season/list/" + e),
         r = Z(t),
         i = [];
@@ -23333,7 +23333,7 @@ async function Wz(A, e) {
         })
     }), i.length > 0 ? i : null
 }
-async function Zz(A, e) {
+async function Z9(A, e) {
     const t = await A.proxiedFetcher(qn + "/ajax/season/episodes/" + e),
         r = Z(t),
         i = [];
@@ -23348,7 +23348,7 @@ async function Zz(A, e) {
         })
     }), i.length > 0 ? i : null
 }
-async function $z(A, e, t) {
+async function $9(A, e, t) {
     const r = await A.proxiedFetcher(qn + "/ajax/episode/servers/" + e),
         i = Z(r),
         n = [];
@@ -23362,7 +23362,7 @@ async function $z(A, e, t) {
         })
     }), n.length > 0 ? n : null
 }
-async function A9(A, e, t) {
+async function Az(A, e, t) {
     const r = qn + "/ajax/episode/sources/" + e,
         i = await A.proxiedFetcher(r);
     let n = i;
@@ -23374,26 +23374,26 @@ async function A9(A, e, t) {
     return n
 }
 async function su(A) {
-    const e = await Vz(A, A.media.title, A.media.type);
+    const e = await V9(A, A.media.title, A.media.type);
     if (e === null) throw new d("Media not found in search.");
     let t = e.id;
     if (A.media.type === "show") {
         const a = A,
-            o = await Wz(A, t),
+            o = await W9(A, t),
             g = o == null ? void 0 : o.find(c => c.season === a.media.season.number);
         if (!g) throw new d("Season not found");
-        const s = await Zz(A, g.id),
+        const s = await Z9(A, g.id),
             I = s == null ? void 0 : s.find(c => c.episode === a.media.episode.number);
         if (!I) throw new d("Episode not found");
         t = I.id
     }
     A.progress(25);
-    const r = await $z(A, t, A.media.type);
+    const r = await $9(A, t, A.media.type);
     if (!r || r.length === 0) throw new d("Servers not found");
     A.progress(50);
     const i = [];
     for (const a of r) {
-        const o = await A9(A, a.serverId, A.media.type);
+        const o = await Az(A, a.serverId, A.media.type);
         o != null && o.link && i.push(o.link)
     }
     if (i.length === 0) throw new d("No embed links found");
@@ -23404,7 +23404,7 @@ async function su(A) {
         }))
     }
 }
-const e9 = W({
+const ez = W({
     id: "flixhq",
     name: "Mega 🔥",
     rank: 195,
@@ -23413,11 +23413,11 @@ const e9 = W({
     scrapeShow: su
 });
 
-function t9(A) {
+function tz(A) {
     return A.replace(/[a-z]/gi, e => String.fromCharCode(e.charCodeAt(0) + (e.toLowerCase() < "n" ? 13 : -13)))
 }
 
-function r9(A) {
+function rz(A) {
     const e = atob(A.split("").reverse().join(""));
     let t = "";
     for (let r = 0; r < e.length; r++) {
@@ -23428,7 +23428,7 @@ function r9(A) {
     return atob(t)
 }
 
-function i9(A) {
+function iz(A) {
     const e = /'((?:[^'\\]|\\.)*)',\s*(\d+),\s*(\d+),\s*'((?:[^'\\]|\\.)*)'\.split\('\|'\)/,
         t = e.exec(A);
     return t ? {
@@ -23439,7 +23439,7 @@ function i9(A) {
     } : (console.error("Could not parse parameters. Format is not as expected."), null)
 }
 
-function n9(A) {
+function nz(A) {
     const {
         payload: e,
         radix: t,
@@ -23464,7 +23464,7 @@ function n9(A) {
     return e.replace(/\b\w+\b/g, g => g in n ? n[g] : g)
 }
 
-function a9(A) {
+function az(A) {
     return A.replace(/\\x([0-9A-Fa-f]{2})/g, (e, t) => String.fromCharCode(parseInt(t, 16)))
 }
 
@@ -23478,28 +23478,28 @@ const go = "https://www.fullhdfilmizlesene.tv",
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
     };
 
-function o9(A) {
+function oz(A) {
     const e = /eval\(function\(p,a,c,k,e,d\){.+}}return p}\((\\?'.+.split\(\\?'\|\\?'\)).+$/m;
     let t = A,
         r = 0;
     for (; t.includes("eval(");) {
         const a = t.match(e);
         if (!a) throw new d("Decryption unsuccessful");
-        const o = i9(r > 0 ? Iu(a[1]) : a[1]);
+        const o = iz(r > 0 ? Iu(a[1]) : a[1]);
         if (!o) throw new d("Decryption unsuccessful");
-        t = n9(o), r++
+        t = nz(o), r++
     }
     const i = t.match(/"file":"(.+?)"/);
     if (!i) throw new d("No playlist found");
-    return Iu(a9(i[1]))
+    return Iu(az(i[1]))
 }
 
-function g9(A) {
+function gz(A) {
     const e = A.match(/"file": av\('(.+)'\),$/m);
     if (!e) throw new d("No playlist found");
-    return r9(e[1])
+    return rz(e[1])
 }
-async function s9(A) {
+async function sz(A) {
     if (!A.media.imdbId) throw new d("IMDb id not provided");
     const e = await A.proxiedFetcher("/autocomplete/q.php?q=" + A.media.imdbId, {
         baseUrl: go,
@@ -23515,7 +23515,7 @@ async function s9(A) {
         n = i.match(/var scx = {.+"t":\["(.+)"\]},/);
     if (!n) throw new d("No source found");
     A.progress(60);
-    const a = atob(t9(n[1])),
+    const a = atob(tz(n[1])),
         o = a.startsWith("https://vidmoxy.com"),
         g = await A.proxiedFetcher(a + (o ? "?vst=1" : ""), {
             headers: {
@@ -23531,7 +23531,7 @@ async function s9(A) {
             }
         });
     if (A.progress(80), !g || g === "404") throw new d("Player 404: Source is inaccessible");
-    const s = o ? o9(g) : g9(g);
+    const s = o ? oz(g) : gz(g);
     return {
         embeds: [],
         stream: [{
@@ -23544,13 +23544,13 @@ async function s9(A) {
         }]
     }
 }
-const I9 = W({
+const Iz = W({
     id: "fullhdfilmizle",
     name: "FullHDFilmizle (Turkish)",
     rank: 6,
     disabled: !1,
     flags: [G.CORS_ALLOWED],
-    scrapeMovie: s9
+    scrapeMovie: sz
 });
 async function cu(A) {
     let e;
@@ -23577,7 +23577,7 @@ async function cu(A) {
         }] : []]
     }
 }
-const c9 = W({
+const cz = W({
     id: "gomo",
     name: "Gomo 🔥",
     rank: 168,
@@ -23591,14 +23591,14 @@ function Bu(A) {
     return Object.entries(A).map(([e, t]) => yC.serialize(e, t)).join("; ")
 }
 
-function B9(A) {
+function Bz(A) {
     const e = Pl.splitCookiesString(A);
     return Pl.parse(e, {
         map: !0
     })
 }
 const Gr = "https://ww1.goojara.to";
-async function C9(A, e) {
+async function Cz(A, e) {
     const t = await A.proxiedFetcher.full("/" + e, {
         baseUrl: Gr,
         headers: {
@@ -23612,7 +23612,7 @@ async function C9(A, e) {
     });
     if (!t.body || typeof t.body == "string" && t.body.trim().length === 0) throw new d("Empty response from watch page");
     const r = t.headers.get("Set-Cookie") || "",
-        i = B9(r);
+        i = Bz(r);
     let n = "",
         a = "";
     const o = typeof t.body == "string" ? t.body : "",
@@ -23673,7 +23673,7 @@ const Um = {
     Accept: "*/*",
     "Accept-Language": "en-US,en;q=0.9"
 };
-async function E9(A, e) {
+async function Ez(A, e) {
     const t = await A.proxiedFetcher.full("/xmre.php", {
             baseUrl: Gr,
             headers: Um,
@@ -23716,7 +23716,7 @@ async function E9(A, e) {
     if (n.length === 0) throw new d("No " + e.type + ' results found for "' + e.title + '"');
     return n.find(s => Ft(e, s.title, Number(s.year)))
 }
-async function Q9(A, e, t) {
+async function Qz(A, e, t) {
     let r = null;
     if (e.type === "movie") r = t.slug;
     else if (e.type === "show") {
@@ -23741,13 +23741,13 @@ async function Q9(A, e, t) {
         }), r = a
     }
     if (r === null || r === "") throw new d("Not found");
-    return await C9(A, r)
+    return await Cz(A, r)
 }
 async function Cu(A) {
-    const e = await E9(A, A.media);
+    const e = await Ez(A, A.media);
     if (!e) throw new d("Media not found");
     A.progress(30);
-    const t = await Q9(A, A.media, e);
+    const t = await Qz(A, A.media, e);
     if (!t || t.embeds.length === 0) throw new d("No embeds found");
     return A.progress(60), {
         embeds: t.embeds.map(r => ({
@@ -23756,7 +23756,7 @@ async function Cu(A) {
         }))
     }
 }
-const l9 = W({
+const lz = W({
     id: "goojara",
     name: "Goojara 🔥",
     rank: 199,
@@ -23766,7 +23766,7 @@ const l9 = W({
     scrapeMovie: Cu
 });
 
-function d9() {
+function dz() {
     const A = () => Math.floor(Math.random() * 16).toString(16),
         e = t => Array.from({
             length: t
@@ -23774,7 +23774,7 @@ function d9() {
     return e(8) + "-" + e(4) + "-" + e(4) + "-" + e(4) + "-" + e(12)
 }
 
-function u9(A) {
+function uz(A) {
     if (!A || typeof A == "boolean") return [];
     const e = A.split(","),
         t = [];
@@ -23795,7 +23795,7 @@ function u9(A) {
     }), t
 }
 
-function h9(A) {
+function hz(A) {
     if (!A) throw new d("No video links found");
     try {
         const e = {};
@@ -23828,7 +23828,7 @@ const Xc = "https://hdrezka-home.tv",
         "Accept-Language": "ru-RU,ru;q=0.9,en-US;q=0.8,en;q=0.7",
         "CF-IPCountry": "RU"
     };
-async function f9(A) {
+async function fz(A) {
     const e = await A.proxiedFetcher("/engine/ajax/search.php", {
             baseUrl: Xc,
             headers: bC,
@@ -23858,9 +23858,9 @@ async function f9(A) {
         return a - o
     }), r[0] || null
 }
-async function p9(A, e, t) {
+async function pz(A, e, t) {
     const r = new URLSearchParams;
-    r.append("id", A), r.append("translator_id", e), t.media.type === "show" && (r.append("season", t.media.season.number.toString()), r.append("episode", t.media.episode.number.toString())), r.append("favs", d9()), r.append("action", t.media.type === "show" ? "get_stream" : "get_movie"), r.append("t", Date.now().toString());
+    r.append("id", A), r.append("translator_id", e), t.media.type === "show" && (r.append("season", t.media.season.number.toString()), r.append("episode", t.media.episode.number.toString())), r.append("favs", dz()), r.append("action", t.media.type === "show" ? "get_stream" : "get_movie"), r.append("t", Date.now().toString());
     const i = await t.proxiedFetcher("/ajax/get_cdn_series/", {
         baseUrl: Xc,
         method: "POST",
@@ -23881,7 +23881,7 @@ async function p9(A, e, t) {
         throw console.error("Error parsing stream response:", n), new d("Failed to parse stream response")
     }
 }
-async function y9(A, e, t) {
+async function yz(A, e, t) {
     const r = await t.proxiedFetcher(A, {
         headers: bC
     });
@@ -23892,14 +23892,14 @@ async function y9(A, e, t) {
     return a ? a[1] : null
 }
 const Eu = async A => {
-    const e = await f9(A);
+    const e = await fz(A);
     if (!e || !e.id) throw new d("No result found");
-    const t = await y9(e.url, e.id, A);
+    const t = await yz(e.url, e.id, A);
     if (!t) throw new d("No translator id found");
     const {
         url: r,
         subtitle: i
-    } = await p9(e.id, t, A), n = h9(r), a = u9(i);
+    } = await pz(e.id, t, A), n = hz(r), a = uz(i);
     return A.progress(90), {
         embeds: [],
         stream: [{
@@ -23910,7 +23910,7 @@ const Eu = async A => {
             qualities: n
         }]
     }
-}, m9 = W({
+}, mz = W({
     id: "hdrezka",
     name: "HDRezka",
     rank: 105,
@@ -23919,7 +23919,7 @@ const Eu = async A => {
     scrapeShow: Eu,
     scrapeMovie: Eu
 });
-async function w9(A, e, t) {
+async function wz(A, e, t) {
     let r = "";
     return t.type === "show" ? r = "/v1/episodes/view" : t.type === "movie" && (r = "/v1/movies/view"), await A.proxiedFetcher(r, {
         baseUrl: En,
@@ -23929,8 +23929,8 @@ async function w9(A, e, t) {
         }
     })
 }
-async function D9(A, e, t) {
-    const r = await w9(A, e, t),
+async function Dz(A, e, t) {
+    const r = await wz(A, e, t),
         i = r.streams,
         n = ["auto", "1080p", "1080", "720p", "720", "480p", "480", "240p", "240", "360p", "360", "144", "144p"];
     let a = null;
@@ -23952,7 +23952,7 @@ async function D9(A, e, t) {
     }
 }
 const En = "https://lmscript.xyz";
-async function N9(A, e) {
+async function Nz(A, e) {
     if (e.type === "show") return (await A.proxiedFetcher("/v1/shows", {
         baseUrl: En,
         query: {
@@ -23966,7 +23966,7 @@ async function N9(A, e) {
         }
     })).items.find(n => Ft(e, n.title, Number(n.year)))
 }
-async function S9(A, e, t) {
+async function Sz(A, e, t) {
     var r;
     let i = null;
     if (e.type === "movie") i = t.id_movie;
@@ -23982,13 +23982,13 @@ async function S9(A, e, t) {
         o && (i = o.id)
     }
     if (i === null) throw new d("Not found");
-    return await D9(A, i, e)
+    return await Dz(A, i, e)
 }
 async function Qu(A) {
-    const e = await N9(A, A.media);
+    const e = await Nz(A, A.media);
     if (!e) throw new d("Media not found");
     A.progress(30);
-    const t = await S9(A, A.media, e);
+    const t = await Sz(A, A.media, e);
     if (!t.playlist) throw new d("No video found");
     return A.progress(60), {
         embeds: [],
@@ -24001,7 +24001,7 @@ async function Qu(A) {
         }]
     }
 }
-const b9 = W({
+const bz = W({
         id: "lookmovie",
         name: "LookMovie",
         disabled: !1,
@@ -24037,7 +24037,7 @@ const b9 = W({
                 captions: []
             }]
         }
-    }, v9 = W({
+    }, vz = W({
         id: "m4ufree",
         name: "M4UFree 🔥",
         rank: 210,
@@ -24045,11 +24045,11 @@ const b9 = W({
         flags: [],
         scrapeMovie: du,
         scrapeShow: du
-    }), G9 = "https://enc-dec.app/api", F9 = ["mapple", "sakura", "alfa", "oak", "wiggles"];
+    }), Gz = "https://enc-dec.app/api", Fz = ["mapple", "sakura", "alfa", "oak", "wiggles"];
 async function uu(A) {
     const e = [];
-    for (const t of F9) try {
-        const r = await A.proxiedFetcher(G9 + "/enc-mapple", {
+    for (const t of Fz) try {
+        const r = await A.proxiedFetcher(Gz + "/enc-mapple", {
                 headers: {
                     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Safari/537.36",
                     Connection: "keep-alive",
@@ -24115,7 +24115,7 @@ async function uu(A) {
         }))
     }
 }
-const R9 = W({
+const Rz = W({
         id: "mappletv",
         name: "Sycamore 🔥",
         rank: 181,
@@ -24125,8 +24125,8 @@ const R9 = W({
         scrapeShow: uu
     }),
     SI = "https://play.modocine.com",
-    M9 = "https://scraper.aether.mom/api/scrape",
-    k9 = "6HkTYS+BIsj9Arv9m5WPvw==";
+    Mz = "https://scraper.aether.mom/api/scrape",
+    kz = "6HkTYS+BIsj9Arv9m5WPvw==";
 async function hu(A) {
     var e, t;
     const r = A.media.tmdbId;
@@ -24139,9 +24139,9 @@ async function hu(A) {
     });
     if (!(n != null && n.success) || !((t = (e = n.data) == null ? void 0 : e[0]) != null && t.embed_url)) throw new d("Failed to retrieve embed URL from modocine");
     const a = n.data[0].embed_url,
-        o = M9 + "?url=" + encodeURIComponent(a) + "&clickSelector=div.jw-display-icon-container&waitForDomain=https://play.modocine.com/hls",
+        o = Mz + "?url=" + encodeURIComponent(a) + "&clickSelector=div.jw-display-icon-container&waitForDomain=https://play.modocine.com/hls",
         g = await A.fetcher(o),
-        s = CA.AES.decrypt(g.data, k9),
+        s = CA.AES.decrypt(g.data, kz),
         I = JSON.parse(s.toString(CA.enc.Utf8));
     if (!(I != null && I.requests)) throw new d("Failed to retrieve stream data from scraper API");
     const c = JSON.stringify(I.requests).match(/"(https?:\/\/play\.modocine\.com\/hls\/[^"]+)"/);
@@ -24160,7 +24160,7 @@ async function hu(A) {
         }]
     }
 }
-const x9 = W({
+const xz = W({
         id: "modocine",
         name: "ModoCine (Spanish) 🔥",
         rank: 100,
@@ -24170,7 +24170,7 @@ const x9 = W({
         scrapeShow: hu
     }),
     mi = "https://movies4f.com",
-    Y9 = {
+    Yz = {
         Referer: "https://movies4f.com/",
         Origin: "https://movies4f.com",
         "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
@@ -24273,13 +24273,13 @@ Content-Disposition: form-data; name="domain"
             id: "primary",
             type: "hls",
             playlist: _,
-            headers: Y9,
+            headers: Yz,
             flags: [G.CORS_ALLOWED],
             captions: []
         }]
     }
 }
-const U9 = W({
+const Uz = W({
         id: "movies4f",
         name: "M4F",
         rank: 166,
@@ -24290,7 +24290,7 @@ const U9 = W({
     }),
     bI = "https://moviespro.watch";
 
-function L9(A, e) {
+function Lz(A, e) {
     if (!e || e.length === 0) return {
         bestMatch: {
             target: "",
@@ -24320,7 +24320,7 @@ function L9(A, e) {
         bestMatchIndex: i
     }
 }
-async function H9(A) {
+async function Hz(A) {
     const e = Z(A),
         t = [];
     return e(".item").each((r, i) => {
@@ -24343,7 +24343,7 @@ async function H9(A) {
         })
     }), t
 }
-async function O9(A) {
+async function Oz(A) {
     const e = Z(A),
         t = [];
     return e("script").each((r, i) => {
@@ -24398,7 +24398,7 @@ async function O9(A) {
         }))
     }), t
 }
-async function J9(A) {
+async function Jz(A) {
     const e = await A.proxiedFetcher(bI, {
             query: {
                 s: A.media.title
@@ -24408,11 +24408,11 @@ async function J9(A) {
                 "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36"
             }
         }),
-        t = await H9(e);
+        t = await Hz(e);
     if (t.length === 0) throw new d("No search results found");
     A.progress(25);
     const r = t.map(s => s.title),
-        i = L9(A.media.title, r);
+        i = Lz(A.media.title, r);
     let n = null;
     if (i.bestMatch.rating > .3 && (n = t[i.bestMatchIndex], A.media.type === "movie" && A.media.releaseYear && n.year !== A.media.releaseYear && (n = null)), !n) {
         const s = new RegExp("\\b" + A.media.title.toLowerCase().replace(/[.*+?^${}()|[\]\\]/g, "\\$&") + "\\b");
@@ -24428,18 +24428,18 @@ async function J9(A) {
         }),
         o = a.body;
     A.progress(60);
-    const g = await O9(o);
+    const g = await Oz(o);
     return A.progress(90), {
         embeds: g
     }
 }
-const K9 = W({
+const Kz = W({
         id: "moviesus",
         name: "MoviesSUS 🔥",
         rank: 192,
         disabled: !1,
         flags: [],
-        scrapeMovie: J9
+        scrapeMovie: Jz
     }),
     Ra = "https://api.movix.club";
 async function pu(A) {
@@ -24503,7 +24503,7 @@ async function pu(A) {
         embeds: i
     })
 }
-const T9 = W({
+const Tz = W({
         id: "movix",
         name: "El Frenche (French)",
         rank: 2,
@@ -24523,7 +24523,7 @@ async function mu(A) {
         }]
     }
 }
-const q9 = W({
+const qz = W({
         id: "multiembed",
         name: "MultiEmbed 🔥",
         rank: 145,
@@ -24532,10 +24532,10 @@ const q9 = W({
         scrapeMovie: mu,
         scrapeShow: mu
     }),
-    _9 = "limon87",
-    z9 = "https://gemini.aether.mom/v1beta/models/gemini-2.5-flash-lite:generateContent";
+    _z = "limon87",
+    zz = "https://gemini.aether.mom/v1beta/models/gemini-2.5-flash-lite:generateContent";
 
-function P9(A, e) {
+function Pz(A, e) {
     const t = A.season.number > 1 ? " and has " + A.season.number + " seasons" : "";
     return (`
     You are an AI that matches TMDB movie and show data to myanime search results.
@@ -24554,14 +24554,14 @@ function P9(A, e) {
     Your response must only be the raw JSON object, without any markdown formatting, comments, or other text.
   `).trim()
 }
-async function X9(A, e, t) {
+async function Xz(A, e, t) {
     try {
-        const r = P9(e, t),
-            i = await A.fetcher(z9, {
+        const r = Pz(e, t),
+            i = await A.fetcher(zz, {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "x-goog-api-key": _9
+                    "x-goog-api-key": _z
                 },
                 body: JSON.stringify({
                     contents: [{
@@ -24583,9 +24583,9 @@ async function X9(A, e, t) {
         return r instanceof Error && A.progress(0), null
     }
 }
-const j9 = async A => {
+const jz = async A => {
     var e, t, r;
-    const i = await nz(A, A.media);
+    const i = await n9(A, A.media);
     if (!i) throw new d("Anime not found");
     const n = [];
     for (const C of [A.media.title, i]) try {
@@ -24595,7 +24595,7 @@ const j9 = async A => {
     const a = [...new Map(n.map(C => [C.id, C])).values()];
     if (a.length === 0) throw new d("Anime not found");
     const o = a.filter(C => C.tvInfo.showType === "TV"),
-        g = await X9(A, A.media, o);
+        g = await Xz(A, A.media, o);
     let s = [];
     if (g && g.results.length > 0 && (s = g.results.map(C => {
             const Q = o.find(E => E.id === C.id);
@@ -24647,7 +24647,7 @@ const j9 = async A => {
             url: I
         }]
     }
-}, V9 = async A => {
+}, Vz = async A => {
     const e = await A.proxiedFetcher("https://anime.aether.mom/api/search?keyword=" + encodeURIComponent(A.media.title)),
         t = e.results.data.find(n => n.tvInfo.showType === "Movie");
     if (!t) throw new d("No watchable sources found");
@@ -24663,14 +24663,14 @@ const j9 = async A => {
             url: i.id
         }]
     }
-}, W9 = W({
+}, Wz = W({
     id: "myanime",
     name: "MyAnime 🔥",
     rank: 113,
     disabled: !0,
     flags: [G.CORS_ALLOWED],
-    scrapeMovie: V9,
-    scrapeShow: j9
+    scrapeMovie: Vz,
+    scrapeShow: jz
 }), wu = "https://nemo-live.pstream.mov";
 async function Du(A) {
     let e;
@@ -24723,7 +24723,7 @@ async function Du(A) {
         stream: []
     }
 }
-const Z9 = W({
+const Zz = W({
     id: "nemo-live",
     name: "Nemo.live 🤝",
     rank: 196,
@@ -24780,7 +24780,7 @@ async function Nu(A) {
         stream: a
     }
 }
-const $9 = W({
+const $z = W({
         id: "nmirror",
         name: "NMirror 🔥",
         rank: 174,
@@ -27536,7 +27536,7 @@ const LP = W({
 });
 
 function zm() {
-    return [LT, lT, Mz, G6, m9, SP, FP, XT, M6, yP, L6, JK, PK, W9, tq, yT, wT, Bq, xK, Eq, jT, ZT, Kz, Im, zz, Z9, R6, V6, rP, DP, iP, bz, H6, A6, W_, I4, Gz, zT, X_, RP, ez, eq, gm, Sz, sq, Xz, e9, c9, hP, N6, Bm, nq, LP, sP, oz, b9, v9, U9, F6, R9, fz, $9, k6, q9, IP, w6, x9, nP, gP, D6, rq, EP, a6, y6, o6, YP, Hz, yz, T9, K9, K6, I9, v6, Jz, l9]
+    return [LT, lT, M9, G6, mz, SP, FP, XT, M6, yP, L6, JK, PK, Wz, tq, yT, wT, Bq, xK, Eq, jT, ZT, K9, Im, z9, Zz, R6, V6, rP, DP, iP, b9, H6, A6, W_, I4, G9, zT, X_, RP, e9, eq, gm, S9, sq, X9, ez, cz, hP, N6, Bm, nq, LP, sP, o9, bz, vz, Uz, F6, Rz, f9, $z, k6, qz, IP, w6, xz, nP, gP, D6, rq, EP, a6, y6, o6, YP, H9, y9, Tz, Kz, K6, Iz, v6, J9, lz]
 }
 
 function HP() {
