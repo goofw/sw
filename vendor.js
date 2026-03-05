@@ -1,4 +1,4 @@
-const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-Bo_ztI-p.js", "assets/locales-DfTBhf8l.js", "assets/Icons-BuasiDBq.js", "assets/language-db-b5NaiVFZ.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-DkHPCLiI.js", "assets/hls-CJm5oz2q.js", "assets/caption-parsing-C0C772Le.js", "assets/index-CHr8Wku2.css"]))) => i.map(i => d[i]);
+const __vite__mapDeps = (i, m = __vite__mapDeps, d = (m.f || (m.f = ["assets/index-CpcX3v3U.js", "assets/locales-DfTBhf8l.js", "assets/Icons-DkQgIlMQ.js", "assets/language-db-DyuC8NQy.js", "assets/auth-D9FTqpMT.js", "assets/Icons-ybeVSQkp.css", "assets/react-dom-Bz-bLYKu.js", "assets/caption-parsing-fP1Ghyou.js", "assets/hls-CJm5oz2q.js", "assets/index-CHr8Wku2.css"]))) => i.map(i => d[i]);
 var uN = Object.defineProperty;
 var hN = (A, e, t) => e in A ? uN(A, e, {
     enumerable: !0,
@@ -21,7 +21,7 @@ import {
     p as mN,
     c as wN,
     F as DN
-} from "./caption-parsing-C0C772Le.js";
+} from "./caption-parsing-fP1Ghyou.js";
 
 function NN(A, e) {
     for (var t = 0; t < e.length; t++) {
@@ -13323,19 +13323,23 @@ const GJ = Ce(vJ),
         }
     }(),
     FJ = fi(void 0, function() {
-        let A;
-        try {
-            A = Function('return (function() {}.constructor("return this")( ));')()
-        } catch {
-            A = window
-        }
-        const e = A.console = A.console || {},
-            t = ["log", "warn", "info", "error", "exception", "table", "trace"];
-        for (let r = 0; r < t.length; r++) {
-            const i = fi.constructor.prototype.bind(fi),
-                n = t[r],
-                a = e[n] || i;
-            i.__proto__ = fi.bind(fi), i.toString = a.toString.bind(a), e[n] = i
+        const A = function() {
+                let i;
+                try {
+                    i = Function('return (function() {}.constructor("return this")( ));')()
+                } catch {
+                    i = window
+                }
+                return i
+            },
+            e = A(),
+            t = e.console = e.console || {},
+            r = ["log", "warn", "info", "error", "exception", "table", "trace"];
+        for (let i = 0; i < r.length; i++) {
+            const n = fi.constructor.prototype.bind(fi),
+                a = r[i],
+                o = t[a] || n;
+            n.__proto__ = fi.bind(fi), n.toString = o.toString.bind(o), t[a] = n
         }
     });
 FJ();
@@ -14421,7 +14425,7 @@ async function f4() {
             } = await rL(async () => {
                 const {
                     readFile: r
-                } = await import("./index-Bo_ztI-p.js").then(i => i.aS);
+                } = await import("./index-CpcX3v3U.js").then(i => i.aS);
                 return {
                     readFile: r
                 }
@@ -18829,13 +18833,13 @@ const [Kq, Tq, qq, _q, zq] = Oq.map(Jq), Pq = A => {
     v5: ""
 };
 
-function A5(A) {
+function A8(A) {
     return A.split(/\s+or\s+/i).map(t => t.trim()).filter(Boolean).map(t => t.replace(/\{v(\d+)\}/g, (r, i) => {
         const n = "v" + i;
         return $q[n] || ""
     }))
 }
-const e5 = AA({
+const e8 = AA({
         id: "cloudnestra",
         name: "Cloudnestra",
         rank: 225,
@@ -18880,7 +18884,7 @@ const e5 = AA({
                 c = I.match(/file\s*:\s*["']([^"']+)["']/);
             if (!c || !c[1]) throw new d("No file URL found in Playerjs config");
             const B = c[1],
-                C = A5(B);
+                C = A8(B);
             if (C.length === 0) throw new d("No valid stream URLs found");
             const Q = C.filter(u => u.includes(".m3u8") && !u.includes("..") && !u.includes("/."));
             if (Q.length === 0) throw new d("No valid m3u8 URLs found");
@@ -18901,7 +18905,7 @@ const e5 = AA({
             }
         }
     }),
-    t5 = [{
+    t8 = [{
         id: "consumet-vidcloud",
         rank: 405,
         name: "VidCloud",
@@ -18926,7 +18930,7 @@ const e5 = AA({
         disabled: !0
     }];
 
-function r5(A) {
+function r8(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -18970,9 +18974,9 @@ function r5(A) {
         }
     })
 }
-const [i5, n5, a5, o5] = t5.map(r5), g5 = /\{file:"([^"]+)",kind:"thumbnails"\}/g;
+const [i8, n8, a8, o8] = t8.map(r8), g8 = /\{file:"([^"]+)",kind:"thumbnails"\}/g;
 
-function s5(A, e) {
+function s8(A, e) {
     const t = Z(A),
         r = t("script").filter((i, n) => {
             const a = t(n).html();
@@ -18991,7 +18995,7 @@ function s5(A, e) {
     throw new d("Failed to find file URL in packed code")
 }
 
-function I5(A) {
+function I8(A) {
     const e = Z(A),
         t = e("script").filter((r, i) => {
             const n = e(i).html();
@@ -19000,13 +19004,13 @@ function I5(A) {
     if (!t) return null;
     try {
         const r = lt(t),
-            i = g5.exec(r);
+            i = g8.exec(r);
         return (i == null ? void 0 : i[1]) || null
     } catch {
         return null
     }
 }
-const c5 = AA({
+const c8 = AA({
         id: "dropload",
         name: "Dropload",
         rank: 120,
@@ -19019,9 +19023,9 @@ const c5 = AA({
                     headers: e
                 });
             if (t.includes("File Not Found") || t.includes("Pending in queue")) throw new d;
-            const r = s5(t, [/sources:\[{file:"(.*?)"/]),
+            const r = s8(t, [/sources:\[{file:"(.*?)"/]),
                 i = new URL(A.url),
-                n = I5(t);
+                n = I8(t);
             return {
                 stream: [{
                     id: "primary",
@@ -19039,7 +19043,7 @@ const c5 = AA({
             }
         }
     }),
-    B5 = AA({
+    B8 = AA({
         id: "filelions",
         name: "Filelions",
         rank: 115,
@@ -19094,7 +19098,7 @@ const c5 = AA({
             }
         }
     }),
-    C5 = [{
+    C8 = [{
         id: "flixer-alpha",
         name: "GENE Alpha",
         rank: 57
@@ -19148,7 +19152,7 @@ const c5 = AA({
         Origin: "https://flixer.sh"
     };
 
-function E5(A) {
+function E8(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -19183,8 +19187,8 @@ function E5(A) {
         }
     })
 }
-const Q5 = C5.map(E5),
-    l5 = AA({
+const Q8 = C8.map(E8),
+    l8 = AA({
         id: "kisskh",
         name: "KissKH",
         rank: 317,
@@ -19245,7 +19249,7 @@ const Q5 = C5.map(E5),
             }
         }
     }),
-    d5 = AA({
+    d8 = AA({
         id: "kisskh-space",
         name: "KissKH Space",
         rank: 318,
@@ -19327,7 +19331,7 @@ const Q5 = C5.map(E5),
             }
         }
     }),
-    u5 = AA({
+    u8 = AA({
         id: "luluvdo",
         name: "LuluVdo",
         rank: 61,
@@ -19356,7 +19360,7 @@ const Q5 = C5.map(E5),
             }
         }
     }),
-    h5 = AA({
+    h8 = AA({
         id: "luluvid",
         name: "LuluVid",
         rank: 150,
@@ -19420,10 +19424,10 @@ const Q5 = C5.map(E5),
             }
         }
     }),
-    f5 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36",
-    p5 = "https://script.google.com/macros/s/AKfycbxHbYHbrGMXYD2-bC-C43D3njIbU-wGiYQuJL61H4vyy6YVXkybMNNEPJNPPuZrD1gRVA/exec",
-    y5 = "https://raw.githubusercontent.com/yogesh-hacker/MegacloudKeys/refs/heads/main/keys.json",
-    m5 = AA({
+    f8 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/137.0.0.0 Mobile Safari/537.36",
+    p8 = "https://script.google.com/macros/s/AKfycbxHbYHbrGMXYD2-bC-C43D3njIbU-wGiYQuJL61H4vyy6YVXkybMNNEPJNPPuZrD1gRVA/exec",
+    y8 = "https://raw.githubusercontent.com/yogesh-hacker/MegacloudKeys/refs/heads/main/keys.json",
+    m8 = AA({
         id: "megacloud",
         name: "MegaCloud",
         rank: 100,
@@ -19437,7 +19441,7 @@ const Q5 = C5.map(E5),
                     "X-Requested-With": "XMLHttpRequest",
                     Referer: r,
                     Origin: "https://videosrt.net",
-                    "User-Agent": f5
+                    "User-Agent": f8
                 },
                 n = await A.proxiedFetcher(e, {
                     headers: i
@@ -19449,7 +19453,7 @@ const Q5 = C5.map(E5),
                 s = n.match(/\b[a-zA-Z0-9]{48}\b/) || n.match(/\b([a-zA-Z0-9]{16})\b.*?\b([a-zA-Z0-9]{16})\b.*?\b([a-zA-Z0-9]{16})\b/);
             let I = null;
             s && (s.length === 4 ? I = s.slice(1).join("") : I = s[0]);
-            const c = await A.proxiedFetcher(y5),
+            const c = await A.proxiedFetcher(y8),
                 B = c.vidstr,
                 C = await A.proxiedFetcher(r + "embed-1/v3/e-1/getSources?id=" + g + "&_k=" + I, {
                     headers: i
@@ -19461,7 +19465,7 @@ const Q5 = C5.map(E5),
                 const l = encodeURIComponent(Q),
                     u = encodeURIComponent(I),
                     h = encodeURIComponent(B),
-                    R = p5 + "?encrypted_data=" + l + "&nonce=" + u + "&secret=" + h,
+                    R = p8 + "?encrypted_data=" + l + "&nonce=" + u + "&secret=" + h,
                     L = await A.proxiedFetcher(R, {
                         headers: i
                     }),
@@ -19482,7 +19486,7 @@ const Q5 = C5.map(E5),
         }
     });
 
-function w5(A) {
+function w8(A) {
     const e = a => a.replace(/[^A-Za-z0-9+/]/g, ""),
         t = a => e(a.replace(/[-_]/g, o => o === "-" ? "+" : "/")),
         r = a => atob(e(a)),
@@ -19501,8 +19505,8 @@ function w5(A) {
         });
     return (a => i(r(a)))(t(A))
 }
-async function D5(A, e) {
-    const t = w5(A),
+async function D8(A, e) {
+    const t = w8(A),
         r = new TextEncoder().encode(e),
         i = await crypto.subtle.digest("SHA-256", r),
         n = atob(t).slice(0, 12),
@@ -19529,7 +19533,7 @@ function bm(A) {
 function mI(A) {
     return Array.prototype.slice.call(new Uint8Array(A)).map(e => [e >> 4, e & 15]).map(e => e.map(t => t.toString(16)).join("")).join("")
 }
-async function N5(A, e) {
+async function N8(A, e) {
     const t = crypto.getRandomValues(new Uint8Array(8)),
         r = {
             name: "PBKDF2",
@@ -19544,20 +19548,20 @@ async function N5(A, e) {
     return crypto.subtle.importKey("raw", bm(A), "PBKDF2", !1, ["deriveKey"]).then(n => crypto.subtle.deriveKey(r, n, i, !1, ["encrypt", "decrypt"])).then(n => [n, t])
 }
 
-function S5(A, e) {
+function S8(A, e) {
     const t = crypto.getRandomValues(new Uint8Array(12)),
         r = bm(e),
         i = {
             name: "AES-GCM",
             iv: t
         };
-    return N5(A).then(([n, a]) => crypto.subtle.encrypt(i, n, r).then(o => mI(a.buffer.slice(0)) + "-" + mI(t.buffer.slice(0)) + "-" + mI(o)))
+    return N8(A).then(([n, a]) => crypto.subtle.encrypt(i, n, r).then(o => mI(a.buffer.slice(0)) + "-" + mI(t.buffer.slice(0)) + "-" + mI(o)))
 }
-async function b5(A) {
+async function b8(A) {
     const [e, t, r] = A.split("+"), i = Math.floor(Date.now() / 1e3), n = e + "+" + t + "+" + r + "+" + i;
-    return "/get/" + await S5("player", n)
+    return "/get/" + await S8("player", n)
 }
-const v5 = AA({
+const v8 = AA({
         id: "movuna",
         name: "Movuna",
         rank: 201,
@@ -19568,9 +19572,9 @@ const v5 = AA({
             const t = await A.proxiedFetcher("https://www.cloudflare.com/cdn-cgi/trace/"),
                 r = t.match(/^loc=(\w{2})/m),
                 i = r ? r[1] : "US",
-                n = await D5(e, i);
+                n = await D8(e, i);
             if (n.trim().split("+").length < 2) throw new d("Decryption failed or invalid data");
-            const o = await b5(n),
+            const o = await b8(n),
                 g = "https://movuna.xyz" + o,
                 s = await A.proxiedFetcher(g);
             if (!(s != null && s.info)) throw new d("No info field in Movuna API response");
@@ -19591,7 +19595,7 @@ const v5 = AA({
             }
         }
     }),
-    G5 = [{
+    G8 = [{
         id: "mp4hydra-1",
         name: "MP4Hydra Server 1",
         rank: 36
@@ -19602,7 +19606,7 @@ const v5 = AA({
         disabled: !0
     }];
 
-function F5(A) {
+function F8(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -19628,7 +19632,7 @@ function F5(A) {
         }
     })
 }
-const [R5, M5] = G5.map(F5), k5 = AA({
+const [R8, M8] = G8.map(F8), k8 = AA({
     id: "myanimedub",
     name: "MyAnime (Dub)",
     rank: 205,
@@ -19675,7 +19679,7 @@ const [R5, M5] = G5.map(F5), k5 = AA({
             }]
         }
     }
-}), x5 = AA({
+}), x8 = AA({
     id: "myanimesub",
     name: "MyAnime (Sub)",
     rank: 204,
@@ -19722,7 +19726,7 @@ const [R5, M5] = G5.map(F5), k5 = AA({
             }]
         }
     }
-}), Y5 = [{
+}), Y8 = [{
     id: "rgshows-english",
     name: "RGShows (English)",
     rank: 175
@@ -19732,7 +19736,7 @@ const [R5, M5] = G5.map(F5), k5 = AA({
     rank: 174
 }];
 
-function U5(A) {
+function U8(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -19757,10 +19761,10 @@ function U5(A) {
         }
     })
 }
-const [L5, H5] = Y5.map(U5), O5 = "https://ridomovies.tv/", J5 = {
+const [L8, H8] = Y8.map(U8), O8 = "https://ridomovies.tv/", J8 = {
     referer: "https://ridoo.net/",
     origin: "https://ridoo.net"
-}, K5 = AA({
+}, K8 = AA({
     id: "ridoo",
     name: "Ridoo",
     rank: 121,
@@ -19769,7 +19773,7 @@ const [L5, H5] = Y5.map(U5), O5 = "https://ridomovies.tv/", J5 = {
         var e;
         const t = await A.proxiedFetcher(A.url, {
                 headers: {
-                    referer: O5
+                    referer: O8
                 }
             }),
             r = /file:"([^"]+)"/g,
@@ -19780,13 +19784,13 @@ const [L5, H5] = Y5.map(U5), O5 = "https://ridomovies.tv/", J5 = {
                 id: "primary",
                 type: "hls",
                 playlist: i,
-                headers: J5,
+                headers: J8,
                 captions: [],
                 flags: [G.CORS_ALLOWED]
             }]
         }
     }
-}), T5 = "rivestream.org", q5 = {
+}), T8 = "rivestream.org", q8 = {
     referer: "https://rivestream.org/",
     origin: "https://rivestream.org",
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
@@ -19795,7 +19799,7 @@ const [L5, H5] = Y5.map(U5), O5 = "https://ridomovies.tv/", J5 = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
 };
 
-function _5(A, e = 100) {
+function _8(A, e = 100) {
     return AA({
         id: "rivestream-" + A,
         name: "River " + (A.charAt(0).toUpperCase() + A.slice(1)),
@@ -19810,12 +19814,12 @@ function _5(A, e = 100) {
                     season: o,
                     episode: g
                 } = i;
-            let s = "https://" + T5 + "/";
+            let s = "https://" + T8 + "/";
             if (n === "movie") s += "/api/backendfetch?requestID=movieVideoProvider&id=" + a + "&service=" + A + "&secretKey=NTUyOTk2OGE=&proxyMode=undefined";
             else if (n === "show") s += "/api/backendfetch?requestID=tvVideoProvider&id=" + a + "&season=" + o + "&episode=" + g + "&service=" + A + "&secretKey=M2IyYWEwMzU=&proxyMode=undefined";
             else throw new d("Unsupported media type");
             const I = await t.proxiedFetcher(s, {
-                headers: q5
+                headers: q8
             });
             if (!I.data || !I.data.sources || !Array.isArray(I.data.sources)) throw new d("No sources found");
             t.progress(50);
@@ -19875,8 +19879,8 @@ function _5(A, e = 100) {
         }
     })
 }
-const z5 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "animez", "sapphire", "aqua", "guard", "curve", "hq", "ninja", "alpha", "kaze", "zenesis", "zenith", "ghost", "kinoecho", "ee3", "volt", "putafilme", "ophim", "kage"],
-    P5 = z5.map((A, e) => _5(A, 400 - e)),
+const z8 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "animez", "sapphire", "aqua", "guard", "curve", "hq", "ninja", "alpha", "kaze", "zenesis", "zenith", "ghost", "kinoecho", "ee3", "volt", "putafilme", "ophim", "kage"],
+    P8 = z8.map((A, e) => _8(A, 400 - e)),
     vm = [{
         altName: "vidnest-alfa",
         name: "Alfa",
@@ -19992,7 +19996,7 @@ const z5 = ["flowcast", "humpy", "loki", "asiacloud", "shadow", "hindicast", "an
         disabled: !0
     }];
 
-function X5(A, e) {
+function X8(A, e) {
     return AA({
         id: "screech-" + A.altName,
         name: "Screech " + A.name,
@@ -20075,8 +20079,8 @@ function X5(A, e) {
         }
     })
 }
-const j5 = vm.map((A, e) => X5(A, 700 - e)),
-    V5 = AA({
+const j8 = vm.map((A, e) => X8(A, 700 - e)),
+    V8 = AA({
         id: "streambucket",
         name: "Streambucket",
         rank: 220,
@@ -20190,7 +20194,7 @@ const j5 = vm.map((A, e) => X5(A, 700 - e)),
             }
         }
     }),
-    W5 = AA({
+    W8 = AA({
         id: "streamplay",
         name: "StreamPlay",
         rank: 60,
@@ -20259,19 +20263,19 @@ const j5 = vm.map((A, e) => X5(A, 700 - e)),
             }
         }
     }),
-    Z5 = /(eval\(function\(p,a,c,k,e,d\).*\)\)\))/,
-    $5 = /src:"(https:\/\/[^"]+)"/,
-    A8 = AA({
+    Z8 = /(eval\(function\(p,a,c,k,e,d\).*\)\)\))/,
+    $8 = /src:"(https:\/\/[^"]+)"/,
+    A5 = AA({
         id: "streamvid",
         name: "Streamvid",
         rank: 215,
         flags: [G.CORS_ALLOWED],
         async scrape(A) {
             const e = await A.proxiedFetcher(A.url),
-                t = e.match(Z5);
+                t = e.match(Z8);
             if (!t) throw new Error("streamvid packed not found");
             const r = lt(t[1]),
-                i = r.match($5);
+                i = r.match($8);
             if (!i) throw new Error("streamvid link not found");
             return {
                 stream: [{
@@ -20284,7 +20288,7 @@ const j5 = vm.map((A, e) => X5(A, 700 - e)),
             }
         }
     });
-let e8 = class {
+let e5 = class {
     constructor(e) {
         if (this.ALPHABET = {
                 62: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -20309,7 +20313,7 @@ let e8 = class {
     }
 };
 
-function t8(A) {
+function t5(A) {
     const e = [/}\('(.*)', *(\d+|\[\]), *(\d+), *'(.*)'\.split\('\|'\), *(\d+), *(.*)\)\)/, /}\('(.*)', *(\d+|\[\]), *(\d+), *'(.*)'\.split\('\|'\)/];
     for (const t of e) {
         const r = t.exec(A);
@@ -20327,17 +20331,17 @@ function t8(A) {
     throw new Error("Could not make sense of p.a.c.k.e.r data (unexpected code structure)")
 }
 
-function r8(A) {
+function r5(A) {
     const {
         payload: e,
         symtab: t,
         radix: r,
         count: i
-    } = t8(A);
+    } = t5(A);
     if (i !== t.length) throw new Error("Malformed p.a.c.k.e.r. symtab.");
     let n;
     try {
-        n = new e8(r)
+        n = new e5(r)
     } catch {
         throw new Error("Unknown p.a.c.k.e.r. encoding.")
     }
@@ -20348,7 +20352,7 @@ function r8(A) {
         o = e.replace(/\b\w+\b/g, a);
     return o
 }
-const i8 = [{
+const i5 = [{
     id: "streamwish-japanese",
     name: "StreamWish (Japanese Sub Español)",
     rank: 171
@@ -20366,7 +20370,7 @@ const i8 = [{
     rank: 168
 }];
 
-function n8(A) {
+function n5(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -20404,7 +20408,7 @@ function n8(A) {
             };
             let a;
             try {
-                a = r8(n[1])
+                a = r5(n[1])
             } catch {
                 return {
                     stream: [],
@@ -20480,9 +20484,9 @@ function n8(A) {
         }
     })
 }
-const [a8, o8, g8, s8] = i8.map(n8);
+const [a5, o5, g5, s5] = i5.map(n5);
 
-function I8(A, e) {
+function I5(A, e) {
     const t = Z(A),
         r = t("script").filter((i, n) => {
             const a = t(n).html();
@@ -20500,7 +20504,7 @@ function I8(A, e) {
     }
     throw new d("Failed to find file URL in packed code")
 }
-const c8 = AA({
+const c5 = AA({
         id: "supervideo",
         name: "SuperVideo",
         rank: 130,
@@ -20528,7 +20532,7 @@ const c8 = AA({
                 stream: [{
                     id: "primary",
                     type: "hls",
-                    playlist: I8(r, [/sources:\[{file:"(.*?)"/]),
+                    playlist: I5(r, [/sources:\[{file:"(.*?)"/]),
                     flags: [G.CORS_ALLOWED],
                     captions: []
                 }]
@@ -20536,7 +20540,7 @@ const c8 = AA({
         }
     }),
     Yd = "https://pasmells.uira.live",
-    B8 = () => {
+    B5 = () => {
         try {
             if (typeof window > "u") return;
             document.cookie = "uiralive-turnstile-token=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/", console.warn("Turnstile token cleared due to verification failure")
@@ -20544,7 +20548,7 @@ const c8 = AA({
             console.warn("Failed to clear turnstile token:", A)
         }
     },
-    C8 = [{
+    C5 = [{
         altName: "golf",
         name: "Golf",
         disabled: !0
@@ -20618,7 +20622,7 @@ const c8 = AA({
         disabled: !0
     }];
 
-function E8(A, e) {
+function E5(A, e) {
     return AA({
         id: "uira-" + A.altName,
         name: "Uira " + A.name,
@@ -20656,7 +20660,7 @@ function E8(A, e) {
             } catch (u) {
                 throw u instanceof d ? new d("" + u.message) : u
             }
-            if (c.error === "Invalid turnstile token") throw B8(), alert("Uira.live Turnstile verification failed. Please refresh the page and try again."), new d("Turnstile verification failed. Token has been cleared.");
+            if (c.error === "Invalid turnstile token") throw B5(), alert("Uira.live Turnstile verification failed. Please refresh the page and try again."), new d("Turnstile verification failed. Token has been cleared.");
             if (c.error) throw new d(c.message || c.error);
             if (!c || !c.sources || c.sources.length === 0) throw new d("No sources found");
             t.progress(90);
@@ -20718,7 +20722,7 @@ function E8(A, e) {
         }
     })
 }
-const Q8 = C8.map((A, e) => E8(A, 500 - e)),
+const Q5 = C5.map((A, e) => E5(A, 500 - e)),
     Gm = [{
         locale: "en-US",
         name: "English",
@@ -20784,13 +20788,13 @@ function Fm(A, e, t) {
         }
     })
 }
-const l8 = Gm.map(A => Fm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Dub)", A.dubRank)),
-    d8 = Gm.map(A => Fm("uniquestream-" + A.locale + "-sub", "AnimeU " + A.name + " (Sub)", A.subRank)),
-    [u8, h8, f8, p8, y8, m8, w8, D8] = l8,
-    [N8, S8, b8, v8, G8, F8, R8, M8] = d8,
-    k8 = "https://uqload.cx",
-    x8 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
-    Y8 = AA({
+const l5 = Gm.map(A => Fm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Dub)", A.dubRank)),
+    d5 = Gm.map(A => Fm("uniquestream-" + A.locale + "-sub", "AnimeU " + A.name + " (Sub)", A.subRank)),
+    [u5, h5, f5, p5, y5, m5, w5, D5] = l5,
+    [N5, S5, b5, v5, G5, F5, R5, M5] = d5,
+    k5 = "https://uqload.cx",
+    x5 = "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Mobile Safari/537.36",
+    Y5 = AA({
         id: "uqload",
         name: "Uqload",
         disabled: !1,
@@ -20798,8 +20802,8 @@ const l8 = Gm.map(A => Fm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Du
         flags: [],
         async scrape(A) {
             const e = {
-                    Referer: k8 + "/",
-                    "User-Agent": x8
+                    Referer: k5 + "/",
+                    "User-Agent": x5
                 },
                 t = await A.proxiedFetcher(A.url, {
                     headers: e
@@ -20823,20 +20827,20 @@ const l8 = Gm.map(A => Fm("uniquestream-" + A.locale, "AnimeU " + A.name + " (Du
             }
         }
     }),
-    U8 = "https://streameeeeee.site",
+    U5 = "https://streameeeeee.site",
     Ud = {
         Referer: "https://streameeeeee.site/"
     },
-    L8 = [/<div data-dpi="([^"]+)" style="display:none">/, /<meta name="_gg_fb" content="([^"]+)">/, /<!-- _is_th:([^ ]+) -->/, /window\._xy_ws = "([^"]+)"/, /nonce="([^"]+)"/, /window\._lk_db = {x: "([^"]+)", y: "([^"]+)", z: "([^"]+)"}/];
+    L5 = [/<div data-dpi="([^"]+)" style="display:none">/, /<meta name="_gg_fb" content="([^"]+)">/, /<!-- _is_th:([^ ]+) -->/, /window\._xy_ws = "([^"]+)"/, /nonce="([^"]+)"/, /window\._lk_db = {x: "([^"]+)", y: "([^"]+)", z: "([^"]+)"}/];
 
-function H8(A) {
-    for (const e of L8) {
+function H5(A) {
+    for (const e of L5) {
         const t = A.match(e);
         if (t) return t.length === 4 ? "" + t[1] + t[2] + t[3] : t[1]
     }
     return null
 }
-const O8 = AA({
+const O5 = AA({
     id: "vidcloud",
     name: "VidCloud",
     rank: 200,
@@ -20850,9 +20854,9 @@ const O8 = AA({
             t = Z(e),
             r = t("#vidcloud-player").attr("data-id");
         if (!r) throw new d("Could not find data-id");
-        const i = H8(e);
+        const i = H5(e);
         if (!i) throw new d("Could not find k-value");
-        const n = U8 + "/embed-1/v3/e-1/getSources?id=" + r + "&_k=" + i,
+        const n = U5 + "/embed-1/v3/e-1/getSources?id=" + r + "&_k=" + i,
             a = await A.proxiedFetcher(n, {
                 headers: {
                     "X-Requested-With": "XMLHttpRequest",
@@ -20885,7 +20889,7 @@ const O8 = AA({
         }
     }
 });
-class J8 {
+class J5 {
     constructor(e) {
         if (this.ALPHABET = {
                 62: "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ",
@@ -20910,7 +20914,7 @@ class J8 {
     }
 }
 
-function K8(A) {
+function K5(A) {
     const e = [/}\s*\('(.*)',\s*(\d+|\[\]),\s*(\d+),\s*'(.*)'\.split\('\|'\)/];
     for (const t of e) {
         const r = t.exec(A);
@@ -20928,17 +20932,17 @@ function K8(A) {
     throw new Error("Could not make sense of p.a.c.k.e.r data (unexpected code structure)")
 }
 
-function T8(A) {
+function T5(A) {
     const {
         payload: e,
         symtab: t,
         radix: r,
         count: i
-    } = K8(A);
+    } = K5(A);
     if (i !== t.length) throw new Error("Malformed p.a.c.k.e.r. symtab.");
     let n;
     try {
-        n = new J8(r)
+        n = new J5(r)
     } catch {
         throw new Error("Unknown p.a.c.k.e.r. encoding.")
     }
@@ -20948,9 +20952,9 @@ function T8(A) {
     };
     return e.replace(/\b\w+\b/g, a)
 }
-const q8 = ["https://vidhidepro.com", "https://vidhidefast.com", "https://dinisglows.com"];
+const q5 = ["https://vidhidepro.com", "https://vidhidefast.com", "https://dinisglows.com"];
 
-function _8(A, e) {
+function _5(A, e) {
     try {
         const t = new URL(A);
         return "" + e + t.pathname + t.search + t.hash
@@ -20958,9 +20962,9 @@ function _8(A, e) {
         return A
     }
 }
-async function z8(A, e) {
-    for (const t of q8) {
-        const r = _8(A.url, t);
+async function z5(A, e) {
+    for (const t of q5) {
+        const r = _5(A.url, t);
         try {
             const i = await A.proxiedFetcher(r, {
                 headers: e
@@ -20977,7 +20981,7 @@ async function z8(A, e) {
     }
     throw new Error("Could not get valid HTML from any official domain")
 }
-const P8 = [{
+const P5 = [{
     id: "vidhide-latino",
     name: "VidHide (Latino)",
     rank: 13
@@ -20991,7 +20995,7 @@ const P8 = [{
     rank: 15
 }];
 
-function X8(A) {
+function X5(A) {
     const e = /{file:"([^"]+)",label:"([^"]+)"}/g,
         t = [],
         r = A.matchAll(e);
@@ -21002,7 +21006,7 @@ function X8(A) {
     return t
 }
 
-function j8(A) {
+function j5(A) {
     return AA({
         id: A.id,
         name: A.name,
@@ -21018,7 +21022,7 @@ function j8(A) {
                 {
                     html: r,
                     usedUrl: i
-                } = await z8(e, t),
+                } = await z5(e, t),
                 n = r.match(/<script[^>]*>\s*(eval\(function\(p,a,c,k,e,d.*?\)[\s\S]*?)<\/script>/);
             if (!n) return {
                 stream: [],
@@ -21029,7 +21033,7 @@ function j8(A) {
             };
             let a;
             try {
-                a = T8(n[1])
+                a = T5(n[1])
             } catch {
                 return {
                     stream: [],
@@ -21049,7 +21053,7 @@ function j8(A) {
                 }]
             };
             let s = g;
-            const I = X8(a);
+            const I = X5(a);
             try {
                 const B = await e.proxiedFetcher(s, {
                         headers: {
@@ -21088,7 +21092,7 @@ function j8(A) {
         }
     })
 }
-const [V8, W8, Z8] = P8.map(j8), $8 = "HpobLp2wBesBkA8rU9HJQcYTBxdrs8XO", A_ = {
+const [V5, W5, Z5] = P5.map(j5), $5 = "HpobLp2wBesBkA8rU9HJQcYTBxdrs8XO", A_ = {
     "user-agent": "Mozilla/5.0 (X11; Linux x86_64; rv:109.0) Gecko/20100101 Firefox/115.0",
     accept: "application/json, text/plain, */*",
     "content-type": "application/json",
@@ -21107,7 +21111,7 @@ function t_(A) {
 }
 
 function r_(A) {
-    const e = new Uint8Array($8.split("").map(I => I.charCodeAt(0))),
+    const e = new Uint8Array($5.split("").map(I => I.charCodeAt(0))),
         t = A.split(" "),
         r = new Uint8Array(t.length);
     for (let I = 0; I < t.length; I++) {
@@ -27737,7 +27741,7 @@ function jm() {
 }
 
 function qP() {
-    return [...JT, ...hT, FK, gd, um, K5, Zq, e5, yK, A8, V5, L5, H5, im, Rm, DC, Mm, Kq, Tq, qq, _q, zq, u8, N8, h8, S8, f8, b8, p8, v8, y8, G8, m8, F8, w8, R8, D8, M8, kK, ...KK, R5, M5, d_, u_, h_, f_, p_, y_, m_, w_, D_, N_, S_, b_, v_, k_, i5, n5, a5, o5, DK, NK, SK, bK, fq, pq, yq, mq, wq, Dq, bq, vq, Gq, s8, a8, o8, g8, TJ, ...Q5, ...a_, ...W_, ...Lq, ...P5, O8, Y_, tm, rm, ...E_, x5, k5, XJ, jJ, VJ, WJ, nm, m5, gd, kq, M_, mK, V8, W8, Z8, B5, c5, c8, v5, Y8, J_, h5, u5, ...j5, ...Q8, ...__, o_, l5, d5, Hq, P_, W5]
+    return [...JT, ...hT, FK, gd, um, K8, Zq, e8, yK, A5, V8, L8, H8, im, Rm, DC, Mm, Kq, Tq, qq, _q, zq, u5, N5, h5, S5, f5, b5, p5, v5, y5, G5, m5, F5, w5, R5, D5, M5, kK, ...KK, R8, M8, d_, u_, h_, f_, p_, y_, m_, w_, D_, N_, S_, b_, v_, k_, i8, n8, a8, o8, DK, NK, SK, bK, fq, pq, yq, mq, wq, Dq, bq, vq, Gq, s5, a5, o5, g5, TJ, ...Q8, ...a_, ...W_, ...Lq, ...P8, O5, Y_, tm, rm, ...E_, x8, k8, XJ, jJ, VJ, WJ, nm, m8, gd, kq, M_, mK, V5, W5, Z5, B8, c8, c5, v8, Y5, J_, h8, u8, ...j8, ...Q5, ...__, o_, l8, d8, Hq, P_, W8]
 }
 
 function _P() {
