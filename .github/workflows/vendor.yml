@@ -2,8 +2,8 @@ name: vendor
 
 on:
   workflow_dispatch:
-  schedule:
-    - cron: '44 4 * * *'
+  # schedule:
+  #   - cron: '44 4 * * *'
 
 permissions:
   contents: write
